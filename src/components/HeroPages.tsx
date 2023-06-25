@@ -5,9 +5,7 @@ type HeroPagesProps = {
     name: string
 }
 
-export const HeroPages = (props: HeroPagesProps) => {
-    const {name} = props
-
+export const HeroPages = ({name}: HeroPagesProps) => {
     return (
         <>
             <section className="hero-pages">
