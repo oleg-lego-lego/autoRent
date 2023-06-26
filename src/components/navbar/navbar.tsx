@@ -17,7 +17,7 @@ export const Navbar = () => {
                     <NavbarLink title={'Home'} to={'/'} className={'home-link'}/>
                     <NavbarLink title={'About'} to={'/about'} className={'about-link'}/>
                     <NavbarLink title={'Vehicle Models'} to={'/models'} className={'models-link'}/>
-                    <NavbarLink title={'Testimonials'} to={'/testimonials'} className={'test-link'}/>
+                    <NavbarLink title={'Comment'} to={'/testimonials'} className={'test-link'}/>
                     <NavbarLink title={'Our Team'} to={'/team'} className={'team-l ink'}/>
                     <NavbarLink title={'Contact'} to={'/contact'} className={'contact-link'}/>
                 </ul>

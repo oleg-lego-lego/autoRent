@@ -5,7 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import {Home} from "./components/home/Home";
 import {About} from "./pages/about/About";
 import {Models} from "./pages/models/Models";
-import {Comment} from "./pages/Сomment";
+import {CommentPage} from "./pages/СommentPage";
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
                 <Route path={'/'} element={<Home/>}/>
                 <Route path={'/about'} element={<About/>}/>
                 <Route path={'/models'} element={<Models/>}/>
-                <Route path={'/comment'} element={<Comment/>}/>
+                <Route path={'/comment'} element={<CommentPage/>}/>
             </Routes>
         </>
     );
