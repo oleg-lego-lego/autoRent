@@ -8,6 +8,7 @@ import BMW320 from "../images/cars-big/bmw-box.png";
 import MercedesGLK from "../images/cars-big/benz-box.png";
 import Passat from "../images/cars-big/passat-box.png";
 import {Model} from "../components/Model";
+import Banner from "../components/Banner";
 
 export type CarModelsType = {
     carBrand: string
@@ -40,18 +41,7 @@ export const Models = () => {
                         })}
                     </div>
                 </div>
-                <div className="book-banner">
-                    <div className="book-banner__overlay"></div>
-                    <div className="container">
-                        <div className="text-content">
-                            <h2>Book a car by getting in touch with us</h2>
-                            <span>
-                                <i className="fa-solid fa-phone"></i>
-                                <h3>(123) 456-7869</h3>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                <Banner/>
                 <Footer/>
             </section>
         </>

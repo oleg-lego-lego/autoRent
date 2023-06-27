@@ -7,6 +7,7 @@ import Box3 from "../images/about/icon3.png"
 import {PlanTrip} from "../components/about/PlanTrip";
 import {Footer} from "../components/Footer";
 import {AboutTextIcons} from "../components/about/AboutTextIcons";
+import Banner from "../components/Banner";
 
 export const About = () => {
     return (
@@ -37,18 +38,7 @@ export const About = () => {
                     <PlanTrip/>
                 </div>
             </section>
-            <div className="book-banner">
-                <div className="book-banner__overlay"></div>
-                <div className="container">
-                    <div className="text-content">
-                        <h2>Book a car by getting in touch with us</h2>
-                        <span>
-                            <i className="fa-solid fa-phone"></i>
-                             <h3>(123) 456-7869</h3>
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <Banner/>
             <Footer/>
         </>
     );
