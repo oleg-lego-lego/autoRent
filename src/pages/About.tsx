@@ -4,7 +4,7 @@ import AboutMain from "../images/about/about-main.png"
 import Box1 from "../images/about/icon1.png"
 import Box2 from "../images/about/icon2.png"
 import Box3 from "../images/about/icon3.png"
-import {PlanTrip} from "../components/PlanTrip";
+import {PlanTrip} from "../components/about/PlanTrip";
 import {Footer} from "../components/Footer";
 import {AboutTextIcons} from "../components/about/AboutTextIcons";
 
