@@ -1,13 +1,13 @@
 import React from 'react';
-import {HeroPages} from "../../components/HeroPages";
-import {Footer} from "../../components/Footer";
-import audiA1 from "../../images/cars-big/audi-box.png"
-import Golf6 from "../../images/cars-big/golf6-box.png";
-import Camry from "../../images/cars-big/toyota-box.png";
-import BMW320 from "../../images/cars-big/bmw-box.png";
-import MercedesGLK from "../../images/cars-big/benz-box.png";
-import Passat from "../../images/cars-big/passat-box.png";
-import {Model} from "../../components/Model";
+import {HeroPages} from "../components/HeroPages";
+import {Footer} from "../components/Footer";
+import audiA1 from "../images/cars-big/audi-box.png"
+import Golf6 from "../images/cars-big/golf6-box.png";
+import Camry from "../images/cars-big/toyota-box.png";
+import BMW320 from "../images/cars-big/bmw-box.png";
+import MercedesGLK from "../images/cars-big/benz-box.png";
+import Passat from "../images/cars-big/passat-box.png";
+import {Model} from "../components/Model";
 
 export type CarModelsType = {
     carBrand: string

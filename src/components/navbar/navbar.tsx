@@ -9,7 +9,7 @@ export const Navbar = () => {
         <nav>
             <div className="navbar">
                 <div className="navbar__img">
-                    <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+                    <Link to={'/'}>
                         <img src={logo} alt={'logo'}/>
                     </Link>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {CarModelsType} from "../pages/models/Models";
+import {CarModelsType} from "../pages/Models";
 
 export type ModelPropsType = {
     model: CarModelsType
