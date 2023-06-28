@@ -1997,6 +1997,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 5rem;
+    list-style-type: none;
 }
 
 @media (max-width: 750px) {
@@ -2022,7 +2023,7 @@ footer {
 /*    white-space: nowrap;*/
 /*}*/
 
-.text-content span a {
+.text-content li a {
     color: #ff4d30;
     font-size: 3.2rem;
     gap: 1rem;

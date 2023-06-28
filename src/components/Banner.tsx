@@ -1,4 +1,5 @@
 import React from 'react';
+import {ContactUs} from "./ContactUs";
 
 const Banner = () => {
     return (
@@ -7,9 +8,7 @@ const Banner = () => {
             <div className="container">
                 <div className="text-content">
                     <h2>To reserve a car, reach out to us and we'll assist you.</h2>
-                    <span>
-                        <a href="tel:12345678">(44) 444-44-44</a>
-                    </span>
+                    <ContactUs title={'(44) 444-44-44'} href={'tel:444444444'}/>
                 </div>
             </div>
         </div>
