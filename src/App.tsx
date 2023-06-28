@@ -8,17 +8,24 @@ import {Models} from "./pages/Models";
 import {CommentPage} from "./pages/СommentPage";
 import {Contact} from "./pages/Contact";
 
+export enum PATH {
+    HOME = '/',
+    ABOUT = '/about',
+    MODELS = '/models',
+    COMMENT = '/comment',
+    CONTACT = '/contact'
+}
 
 function App() {
     return (
         <>
             <Navbar/>
             <Routes>
-                <Route path={'/'} element={<Home/>}/>
-                <Route path={'/about'} element={<About/>}/>
-                <Route path={'/models'} element={<Models/>}/>
-                <Route path={'/comment'} element={<CommentPage/>}/>
-                <Route path={'/contact'} element={<Contact/>}/>
+                <Route path={PATH.HOME} element={<Home/>}/>
+                <Route path={PATH.ABOUT} element={<About/>}/>
+                <Route path={PATH.MODELS} element={<Models/>}/>
+                <Route path={PATH.COMMENT} element={<CommentPage/>}/>
+                <Route path={PATH.CONTACT} element={<Contact/>}/>
             </Routes>
         </>
     );

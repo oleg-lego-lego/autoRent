@@ -2,6 +2,7 @@ import React from 'react';
 import logo from "../../images/carLogo.png"
 import {Link} from "react-router-dom";
 import {NavbarLink} from "./NavbarLink";
+import {PATH} from "../../App";
 
 
 export const Navbar = () => {
@@ -14,11 +15,11 @@ export const Navbar = () => {
                     </Link>
                 </div>
                 <ul className="navbar__links">
-                    <NavbarLink title={'Home'} to={'/'} className={'home-link'}/>
-                    <NavbarLink title={'About'} to={'/about'} className={'about-link'}/>
-                    <NavbarLink title={'Car Models'} to={'/models'} className={'models-link'}/>
-                    <NavbarLink title={'Comment'} to={'/comment'} className={'test-link'}/>
-                    <NavbarLink title={'Contact'} to={'/contact'} className={'contact-link'}/>
+                    <NavbarLink title={'Home'} to={PATH.HOME} className={'home-link'}/>
+                    <NavbarLink title={'About'} to={PATH.ABOUT} className={'about-link'}/>
+                    <NavbarLink title={'Car Models'} to={PATH.MODELS} className={'models-link'}/>
+                    <NavbarLink title={'Comment'} to={PATH.COMMENT} className={'test-link'}/>
+                    <NavbarLink title={'Contact'} to={PATH.CONTACT} className={'contact-link'}/>
                 </ul>
             </div>
 

@@ -15,13 +15,6 @@ export const Model = (props: ModelPropsType) => {
                     <div className="models-div__box__descr__name-price">
                         <div className="models-div__box__descr__name-price__name">
                             <p>{props.model.carBrand}</p>
-                            <span>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                            </span>
                         </div>
                         <div className="models-div__box__descr__name-price__price">
                             <h4>${props.model.price}</h4>
@@ -29,18 +22,10 @@ export const Model = (props: ModelPropsType) => {
                         </div>
                     </div>
                     <div className="models-div__box__descr__name-price__details">
-                        <span>
-                            <i className="fa-solid fa-car-side"></i> &nbsp; {props.model.model}
-                        </span>
-                        <span style={{textAlign: "right"}}>
-                            {props.model.liters}L &nbsp;
-                        </span>
-                        <span>
-                            <i className="fa-solid fa-car-side"></i> &nbsp; {props.model.transmission}
-                        </span>
-                        <span style={{textAlign: "right"}}>
-                            {props.model.motor} &nbsp; <i className="fa-solid fa-car-side"></i>
-                        </span>
+                        <span>{props.model.model}</span>
+                        <span style={{textAlign: "right"}}>{props.model.liters}L</span>
+                        <span>{props.model.transmission}</span>
+                        <span style={{textAlign: "right"}}>{props.model.motor}</span>
                     </div>
                     <div className="models-div__box__descr__name-price__btn">
                         <Link onClick={() => window.scrollTo(0, 0)} to="/">

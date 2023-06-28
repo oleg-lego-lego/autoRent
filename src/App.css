@@ -2111,16 +2111,6 @@ footer {
     font-weight: 700;
 }
 
-.models-div__box__descr__name-price__name span {
-    display: flex;
-    gap: 0.4rem;
-}
-
-.models-div__box__descr__name-price__name span i {
-    font-size: 1.4rem;
-    color: #ffc933;
-}
-
 .models-div__box__descr__name-price__price {
     display: flex;
     flex-direction: column;
@@ -2141,7 +2131,6 @@ footer {
     row-gap: 2rem;
     -moz-column-gap: 7rem;
     column-gap: 7rem;
-    margin-top: 2.5rem;
     margin: 2rem auto;
     padding-bottom: 2.5rem;
     border-bottom: 1px solid #c6c6c6;
@@ -2152,10 +2141,6 @@ footer {
     font-weight: 500;
     color: #777777;
     text-align: left;
-}
-
-.models-div__box__descr__name-price__details span i {
-    color: #010103;
 }
 
 .models-div__box__descr__name-price__btn {

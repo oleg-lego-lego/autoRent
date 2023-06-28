@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {PATH} from "../../App";
 
 type NavbarLinkProps = {
     className: string
-    to: string
+    to: PATH
     title: string
 }
 
