@@ -6,11 +6,10 @@ const Banner = () => {
             <div className="book-banner__overlay"></div>
             <div className="container">
                 <div className="text-content">
-                    <h2>Book a car by getting in touch with us</h2>
+                    <h2>To reserve a car, reach out to us and we'll assist you.</h2>
                     <span>
-                            <i className="fa-solid fa-phone"></i>
-                             <h3>(123) 456-7869</h3>
-                        </span>
+                        <a href="tel:12345678">(44) 444-44-44</a>
+                    </span>
                 </div>
             </div>
         </div>

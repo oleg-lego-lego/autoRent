@@ -2013,13 +2013,22 @@ footer {
     font-size: 3.2rem;
 }
 
-.text-content span {
-    display: flex;
-    font-size: 2.7rem;
+/*.text-content span {*/
+/*    display: flex;*/
+/*    !*font-size: 2.7rem;*!*/
+/*    gap: 1rem;*/
+/*    align-items: center;*/
+/*    color: #ff4d30;*/
+/*    white-space: nowrap;*/
+/*}*/
+
+.text-content span a {
+    color: #ff4d30;
+    font-size: 3.2rem;
     gap: 1rem;
     align-items: center;
-    color: #ff4d30;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .models-div {
