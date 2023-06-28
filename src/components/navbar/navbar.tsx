@@ -16,7 +16,7 @@ export const Navbar = () => {
                 <ul className="navbar__links">
                     <NavbarLink title={'Home'} to={'/'} className={'home-link'}/>
                     <NavbarLink title={'About'} to={'/about'} className={'about-link'}/>
-                    <NavbarLink title={'Vehicle Models'} to={'/models'} className={'models-link'}/>
+                    <NavbarLink title={'Car Models'} to={'/models'} className={'models-link'}/>
                     <NavbarLink title={'Comment'} to={'/comment'} className={'test-link'}/>
                     <NavbarLink title={'Our Team'} to={'/team'} className={'team-l ink'}/>
                     <NavbarLink title={'Contact'} to={'/contact'} className={'contact-link'}/>

@@ -31,7 +31,7 @@ export const Models = () => {
     return (
         <>
             <section className="models-section">
-                <HeroPages name="Vehicle Models"/>
+                <HeroPages name={'Car Models'}/>
                 <div className="container">
                     <div className="models-div">
                         {carModels.map(el => {
