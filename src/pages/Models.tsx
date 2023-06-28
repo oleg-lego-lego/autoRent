@@ -17,14 +17,15 @@ export type CarModelsType = {
     transmission: string
     motor: string
     img: string
+    liters: string
 }
 const carModels: CarModelsType[] = [
-    {carBrand: 'Audi', model: 'A1', price: 45, motor: 'benzine', transmission: 'automatic', img: audiA1},
-    {carBrand: 'Volkswagen', model: 'Golf 6', price: 37, motor: 'diesel', transmission: 'manual', img: Golf6},
-    {carBrand: 'Toyota', model: 'Camry', price: 30, motor: 'benzine', transmission: 'automatic', img: Camry},
-    {carBrand: 'BMW', model: 'M320', price: 35, motor: 'benzine', transmission: 'manual', img: BMW320},
-    {carBrand: 'Mercedes', model: 'GLK', price: 50, motor: 'diesel', transmission: 'automatic', img: MercedesGLK},
-    {carBrand: 'Volkswagen', model: 'Passat', price: 40, motor: 'benzine', transmission: 'automatic', img: Passat},
+    {carBrand: 'Audi', model: 'A1', price: 45, motor: 'benzine', transmission: 'automatic', img: audiA1, liters: '1.9'},
+    {carBrand: 'Volkswagen', model: 'Golf 6', price: 37, motor: 'diesel', transmission: 'manual', img: Golf6, liters: '2.0'},
+    {carBrand: 'Toyota', model: 'Camry', price: 30, motor: 'benzine', transmission: 'automatic', img: Camry, liters: '3.0'},
+    {carBrand: 'BMW', model: 'M320', price: 35, motor: 'benzine', transmission: 'manual', img: BMW320, liters: '2.5'},
+    {carBrand: 'Mercedes', model: 'GLK', price: 50, motor: 'diesel', transmission: 'automatic', img: MercedesGLK, liters: '3.2'},
+    {carBrand: 'Volkswagen', model: 'Passat', price: 40, motor: 'benzine', transmission: 'automatic', img: Passat, liters: '2.0'},
 ]
 
 export const Models = () => {

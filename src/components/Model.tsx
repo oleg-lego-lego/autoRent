@@ -33,7 +33,7 @@ export const Model = (props: ModelPropsType) => {
                             <i className="fa-solid fa-car-side"></i> &nbsp; {props.model.model}
                         </span>
                         <span style={{textAlign: "right"}}>
-                            4/5 &nbsp; <i className="fa-solid fa-car-side"></i>
+                            {props.model.liters}L &nbsp;
                         </span>
                         <span>
                             <i className="fa-solid fa-car-side"></i> &nbsp; {props.model.transmission}
