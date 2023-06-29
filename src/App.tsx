@@ -7,13 +7,15 @@ import {About} from "./pages/About";
 import {Models} from "./pages/Models";
 import {CommentPage} from "./pages/СommentPage";
 import {Contact} from "./pages/Contact";
+import {Favorites} from "./pages/Favotites";
 
 export enum PATH {
     HOME = '/',
     ABOUT = '/about',
     MODELS = '/models',
     COMMENT = '/comment',
-    CONTACT = '/contact'
+    CONTACT = '/contact',
+    FAVORITES = '/favorites'
 }
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
                 <Route path={PATH.MODELS} element={<Models/>}/>
                 <Route path={PATH.COMMENT} element={<CommentPage/>}/>
                 <Route path={PATH.CONTACT} element={<Contact/>}/>
+                <Route path={PATH.FAVORITES} element={<Favorites/>}/>
             </Routes>
         </>
     );
