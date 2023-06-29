@@ -5,7 +5,17 @@ import {CarModelsType} from "./Models";
 import {HeroPages} from "../components/HeroPages";
 
 const carModels: CarModelsType[] = [
-    {carBrand: 'Audi', model: 'A1', price: 45, motor: 'benzine', transmission: 'automatic', img: audiA1, liters: '1.9'},
+    {
+        carBrand: 'Audi',
+        model: 'A1',
+        price: 45,
+        motor: 'benzine',
+        transmission: 'automatic',
+        img: audiA1,
+        liters: '1.9',
+        favorites: false,
+        id: '0'
+    },
 ]
 
 export const Favorites = () => {

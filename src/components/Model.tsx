@@ -4,9 +4,16 @@ import {CarModelsType} from "../pages/Models";
 
 export type ModelPropsType = {
     model: CarModelsType
+    carModelsSetState?: (id: string, favorites: boolean) => void
 }
 
 export const Model = (props: ModelPropsType) => {
+    const favoritesClick = (id: string, favorites: boolean) => {
+        if (props.carModelsSetState) {
+            props.carModelsSetState(id, !favorites)
+        }
+    }
+
     return (
         <div className="models-div__box">
             <div className="models-div__box__img">
@@ -18,6 +25,9 @@ export const Model = (props: ModelPropsType) => {
                         </div>
                         <div className="models-div__box__descr__name-price__price">
                             <h4>${props.model.price}</h4>
+                            <button onClick={() => favoritesClick(props.model.id, props.model.favorites)}>
+                                {props.model.favorites ? 'false' : 'true'}
+                            </button>
                             <p>per day</p>
                         </div>
                     </div>
