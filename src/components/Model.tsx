@@ -1,17 +1,18 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {CarModelsType} from "../pages/Models";
+import {carModelsFavorites} from "../app/reducer/carModels-reducer";
+import {useAppDispatch} from "../hooks/redux";
+import {CarModelsType} from "../app/reducer/carModels";
+
 
 export type ModelPropsType = {
     model: CarModelsType
-    carModelsSetState?: (id: string, favorites: boolean) => void
 }
 
 export const Model = (props: ModelPropsType) => {
+    const dispatch = useAppDispatch()
     const favoritesClick = (id: string, favorites: boolean) => {
-        if (props.carModelsSetState) {
-            props.carModelsSetState(id, !favorites)
-        }
+        dispatch(carModelsFavorites({id, favorites}))
     }
 
     return (
@@ -26,7 +27,7 @@ export const Model = (props: ModelPropsType) => {
                         <div className="models-div__box__descr__name-price__price">
                             <h4>${props.model.price}</h4>
                             <button onClick={() => favoritesClick(props.model.id, props.model.favorites)}>
-                                {props.model.favorites ? 'false' : 'true'}
+                                {props.model.favorites ? 'true' : 'false'}
                             </button>
                             <p>per day</p>
                         </div>

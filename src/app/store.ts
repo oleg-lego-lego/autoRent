@@ -1,8 +1,9 @@
 import {configureStore} from "@reduxjs/toolkit";
+import carModelsReducer from "./reducer/carModels-reducer";
 
 export const store = configureStore({
     reducer: {
-
+        carModels: carModelsReducer
     },
 })
 
