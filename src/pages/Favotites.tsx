@@ -6,6 +6,7 @@ import {useAppSelector} from "../hooks/redux";
 
 export const Favorites = () => {
     const carModel = useAppSelector(state => state.carModels.items)
+    const carModelFavorites = carModel.filter(el => el.favorites !== false)
 
     return (
         <section className="hero-pages">
@@ -13,9 +14,9 @@ export const Favorites = () => {
             <div className="hero-pages__overlay"></div>
             <div className="container">
                 <div className="models-div">
-                    {carModel.map(el => {
+                    {carModelFavorites.map(el => {
                         return (
-                            <Model model={el}/>
+                            <Model model={el} key={el.id}/>
                         )
                     })}
                 </div>
