@@ -1,7 +1,5 @@
 import React from 'react';
 import {HeroPages} from "../components/HeroPages";
-import {Footer} from "../components/Footer";
-import Banner from "../components/Banner";
 
 export const Contact = () => {
     return (
@@ -54,8 +52,6 @@ export const Contact = () => {
                         </div>
                     </div>
                 </div>
-                <Banner/>
-                <Footer/>
             </section>
         </>
     );

@@ -5,9 +5,7 @@ import Box1 from "../images/about/icon1.png"
 import Box2 from "../images/about/icon2.png"
 import Box3 from "../images/about/icon3.png"
 import {PlanTrip} from "../components/about/PlanTrip";
-import {Footer} from "../components/Footer";
 import {AboutTextIcons} from "../components/about/AboutTextIcons";
-import Banner from "../components/Banner";
 
 export const About = () => {
     return (
@@ -38,8 +36,6 @@ export const About = () => {
                     <PlanTrip/>
                 </div>
             </section>
-            <Banner/>
-            <Footer/>
         </>
     );
 };

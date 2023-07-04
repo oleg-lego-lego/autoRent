@@ -8,6 +8,8 @@ import {Models} from "./pages/Models";
 import {CommentPage} from "./pages/СommentPage";
 import {Contact} from "./pages/Contact";
 import {Favorites} from "./pages/Favotites";
+import Banner from "./components/Banner";
+import {Footer} from "./components/Footer";
 
 export enum PATH {
     HOME = '/',
@@ -30,6 +32,8 @@ function App() {
                 <Route path={PATH.CONTACT} element={<Contact/>}/>
                 <Route path={PATH.FAVORITES} element={<Favorites/>}/>
             </Routes>
+            <Banner/>
+            <Footer/>
         </>
     );
 }

@@ -1,8 +1,6 @@
 import React from 'react';
 import {HeroPages} from "../components/HeroPages";
-import {Footer} from "../components/Footer";
 import {Model} from "../components/Model";
-import Banner from "../components/Banner";
 import {useAppSelector} from "../hooks/redux";
 
 
@@ -22,8 +20,6 @@ export const Models = () => {
                         })}
                     </div>
                 </div>
-                <Banner/>
-                <Footer/>
             </section>
         </>
     );
