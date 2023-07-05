@@ -17,7 +17,6 @@ export const SelectCar = () => {
 
     const setActiveButton = (value: string) => {
         setActive(value)
-        console.log(value)
     }
 
     return (
