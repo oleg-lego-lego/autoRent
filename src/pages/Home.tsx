@@ -3,6 +3,7 @@ import {PlanTrip} from "../components/about/PlanTrip";
 import {CommentsBlog} from "../components/comment/CommentBlog";
 import {SelectCar} from "../components/home/SelectCar";
 import {TakeUs} from "../components/home/TakeUs";
+import {Download} from "../components/home/Download";
 
 export const Home = () => {
     return (
@@ -11,6 +12,7 @@ export const Home = () => {
             <CommentsBlog/>
             <TakeUs/>
             <SelectCar/>
+            <Download/>
         </>
     );
 };

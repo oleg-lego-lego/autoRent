@@ -21,15 +21,7 @@ body {
     padding: 0 2.5rem !important;
 }
 
-/* Firefox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #ff4d30 #ffffff;
-}
-
-/* Chrome, Edge and Safari */
 *::-webkit-scrollbar {
-    width: 10px;
     width: 10px;
 }
 
@@ -396,7 +388,7 @@ body {
 
 .book-content {
     margin: 0 auto;
-    margin-bottom: 10rem;
+    /*margin-bottom: 10rem;*/
 }
 
 .book-content__box {
@@ -407,7 +399,6 @@ body {
     height: auto;
     position: relative;
     z-index: 4;
-    color: white;
     border-radius: 5px;
     /*background-image: url("/src/images/book-car/book-bg.png");*/
     background-position: center center;
@@ -533,11 +524,10 @@ body {
 .error-message {
     color: #721c24;
     background-color: #f8d7da;
-    border-color: #f5c6cb;
     padding: 1rem 1.4rem;
     margin-bottom: 1.8rem;
     margin-top: -1rem;
-    border: 1px solid transparent;
+    border: 1px solid #f5c6cb;
     border-radius: 0.8rem;
     font-size: 1.6rem;
     font-weight: 500;
@@ -553,11 +543,10 @@ body {
 .booking-done {
     color: #2a6817;
     background-color: #c3fabe;
-    border-color: #f5c6cb;
     padding: 1rem 1.4rem;
     margin-bottom: 1.8rem;
     margin-top: -1rem;
-    border: 1px solid transparent;
+    border: 1px solid #f5c6cb;
     border-radius: 0.8rem;
     font-size: 1.6rem;
     font-weight: 500;
@@ -636,7 +625,7 @@ body {
     font-size: 2.5rem;
     color: rgba(255, 255, 255, 0.919);
     cursor: pointer;
-    /*transition: all 0.2;*/
+    transition: all 0.2s;
 }
 
 .booking-modal__title i:hover {
@@ -1576,7 +1565,7 @@ body {
 }
 
 .download-section {
-    /*background-image: url("/src/images/banners/bg02.png");*/
+    background-image: url("/src/images/banners/bg02.png");
     background-color: #f8f8f8;
     background-position: top center;
     background-repeat: no-repeat;
@@ -1661,7 +1650,6 @@ footer {
     gap: 8rem;
     justify-content: center;
     text-align: left;
-    color: #010103;
 }
 
 @media (max-width: 1100px) {
@@ -1783,7 +1771,7 @@ footer {
     border: 2px solid #ff4d30;
     font-size: 1.6rem;
     width: -moz-fit-content;
-    width: fit-content;
+    /*width: fit-content;*/
     cursor: pointer;
     width: 100%;
 }
@@ -2196,7 +2184,7 @@ footer {
 .team-container__box {
     width: 33rem;
     background-color: white;
-    box-shadow: 0px 20px 10px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 10px 0 rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 400px) {
@@ -2237,7 +2225,7 @@ footer {
     margin: 0 auto;
     color: #010103;
     padding: 10rem 2rem;
-    /*background-image: url("/src/images/banners/bg-contact.png");*/
+    background-image: url("/src/images/banners/bg-contact.png");
     background-size: auto;
     background-position: center center;
     background-repeat: no-repeat;
@@ -2260,7 +2248,7 @@ footer {
 @media (max-width: 950px) {
     .contact-div__text {
         margin: 0 auto;
-        margin-bottom: 2rem;
+        /*margin-bottom: 2rem;*/
     }
 }
 
@@ -2347,5 +2335,3 @@ footer {
     box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.6);
     background-color: #fa4226;
 }
-
-/*# sourceMappingURL=styles.css.map */
