@@ -1,8 +1,8 @@
 import React from 'react';
-import MainImg from "../../images/chooseUs/main.png";
-import Box1 from "../../images/chooseUs/icon1.png";
-import Box2 from "../../images/chooseUs/icon2.png";
-import Box3 from "../../images/chooseUs/icon3.png";
+import MainImg from "../../images/chooseUs/cars.png";
+import {TakeUsBox} from "./TakeUsBox";
+import {takeBox} from "./takeBoxList";
+
 
 export const TakeUs = () => {
     return (
@@ -27,44 +27,14 @@ export const TakeUs = () => {
                                     give you the ultimate renting experience, so don't miss out on
                                     your chance to save big.
                                 </p>
-                                <a href="#home">
-                                    Find Details &nbsp;
-                                    <i className="fa-solid fa-angle-right"></i>
-                                </a>
+                                <a href="#home">Find Details</a>
                             </div>
                             <div className="text-container__right">
-                                <div className="text-container__right__box">
-                                    <img src={Box1} alt="car-img"/>
-                                    <div className="text-container__right__box__text">
-                                        <h4>Cross Country Drive</h4>
-                                        <p>
-                                            Take your driving experience to the next level with our
-                                            top-notch vehicles for your cross-country adventures.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="text-container__right__box">
-                                    {" "}
-                                    <img src={Box2} alt="coin-img"/>
-                                    <div className="text-container__right__box__text">
-                                        <h4>All Inclusive Pricing</h4>
-                                        <p>
-                                            Get everything you need in one convenient, transparent
-                                            price with our all-inclusive pricing policy.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="text-container__right__box">
-                                    {" "}
-                                    <img src={Box3} alt="coin-img"/>
-                                    <div className="text-container__right__box__text">
-                                        <h4>No Hidden Charges</h4>
-                                        <p>
-                                            Enjoy peace of mind with our no hidden charges policy. We
-                                            believe in transparent and honest pricing.
-                                        </p>
-                                    </div>
-                                </div>
+                                {takeBox.map(el => {
+                                    return (
+                                        <TakeUsBox takeBoxList={el} key={el.id}/>
+                                    )
+                                })}
                             </div>
                         </div>
                     </div>
