@@ -11,7 +11,7 @@ export const CarBox = (props: CarBoxPropsType) => {
     return (
         <>
             {props.data[props.carID].map((car, id) => (
-                <div key={id} className="box-cars">
+                <div key={id} className="box-cars">ff
                     <div className="pick-car">
                         {carLoad && <span className="loader"></span>}
                         <img
@@ -61,7 +61,6 @@ export const CarBox = (props: CarBoxPropsType) => {
                                 <span>{car.fuel}</span>
                             </div>
                         </div>
-                        {/* btn cta */}
                         <a className="cta-btn" href="src/components/home/CarBox#booking-section">
                             Reserve Now
                         </a>
