@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {CarDataType} from "./CarData";
+import {TableCar} from "./TableCar";
 
 type CarBoxPropsType = {
     data: CarDataType[][]
@@ -15,7 +16,7 @@ export const CarBox = (props: CarBoxPropsType) => {
                     <div className="pick-car">
                         {carLoad && <span className="loader"></span>}
                         <img
-                            style={{ display: carLoad ? "none" : "block" }}
+                            style={{display: carLoad ? "none" : "block"}}
                             src={car.img}
                             alt="car_img"
                             onLoad={() => setCarLoad(false)}
@@ -26,40 +27,13 @@ export const CarBox = (props: CarBoxPropsType) => {
                             <span>${car.price}</span>/ rent per day
                         </div>
                         <div className="pick-description__table">
-                            <div className="pick-description__table__col">
-                                <span>Model</span>
-                                <span>{car.model}</span>
-                            </div>
-
-                            <div className="pick-description__table__col">
-                                <span>Mark</span>
-                                <span>{car.mark}</span>
-                            </div>
-
-                            <div className="pick-description__table__col">
-                                <span>Year</span>
-                                <span>{car.year}</span>
-                            </div>
-
-                            <div className="pick-description__table__col">
-                                <span>Doors</span>
-                                <span>{car.doors}</span>
-                            </div>
-
-                            <div className="pick-description__table__col">
-                                <span>AC</span>
-                                <span>{car.air}</span>
-                            </div>
-
-                            <div className="pick-description__table__col">
-                                <span>Transmission</span>
-                                <span>{car.transmission}</span>
-                            </div>
-
-                            <div className="pick-description__table__col">
-                                <span>Fuel</span>
-                                <span>{car.fuel}</span>
-                            </div>
+                            <TableCar description={'Model'} title={car.model}/>
+                            <TableCar description={'Mark'} title={car.mark}/>
+                            <TableCar description={'Year'} title={car.year}/>
+                            <TableCar description={'Doors'} title={car.doors}/>
+                            <TableCar description={'AC'} title={car.air}/>
+                            <TableCar description={'Transmission'} title={car.transmission}/>
+                            <TableCar description={'Fuel'} title={car.fuel}/>
                         </div>
                         <a className="cta-btn" href="src/components/home/CarBox#booking-section">
                             Reserve Now
