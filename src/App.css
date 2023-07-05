@@ -1525,8 +1525,8 @@ body {
     font-weight: 500;
 }
 
-.faq-box__question i {
-    font-size: 2rem;
+.faq-box__question img {
+    width: 20px;
 }
 
 .faq-box__answer {

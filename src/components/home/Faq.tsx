@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {FaqBox} from "./FaqBox";
 
 export const Faq = () => {
     const [activeQ, setActiveQ] = useState("q1");
@@ -31,76 +32,49 @@ export const Faq = () => {
                         </div>
 
                         <div className="all-questions">
-                            <div className="faq-box">
-                                <div
-                                    id="q1"
-                                    onClick={() => openQ("q1")}
-                                    className={`faq-box__question  ${getClassQuestion("q1")}`}
-                                >
-                                    <p>1. What is special about comparing rental car deals?</p>
-                                    <i className="fa-solid fa-angle-down"></i>
-                                </div>
-                                <div
-                                    id="q1"
-                                    onClick={() => openQ("q1")}
-                                    className={`faq-box__answer ${getClassAnswer("q1")}`}
-                                >
-                                    Comparing rental car deals is important as it helps find the
-                                    best deal that fits your budget and requirements, ensuring you
-                                    get the most value for your money. By comparing various
-                                    options, you can find deals that offer lower prices,
-                                    additional services, or better car models. You can find car
-                                    rental deals by researching online and comparing prices from
-                                    different rental companies.
-                                </div>
-                            </div>
-                            <div className="faq-box">
-                                <div
-                                    id="q2"
-                                    onClick={() => openQ("q2")}
-                                    className={`faq-box__question ${getClassQuestion("q2")}`}
-                                >
-                                    <p>2. How do I find the car rental deals?</p>
-                                    <i className="fa-solid fa-angle-down"></i>
-                                </div>
-                                <div
-                                    id="q2"
-                                    onClick={() => openQ("q2")}
-                                    className={`faq-box__answer ${getClassAnswer("q2")}`}
-                                >
-                                    You can find car rental deals by researching online and
-                                    comparing prices from different rental companies. Websites
-                                    such as Expedia, Kayak, and Travelocity allow you to compare
-                                    prices and view available rental options. It is also
-                                    recommended to sign up for email newsletters and follow rental
-                                    car companies on social media to be informed of any special
-                                    deals or promotions.
-                                </div>
-                            </div>
-                            <div className="faq-box">
-                                <div
-                                    id="q3"
-                                    onClick={() => openQ("q3")}
-                                    className={`faq-box__question ${getClassQuestion("q3")}`}
-                                >
-                                    <p>3. How do I find such low rental car prices?</p>
-                                    <i className="fa-solid fa-angle-down"></i>
-                                </div>
-                                <div
-                                    id="q3"
-                                    onClick={() => openQ("q3")}
-                                    className={`faq-box__answer ${getClassAnswer("q3")}`}
-                                >
-                                    Book in advance: Booking your rental car ahead of time can
-                                    often result in lower prices. Compare prices from multiple
-                                    companies: Use websites like Kayak, Expedia, or Travelocity to
-                                    compare prices from multiple rental car companies. Look for
-                                    discount codes and coupons: Search for discount codes and
-                                    coupons that you can use to lower the rental price. Renting
-                                    from an off-airport location can sometimes result in lower
-                                    prices.
-                                </div>
-                            </div>
+                            <FaqBox
+                                id={'q1'}
+                                openQ={openQ}
+                                getClassAnswer={getClassAnswer}
+                                getClassQuestion={getClassQuestion}
+                                question={'1. What is special about comparing rental car deals?'}
+                                answer={'Comparing rental car deals is important as it helps find the\n' +
+                                    '                                    best deal that fits your budget and requirements, ensuring you\n' +
+                                    '                                    get the most value for your money. By comparing various\n' +
+                                    '                                    options, you can find deals that offer lower prices,\n' +
+                                    '                                    additional services, or better car models. You can find car\n' +
+                                    '                                    rental deals by researching online and comparing prices from\n' +
+                                    '                                    different rental companies.'}
+                            />
+                            <FaqBox
+                                id={'q2'}
+                                question={'2. How do I find the car rental deals?'}
+                                answer={'You can find car rental deals by researching online and\n' +
+                                    '                                    comparing prices from different rental companies. Websites\n' +
+                                    '                                    such as Expedia, Kayak, and Travelocity allow you to compare\n' +
+                                    '                                    prices and view available rental options. It is also\n' +
+                                    '                                    recommended to sign up for email newsletters and follow rental\n' +
+                                    '                                    car companies on social media to be informed of any special\n' +
+                                    '                                    deals or promotions.'}
+                                openQ={openQ}
+                                getClassAnswer={getClassAnswer}
+                                getClassQuestion={getClassQuestion}
+                            />
+                            <FaqBox
+                                id={'q3'}
+                                question={'3. How do I find such low rental car prices?'}
+                                answer={'Book in advance: Booking your rental car ahead of time can\n' +
+                                    '                                    often result in lower prices. Compare prices from multiple\n' +
+                                    '                                    companies: Use websites like Kayak, Expedia, or Travelocity to\n' +
+                                    '                                    compare prices from multiple rental car companies. Look for\n' +
+                                    '                                    discount codes and coupons: Search for discount codes and\n' +
+                                    '                                    coupons that you can use to lower the rental price. Renting\n' +
+                                    '                                    from an off-airport location can sometimes result in lower\n' +
+                                    '                                    prices.'}
+                                openQ={openQ}
+                                getClassAnswer={getClassAnswer}
+                                getClassQuestion={getClassQuestion}
+                            />
                         </div>
                     </div>
                 </div>
