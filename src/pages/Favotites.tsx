@@ -14,17 +14,16 @@ export const Favorites = () => {
             <section className="models-section">
                 <HeroPages name={'Favorites'}/>
                 <div className="container">
-                    {!carModelFavorites.length && < FavoritesEmpty/>}
-                    {!!carModelFavorites.length &&
-                        <div className="models-div">
-                            {!!carModelFavorites.length &&
-                                carModelFavorites.map(el => {
-                                    return (
-                                        <Model model={el} key={el.id}/>
-                                    )
-                                })
-                            }
-                        </div>}
+                    {!carModelFavorites.length
+                        ? < FavoritesEmpty/>
+                        : <div className="models-div">
+                            {carModelFavorites.map(el => {
+                                return (
+                                    <Model model={el} key={el.id}/>
+                                )
+                            })}
+                        </div>
+                    }
                 </div>
             </section>
 
