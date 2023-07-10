@@ -1,23 +1,20 @@
 import React, {useState} from 'react';
 import {ButtonBox} from "./ButtonBox";
 import {CarBox} from "./CarBox";
-import {CAR_DATA} from "./CarData";
+import {carModels} from "../../app/reducer/carModels";
 
 export const SelectCar = () => {
-    const [active, setActive] = useState("SecondCar");
-    const [colorBtn, setColorBtn] = useState("btn1");
-
-    const buttonId = (id: string) => {
-        setColorBtn(colorBtn === id ? "" : id);
-    };
+    const [active, setActive] = useState(carModels[0].id);
 
     const coloringButton = (id: string) => {
-        return colorBtn === id ? "colored-button" : "";
+        return active === id ? "colored-button" : "";
     };
 
-    const setActiveButton = (value: string) => {
-        setActive(value)
+    const setActiveButton = (id: string) => {
+        setActive(id)
     }
+
+    const carList = carModels.filter(el => el.id === active)
 
     return (
         <>
@@ -34,61 +31,22 @@ export const SelectCar = () => {
                         </div>
                         <div className="pick-container__car-content">
                             <div className="pick-box">
-                                <ButtonBox
-                                    title={'Audi A1 S-Line'}
-                                    btnID={'btn1'}
-                                    active={'SecondCar'}
-                                    buttonId={buttonId}
-                                    coloringButton={coloringButton}
-                                    setActiveButton={setActiveButton}
-                                />
-                                <ButtonBox
-                                    title={'VW Golf 6'}
-                                    btnID={'btn2'}
-                                    active={'FirstCar'}
-                                    buttonId={buttonId}
-                                    coloringButton={coloringButton}
-                                    setActiveButton={setActiveButton}
-                                />
-                                <ButtonBox
-                                    title={'Toyota Camry'}
-                                    btnID={'btn3'}
-                                    active={'ThirdCar'}
-                                    buttonId={buttonId}
-                                    coloringButton={coloringButton}
-                                    setActiveButton={setActiveButton}
-                                />
-                                <ButtonBox
-                                    title={'BMW 320 ModernLine'}
-                                    btnID={'btn4'}
-                                    active={'FourthCar'}
-                                    buttonId={buttonId}
-                                    coloringButton={coloringButton}
-                                    setActiveButton={setActiveButton}
-                                />
-                                <ButtonBox
-                                    title={'Mercedes-Benz GLK'}
-                                    btnID={'btn5'}
-                                    active={'FifthCar'}
-                                    buttonId={buttonId}
-                                    coloringButton={coloringButton}
-                                    setActiveButton={setActiveButton}
-                                />
-                                <ButtonBox
-                                    title={'VW Passat CC'}
-                                    btnID={'btn6'}
-                                    active={'SixthCar'}
-                                    buttonId={buttonId}
-                                    coloringButton={coloringButton}
-                                    setActiveButton={setActiveButton}
-                                />
+                                {carModels.map(el => {
+                                    return (
+                                        <ButtonBox
+                                            data={el}
+                                            coloringButton={coloringButton}
+                                            setActiveButton={setActiveButton}
+                                            key={el.id}
+                                        />
+                                    )
+                                })}
                             </div>
-                            {active === "FirstCar" && <CarBox data={CAR_DATA} carID={0}/>}
-                            {active === "SecondCar" && <CarBox data={CAR_DATA} carID={1}/>}
-                            {active === "ThirdCar" && <CarBox data={CAR_DATA} carID={2}/>}
-                            {active === "FourthCar" && <CarBox data={CAR_DATA} carID={3}/>}
-                            {active === "FifthCar" && <CarBox data={CAR_DATA} carID={4}/>}
-                            {active === "SixthCar" && <CarBox data={CAR_DATA} carID={5}/>}
+                            {carList.map(el => {
+                                return (
+                                    <CarBox data={el} carID={0} key={el.id}/>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

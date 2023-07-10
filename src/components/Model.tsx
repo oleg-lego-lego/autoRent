@@ -22,7 +22,7 @@ export const Model = (props: ModelPropsType) => {
                 <div className="models-div__box__descr">
                     <div className="models-div__box__descr__name-price">
                         <div className="models-div__box__descr__name-price__name">
-                            <p>{props.model.carBrand}</p>
+                            <p>{props.model.name}</p>
                         </div>
                         <div className="models-div__box__descr__name-price__price">
                             <h4>${props.model.price}</h4>
@@ -34,9 +34,9 @@ export const Model = (props: ModelPropsType) => {
                     </div>
                     <div className="models-div__box__descr__name-price__details">
                         <span>{props.model.model}</span>
-                        <span style={{textAlign: "right"}}>{props.model.liters}L</span>
+                        <span style={{textAlign: "right"}}>{props.model.fuel}</span>
                         <span>{props.model.transmission}</span>
-                        <span style={{textAlign: "right"}}>{props.model.motor}</span>
+                        <span style={{textAlign: "right"}}>{props.model.year}</span>
                     </div>
                     <div className="models-div__box__descr__name-price__btn">
                         <Link onClick={() => window.scrollTo(0, 0)} to="/">

@@ -1,89 +1,111 @@
-import audiA1 from "../../images/cars-big/audi-box.png";
 import {v1} from "uuid";
-import Golf6 from "../../images/cars-big/golf6-box.png";
-import Camry from "../../images/cars-big/toyota-box.png";
-import BMW320 from "../../images/cars-big/bmw-box.png";
-import MercedesGLK from "../../images/cars-big/benz-box.png";
-import Passat from "../../images/cars-big/passat-box.png";
+import Golf6 from "../../images/cars-big/golf6.jpg";
+import AudiA1 from "../../images/cars-big/audia1.jpg";
+import Toyota from "../../images/cars-big/toyota-corolla.jpg";
+import Bmw320 from "../../images/cars-big/bmw320.jpg";
+import Benz from "../../images/cars-big/benz.jpg";
+import Passat from "../../images/cars-big/passatcc.jpg";
+
 
 export type CarModelsType = {
-    carBrand: string
-    model: string
-    price: number
-    transmission: string
-    motor: string
-    img: string
-    liters: string
-    favorites: boolean
     id: string
+    name: string
+    favorites: boolean
+    price: number
+    img: string
+    model: string
+    mark: string
+    year: string
+    doors: string
+    air: string
+    transmission: string
+    fuel: string
 }
 
 export const carModels: CarModelsType[] = [
     {
-        carBrand: 'Audi',
-        model: 'A1',
-        price: 45,
-        motor: 'benzine',
-        transmission: 'automatic',
-        img: audiA1,
-        liters: '1.9',
+        id: v1(),
+        name: "VW Golf 6",
         favorites: false,
-        id: v1()
-    },
-    {
-        carBrand: 'Volkswagen',
-        model: 'Golf 6',
         price: 37,
-        motor: 'diesel',
-        transmission: 'manual',
         img: Golf6,
-        liters: '2.0',
-        favorites: false,
-        id: v1()
+        model: "Golf 6",
+        mark: "Volkswagen",
+        year: "2008",
+        doors: "4/5",
+        air: "Yes",
+        transmission: "Manual",
+        fuel: "Diesel",
     },
     {
-        carBrand: 'Toyota',
-        model: 'Camry',
+        id: v1(),
+        name: "Audi A1 S-Line",
+        favorites: false,
+        price: 45,
+        img: AudiA1,
+        model: "Audi",
+        mark: "A1",
+        year: "2012",
+        doors: "4/5",
+        air: "Yes",
+        transmission: "Manual",
+        fuel: "Gasoline",
+    },
+    {
+        id: v1(),
+        name: "Toyota Corolla",
+        favorites: false,
         price: 30,
-        motor: 'benzine',
-        transmission: 'automatic',
-        img: Camry,
-        liters: '3.0',
-        favorites: false,
-        id: v1()
+        img: Toyota,
+        model: "Corolla",
+        mark: "Toyota",
+        year: "2006",
+        doors: "4/5",
+        air: "Yes",
+        transmission: "Automatic",
+        fuel: "Hybrid",
     },
     {
-        carBrand: 'BMW',
-        model: 'M320',
+        id: v1(),
+        name: "BMW 320",
+        favorites: false,
         price: 35,
-        motor: 'benzine',
-        transmission: 'manual',
-        img: BMW320,
-        liters: '2.5',
-        favorites: false,
-        id: v1()
+        img: Bmw320,
+        model: "320",
+        mark: "BMW",
+        year: "2012",
+        doors: "4/5",
+        air: "Yes",
+        transmission: "Manual",
+        fuel: "Diesel",
     },
     {
-        carBrand: 'Mercedes',
-        model: 'GLK',
+        id: v1(),
+        name: "Mercedes GLK",
+        favorites: false,
         price: 50,
-        motor: 'diesel',
-        transmission: 'automatic',
-        img: MercedesGLK,
-        liters: '3.2',
-        favorites: false,
-        id: v1()
+        img: Benz,
+        model: "Benz GLK",
+        mark: "Mercedes",
+        year: "2006",
+        doors: "4/5",
+        air: "Yes",
+        transmission: "Manual",
+        fuel: "Diesel",
     },
     {
-        carBrand: 'Volkswagen',
-        model: 'Passat',
-        price: 40,
-        motor: 'benzine',
-        transmission: 'automatic',
-        img: Passat,
-        liters: '2.0',
+        id: v1(),
+        name: "VW Passat CC",
         favorites: false,
-        id: v1()
+        price: 25,
+        img: Passat,
+        model: "Passat CC",
+        mark: "Volkswagen",
+        year: "2008",
+        doors: "4/5",
+        air: "Yes",
+        transmission: "Automatic",
+        fuel: "Gasoline",
     },
 ]
 

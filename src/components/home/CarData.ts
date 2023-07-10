@@ -1,6 +1,6 @@
 import Golf6 from "../../images/cars-big/golf6.jpg";
 import AudiA1 from "../../images/cars-big/audia1.jpg";
-import Toyota from "../../images/cars-big/toyotacamry.jpg";
+import Toyota from "../../images/cars-big/toyota-corolla.jpg";
 import Bmw320 from "../../images/cars-big/bmw320.jpg";
 import Benz from "../../images/cars-big/benz.jpg";
 import Passat from "../../images/cars-big/passatcc.jpg";
