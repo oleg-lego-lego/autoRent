@@ -1,5 +1,5 @@
 import React from 'react';
-import arrow from '../../images/faq/angle-arrow-down_icon-icons.com_73683.png'
+import arrow from '../../../images/faq/angle-arrow-down_icon-icons.com_73683.png'
 
 type FaqBoxPropsType = {
     id: string
