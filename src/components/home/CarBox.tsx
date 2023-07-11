@@ -1,20 +1,45 @@
 import React, {useState} from 'react';
 import {TableCar} from "./TableCar";
 import {CarModelsType} from "../../app/reducer/carModels";
+import favoritesTrue from "../../images/favoritesTrue.svg";
+import favoritesFalse from "../../images/favoritesFalse.svg";
+import {useAppDispatch} from "../../hooks/redux";
+import {carModelsFavorites} from "../../app/reducer/carModels-reducer";
 
 type CarBoxPropsType = {
     data: CarModelsType
-    carID: number
 }
 
 export const CarBox = (props: CarBoxPropsType) => {
     const [carLoad, setCarLoad] = useState(true);
+
+    const dispatch = useAppDispatch()
+    const favoritesClick = (id: string, favorites: boolean) => {
+        dispatch(carModelsFavorites({id, favorites}))
+    }
+
+    const titleFavorites = props.data.favorites ? 'remove favorites' : 'add favorites';
 
     return (
         <>
             <div className="box-cars">
                 <div className="pick-car">
                     {carLoad && <span className="loader"></span>}
+                    <div
+                        onClick={() => favoritesClick(props.data.id, props.data.favorites)}
+                        className={"buttonFavorites buttonCarBox"}
+                    >
+                        {props.data.favorites
+                            ? <img
+                                src={favoritesTrue}
+                                title={titleFavorites}
+                                alt="favoritesTrue"/>
+                            : <img
+                                src={favoritesFalse}
+                                title={titleFavorites}
+                                alt="favoritesFalse"/>
+                        }
+                    </div>
                     <img
                         style={{display: carLoad ? "none" : "block"}}
                         src={props.data.img}

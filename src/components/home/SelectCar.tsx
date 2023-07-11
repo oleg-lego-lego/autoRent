@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {ButtonBox} from "./ButtonBox";
 import {CarBox} from "./CarBox";
-import {carModels} from "../../app/reducer/carModels";
+import {useAppSelector} from "../../hooks/redux";
 
 export const SelectCar = () => {
+    const carModels = useAppSelector(state => state.carModels.items)
     const [active, setActive] = useState(carModels[0].id);
 
     const coloringButton = (id: string) => {
@@ -44,7 +45,7 @@ export const SelectCar = () => {
                             </div>
                             {carList.map(el => {
                                 return (
-                                    <CarBox data={el} carID={0} key={el.id}/>
+                                    <CarBox data={el} key={el.id}/>
                                 )
                             })}
                         </div>
