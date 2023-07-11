@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../images/carLogo.png"
+import logo from "../../images/logo/carLogo.png"
 import {Link} from "react-router-dom";
 import {NavbarLink} from "./NavbarLink";
 import {PATH} from "../../App";
