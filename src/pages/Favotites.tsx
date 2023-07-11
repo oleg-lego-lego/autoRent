@@ -15,7 +15,7 @@ export const Favorites = () => {
                 <HeroPages name={'Favorites'}/>
                 <div className="container">
                     {!carModelFavorites.length
-                        ? < FavoritesEmpty/>
+                        ? <FavoritesEmpty/>
                         : <div className="models-div">
                             {carModelFavorites.map(el => {
                                 return (
