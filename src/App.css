@@ -1151,7 +1151,7 @@ li {
     height: auto;
     display: flex;
     background-color: #2d2d2d;
-    margin: 8rem 0;
+    margin: 8rem 0 0;
     padding: 6rem 0;
     text-align: center;
 }
@@ -1198,12 +1198,12 @@ li {
 }
 
 .choose-section {
-    background-color: white;
     padding: 2rem 0 10rem 0;
     /*background-image: url("/src/images/chooseUs/bg.png");*/
     background-position: -225px 255px;
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: #f8f8f8;
 }
 
 .choose-container {
