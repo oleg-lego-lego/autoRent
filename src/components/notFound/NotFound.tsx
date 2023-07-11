@@ -1,23 +1,26 @@
 import React from 'react';
-import {NavbarLink} from "../navbar/NavbarLink";
 import {PATH} from "../../App";
 import notFound from "../../images/notFound.png";
+import {TemplatePage} from "../TemplatePage";
 
 export const NotFound = () => {
+    const header = 'Web page not found.';
+    const description = 'It looks like the page you are looking for has disappeared! go to page...';
+
     return (
-        <div className="container">
-            <div className="favorites-section">
-                <div className="favorites--empty">
-                    <h2>Web page not found.
-                        <span> 😕</span>
-                    </h2>
-                    <p>It looks like the page you are looking for has disappeared! go to page...
-                        <NavbarLink title={'Home'} to={PATH.HOME} className={'favorites--empty-link'}/>
-                    </p>
-                    <img src={notFound} alt="Empty favorites" className={'notFound_img'}/>
-                </div>
-            </div>
-        </div>
+        <>
+            <TemplatePage
+                header={header}
+                description={description}
+                linkTitle={'Home'}
+                path={PATH.HOME}
+                linkClassName={'favorites--empty-link'}
+                img={notFound}
+                imgDescription={'Empty favorites'}
+                imgClassName={'notFound_img'}
+            />
+        </>
+
     );
 };
 
