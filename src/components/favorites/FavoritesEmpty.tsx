@@ -15,7 +15,7 @@ export const FavoritesEmpty = () => {
                         In order to take the car you like, go to page...
                         <NavbarLink title={'Car Models'} to={PATH.MODELS} className={'favorites--empty-link'}/>
                     </p>
-                    <img src={FavEmpty} alt="Empty favorites"/>
+                    <img src={FavEmpty} alt="Empty favorites" className="FavEmpty_img"/>
                 </div>
             </div>
         </div>

@@ -2378,21 +2378,45 @@ footer {
     color: #ff4d30;
 }
 
-.favorites--empty img {
+.FavEmpty_img {
     display: block;
     margin: 0 auto;
     width: 56rem;
 }
 
 @media (max-width: 660px) {
-    .favorites--empty img {
+    .FavEmpty_img {
         width: 44rem;
     }
 }
 
 @media (max-width: 530px) {
-    .favorites--empty img {
+    .FavEmpty_img {
         width: 28rem;
+    }
+}
+
+.notFound_img {
+    display: block;
+    margin: 0 auto;
+    width: 100rem;
+}
+
+@media (max-width: 1050px) {
+    .notFound_img {
+        width: 60rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .notFound_img {
+        width: 45rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .notFound_img {
+        width: 32rem;
     }
 }
 

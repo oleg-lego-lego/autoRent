@@ -10,6 +10,7 @@ import {Contact} from "./pages/Contact";
 import {Favorites} from "./pages/Favotites";
 import Banner from "./components/Banner";
 import {Footer} from "./components/Footer";
+import {NotFound} from "./components/notFound/NotFound";
 
 export enum PATH {
     HOME = '/',
@@ -17,7 +18,8 @@ export enum PATH {
     MODELS = '/models',
     COMMENT = '/comment',
     CONTACT = '/contact',
-    FAVORITES = '/favorites'
+    FAVORITES = '/favorites',
+    NOT_FOUND = '*'
 }
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
                 <Route path={PATH.COMMENT} element={<CommentPage/>}/>
                 <Route path={PATH.CONTACT} element={<Contact/>}/>
                 <Route path={PATH.FAVORITES} element={<Favorites/>}/>
+                <Route path={PATH.NOT_FOUND} element={<NotFound/>}/>
             </Routes>
             <Banner/>
             <Footer/>
