@@ -29,7 +29,7 @@ export const carModels: CarModelsType[] = [
         favorites: false,
         price: 37,
         img: Golf6,
-        model: "Golf 6",
+        model: 'Golf 6',
         mark: "Volkswagen",
         year: "2008",
         doors: "4/5",

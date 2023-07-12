@@ -58,11 +58,3 @@ export const Model = (props: ModelPropsType) => {
         </div>
     );
 };
-
-
-// <div onClick={() => favoritesClick(props.model.id, props.model.favorites)} className={"buttonFavorites"}>
-//     {props.model.favorites
-//         ? <img src={favoritesTrue} alt="favoritesTrue"/>
-//         : <img src={favoritesFalse} alt="favoritesFalse"/>
-//     }
-// </div>
