@@ -21,6 +21,7 @@ export const Navbar = () => {
                     <NavbarLink title={'Comment'} to={PATH.COMMENT} className={'test-link'}/>
                     <NavbarLink title={'Contact'} to={PATH.CONTACT} className={'contact-link'}/>
                     <NavbarLink title={'Favorites'} to={PATH.FAVORITES} className={'home-link'}/>
+                    <NavbarLink title={'Login'} to={PATH.LOGIN_ACCOUNT} className={'home-link'}/>
                 </ul>
             </div>
 
