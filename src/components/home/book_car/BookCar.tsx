@@ -5,8 +5,13 @@ import CarToyota from "../../../images/cars-big/toyota-corolla.jpg";
 import CarBmw from "../../../images/cars-big/bmw320.jpg";
 import CarMercedes from "../../../images/cars-big/benz.jpg";
 import CarPassat from "../../../images/cars-big/passatcc.jpg";
+import {v1} from "uuid";
+import {BookCarType} from "../../../app/reducer/bookCar";
+import {useAppDispatch} from "../../../hooks/redux";
+import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
 
 export const BookCar = () => {
+    const dispatch = useAppDispatch()
     const [modal, setModal] = useState(false); //  class - active-modal
 
     // booking car
@@ -21,11 +26,9 @@ export const BookCar = () => {
     const [phone, setPhone] = useState("");
     const [age, setAge] = useState("");
 
-    const [c, cSet] = useState([{}])
-
-    const orderCar = (name: string, lastName: string, phone: string, age: string) => {
-        cSet([...c, {name, lastName, phone, age}])
-        console.log({name, lastName, phone, age})
+    const orderCar = () => {
+        const newRentCar: BookCarType = {carType, pickTime, dropTime, carImg, name, lastName, phone, age, id: v1()}
+        dispatch(bookCarAdd(newRentCar))
     }
 
     // taking value of modal inputs
@@ -303,10 +306,10 @@ export const BookCar = () => {
                         </div>
 
                         <div className="reserve-button">
-                            <button onClick={() => orderCar(name, lastName, phone, age)}>Reserve Now</button>
+                            <button onClick={orderCar}>Reserve Now</button>
                         </div>
                     </form>
-                    <button onClick={() => orderCar(name, lastName, phone, age)}>$</button> // fix button
+                    <button onClick={orderCar}>$</button>
                 </div>
             </div>
         </>
