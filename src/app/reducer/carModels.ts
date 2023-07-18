@@ -26,8 +26,8 @@ export const carModels: CarModelsType[] = [
     {
         id: v1(),
         name: "VW Golf 6",
-        favorites: false,
         price: 37,
+        favorites: false,
         img: Golf6,
         model: 'Golf 6',
         mark: "Volkswagen",
@@ -40,8 +40,8 @@ export const carModels: CarModelsType[] = [
     {
         id: v1(),
         name: "Audi A1 S-Line",
-        favorites: false,
         price: 45,
+        favorites: false,
         img: AudiA1,
         model: "Audi",
         mark: "A1",
@@ -54,8 +54,8 @@ export const carModels: CarModelsType[] = [
     {
         id: v1(),
         name: "Toyota Corolla",
-        favorites: false,
         price: 30,
+        favorites: false,
         img: Toyota,
         model: "Corolla",
         mark: "Toyota",
@@ -68,8 +68,8 @@ export const carModels: CarModelsType[] = [
     {
         id: v1(),
         name: "BMW 320",
-        favorites: false,
         price: 35,
+        favorites: false,
         img: Bmw320,
         model: "320",
         mark: "BMW",
@@ -82,8 +82,8 @@ export const carModels: CarModelsType[] = [
     {
         id: v1(),
         name: "Mercedes GLK",
-        favorites: false,
         price: 50,
+        favorites: false,
         img: Benz,
         model: "Benz GLK",
         mark: "Mercedes",
@@ -96,8 +96,8 @@ export const carModels: CarModelsType[] = [
     {
         id: v1(),
         name: "VW Passat CC",
-        favorites: false,
         price: 25,
+        favorites: false,
         img: Passat,
         model: "Passat CC",
         mark: "Volkswagen",

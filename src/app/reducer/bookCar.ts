@@ -8,6 +8,7 @@ export type BookCarType = {
     lastName: string
     phone: string
     age: string
+    price?: number  // fix
 }
 
 export const bookCarList: BookCarType[] = []

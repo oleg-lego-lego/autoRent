@@ -7,11 +7,12 @@ import CarMercedes from "../../../images/cars-big/benz.jpg";
 import CarPassat from "../../../images/cars-big/passatcc.jpg";
 import {v1} from "uuid";
 import {BookCarType} from "../../../app/reducer/bookCar";
-import {useAppDispatch} from "../../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
 
 export const BookCar = () => {
     const dispatch = useAppDispatch()
+    const costCatDay = useAppSelector(state => state.carModels.items)
     const [modal, setModal] = useState(false); //  class - active-modal
 
     // booking car
@@ -26,8 +27,21 @@ export const BookCar = () => {
     const [phone, setPhone] = useState("");
     const [age, setAge] = useState("");
 
+    const priceCar = costCatDay.map(el => el.name === carType ? el.price : 0).find(Number) // fix
+
     const orderCar = () => {
-        const newRentCar: BookCarType = {carType, pickTime, dropTime, carImg, name, lastName, phone, age, id: v1()}
+        const newRentCar: BookCarType = {
+            carType,
+            pickTime,
+            dropTime,
+            carImg,
+            name,
+            lastName,
+            phone,
+            age,
+            id: v1(),
+            price: priceCar
+        }
         dispatch(bookCarAdd(newRentCar))
     }
 
@@ -112,7 +126,7 @@ export const BookCar = () => {
         case "BMW 320":
             imgUrl = CarBmw;
             break;
-        case "Mercedes-Benz GLK":
+        case "Mercedes GLK":
             imgUrl = CarMercedes;
             break;
         case "VW Passat CC":
@@ -163,7 +177,7 @@ export const BookCar = () => {
                                         <option value="VW Golf 6">VW Golf 6</option>
                                         <option value="Toyota Corolla">Toyota Corolla</option>
                                         <option value="BMW 320">BMW 320</option>
-                                        <option value="Mercedes-Benz GLK">Mercedes-Benz GLK</option>
+                                        <option value="Mercedes GLK">Mercedes-Benz GLK</option>
                                         <option value="VW Passat CC">VW Passat CC</option>
                                     </select>
                                 </div>
@@ -246,7 +260,7 @@ export const BookCar = () => {
 
                     <div className="booking-modal__car-info__model">
                         <h5>
-                            <span>Car -</span> {carType}
+                            <span>Car -</span> {carType} <span>- {priceCar}$ per day</span>
                         </h5>
                         {imgUrl && <img src={imgUrl} alt="car_img"/>}
                     </div>
