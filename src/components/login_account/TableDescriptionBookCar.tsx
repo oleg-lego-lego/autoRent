@@ -37,50 +37,53 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                         {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
                     </IconButton>
                 </TableCell>
-                <TableCell component="th" scope="row">
-                    {props.row.id}
-                </TableCell>
-                <TableCell>{props.row.carType}</TableCell>
-                <TableCell>{props.row.pickTime}</TableCell>
-                <TableCell>{props.row.dropTime}</TableCell>
+                <TableCell component="th" scope="row" className="table__head__description table__none">1</TableCell>
+                {/*<TableCell component="th" scope="row" className="table__head__description">{props.row.id}</TableCell>*/}
+                <TableCell className="table__head__description">{props.row.carType}</TableCell>
+                <TableCell className="table__head__description">{props.row.pickTime}</TableCell>
+                <TableCell className="table__head__description">{props.row.dropTime}</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{paddingBottom: 0, paddingTop: 0}} colSpan={6}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box margin={1}>
-                            <Typography variant="h6" gutterBottom component="div">
+                            <Typography variant="h6" gutterBottom component="div" className="table__description">
                                 Description
                             </Typography>
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>Name</TableCell>
-                                        <TableCell>Surname</TableCell>
-                                        <TableCell>price per day</TableCell>
-                                        <TableCell>number of rental days</TableCell>
-                                        <TableCell>Total price ($)</TableCell>
-                                        <TableCell> QR code for registration</TableCell>
+                                        <TableCell/>
+                                        <TableCell className="table__title__description table__none">
+                                            price
+                                        </TableCell>
+                                        <TableCell className="table__title__description table__none">
+                                            rental days
+                                        </TableCell>
+                                        <TableCell className="table__title__description">
+                                            Total($)
+                                        </TableCell>
+                                        <TableCell className="table__title__description">
+                                            QR code
+                                        </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     <TableRow>
-                                        <TableCell component="th" scope="row">
-                                            {props.row.name}
-                                        </TableCell>
-                                        <TableCell>{props.row.lastName}</TableCell>
-                                        <TableCell>{props.row.price}</TableCell>
-                                        <TableCell>
+                                        <TableCell/>
+                                        <TableCell className="table__title__depiction table__none">
                                             {props.row.price}
-                                            {/*{Math.round(historyRow.amount * row.price * 100) / 100}*/}
                                         </TableCell>
-                                        <TableCell>
+                                        <TableCell className="table__title__depiction table__none">
                                             {props.row.price}
-                                            {/*{Math.round(historyRow.amount * row.price * 100) / 100}*/}
                                         </TableCell>
-                                        <TableCell>
+                                        <TableCell className="table__title__depiction">
+                                            {props.row.price}
+                                        </TableCell>
+                                        <TableCell className="table__title__depiction">
                                             <a href="http://qrcoder.ru"><img
-                                                src="http://qrcoder.ru/code/?%E7%E0%EA%E0%E7+123&4&0" width="116"
-                                                height="116" title="QR код"/></a>
+                                                src="http://qrcoder.ru/code/?%E7%E0%EA%E0%E7+123&4&0" width="120"
+                                                height="120" title="QR код"/></a>
                                         </TableCell>
                                     </TableRow>
                                 </TableBody>

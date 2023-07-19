@@ -2434,4 +2434,59 @@ footer {
     cursor: pointer;
 }
 
+.table__head {
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+}
+
+.table__head__description {
+    font-size: 1.6rem !important;
+}
+
+.table__description {
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+    padding: 10px !important;
+    color: #d51124;
+}
+
+.table__title__description {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+}
+
+.table__title__depiction {
+    font-size: 1.5rem !important;
+}
+
+@media (max-width: 580px) {
+    .table__head {
+        font-size: 1.5rem !important;
+    }
+
+    .table__head__description {
+        font-size: 1.1rem !important;
+    }
+}
+
+@media (max-width: 560px) {
+    .table__title__description {
+        font-size: 1.2rem !important;
+    }
+}
+
+@media (max-width: 520px) {
+    .table__none {
+        display: none !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .table__head__description {
+        font-size: 1rem !important;
+    }
+}
+
+
+
 

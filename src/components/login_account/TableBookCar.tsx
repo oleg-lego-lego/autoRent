@@ -16,13 +16,13 @@ export function CollapsibleTable() {
     return (
         <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
-                <TableHead >
+                <TableHead>
                     <TableRow>
                         <TableCell/>
-                        <TableCell>Order number</TableCell>
-                        <TableCell>Car</TableCell>
-                        <TableCell>Pick-Up Date</TableCell>
-                        <TableCell>Drop-Off Date</TableCell>
+                        <TableCell className={'table__head table__none'}>Order</TableCell>
+                        <TableCell className={'table__head'}>Car</TableCell>
+                        <TableCell className={'table__head'}>Date-Up</TableCell>
+                        <TableCell className={'table__head'}>Date-Off</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
