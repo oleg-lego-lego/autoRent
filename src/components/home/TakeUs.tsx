@@ -7,7 +7,7 @@ import {takeBox} from "./takeBoxList";
 export const TakeUs = () => {
     return (
         <>
-            <section className="choose-section">
+            <section id="takeUs-section" className="choose-section">
                 <div className="container">
                     <div className="choose-container">
                         <img

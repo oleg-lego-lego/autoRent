@@ -219,9 +219,9 @@ li {
     left: 0;
 }
 
-.hero-section {
+.home__header {
     width: 100%;
-    height: 97vh;
+    height: 100vh;
     background-color: #f8f8f8;
     position: relative;
 }
@@ -233,27 +233,22 @@ li {
     z-index: 1;
 }
 
-@media (max-width: 800px) {
-    .bg-shape {
-        display: none;
-    }
-}
-
-.hero-content {
+.home__content {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
+
 }
 
 @media (max-width: 800px) {
-    .hero-content {
+    .home__content {
         justify-content: center;
     }
 }
 
-.hero-content__text {
+.home__text {
     display: flex;
     flex-direction: column;
     z-index: 3;
@@ -262,19 +257,19 @@ li {
 }
 
 @media (max-width: 800px) {
-    .hero-content__text {
+    .home__text {
         text-align: center;
         align-items: center;
     }
 }
 
-.hero-content__text h4 {
+.home__text h4 {
     font-size: 2.2rem;
     font-family: "Rubik", sans-serif;
     color: #010103;
 }
 
-.hero-content__text h1 {
+.home__text h1 {
     font-size: 5.2rem;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
@@ -284,11 +279,11 @@ li {
     margin-bottom: 2.3rem;
 }
 
-.hero-content__text h1 span {
+.home__text h1 span {
     color: #ff4d30;
 }
 
-.hero-content__text p {
+.home__text p {
     font-size: 1.6rem;
     font-family: "Rubik", sans-serif;
     line-height: 1.6;
@@ -296,7 +291,7 @@ li {
     margin-bottom: 4rem;
 }
 
-.hero-content__text__btns {
+.home__btn {
     display: flex;
     gap: 2rem;
     font-size: 1.6rem;
@@ -304,18 +299,18 @@ li {
 }
 
 @media (max-width: 450px) {
-    .hero-content__text__btns {
+    .home__btn {
         flex-direction: column;
     }
 }
 
-.hero-content__text__btns a {
+.home__btn a {
     text-decoration: none;
     color: white;
     font-weight: 700;
 }
 
-.hero-content__text__btns__book-ride {
+.home__btn__book-ride {
     background-color: #ff4d30;
     padding: 1.8rem 3rem;
     border-radius: 0.3rem;
@@ -325,17 +320,17 @@ li {
 }
 
 @media (max-width: 450px) {
-    .hero-content__text__btns__book-ride {
+    .home__btn__book-ride {
         padding: 1.8rem 8rem;
     }
 }
 
-.hero-content__text__btns__book-ride:hover {
+.home__btn__book-ride:hover {
     box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.6);
     background-color: #fa4226;
 }
 
-.hero-content__text__btns__learn-more {
+.home__btn__learn-more {
     background-color: #010103;
     padding: 1.8rem 3rem;
     border-radius: 0.3rem;
@@ -343,12 +338,12 @@ li {
     transition: all 0.3s;
 }
 
-.hero-content__text__btns__learn-more:hover {
+.home__btn__learn-more:hover {
     background-color: transparent;
     color: #010103;
 }
 
-.hero-content__car-img {
+.home__car-img {
     z-index: 2;
     position: absolute;
     right: 0;
@@ -357,7 +352,7 @@ li {
 }
 
 @media (max-width: 800px) {
-    .hero-content__car-img {
+    .home__car-img {
         display: none;
     }
 }
@@ -379,6 +374,11 @@ li {
     justify-content: center;
     padding: 2rem;
     cursor: pointer;
+}
+
+.scroll-up img {
+    transform: rotate(180deg);
+    width: 30px;
 }
 
 .show-scroll {
