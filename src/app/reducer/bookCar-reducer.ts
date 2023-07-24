@@ -15,12 +15,14 @@ export const BookCarSlice = createSlice({
     reducers: {
         bookCarAdd: (state, action) => {
             state.bookCar.push(action.payload)
-            console.log(state)
+        },
+        bookCarDelete: (state, action) => {
+            state.bookCar = state.bookCar.filter(el => el.id !== action.payload)
         },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const {bookCarAdd} = BookCarSlice.actions
+export const {bookCarAdd, bookCarDelete} = BookCarSlice.actions
 
 export default BookCarSlice.reducer

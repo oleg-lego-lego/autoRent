@@ -2434,6 +2434,10 @@ footer {
     cursor: pointer;
 }
 
+.button__delete {
+    font-size: 2rem !important;
+}
+
 .table__head {
     font-size: 2rem !important;
     font-weight: 600 !important;
@@ -2459,29 +2463,27 @@ footer {
     font-size: 1.5rem !important;
 }
 
-@media (max-width: 580px) {
-    .table__head {
-        font-size: 1.5rem !important;
-    }
-
-    .table__head__description {
-        font-size: 1.1rem !important;
-    }
-}
-
-@media (max-width: 560px) {
-    .table__title__description {
-        font-size: 1.2rem !important;
-    }
-}
-
-@media (max-width: 520px) {
+@media (max-width: 630px) {
     .table__none {
         display: none !important;
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 460px) {
+    .table__head {
+        font-size: 1.5rem !important;
+    }
+
+    .table__head__description {
+        font-size: 1.4rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .table__head {
+        font-size: 1.3rem !important;
+    }
+
     .table__head__description {
         font-size: 1rem !important;
     }
