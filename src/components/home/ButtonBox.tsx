@@ -13,9 +13,7 @@ export const ButtonBox = (props: ButtonBoxPropsType) => {
     return (
         <button
             className={`${coloringButton(props.data.id)}`}
-            onClick={() => {
-                props.setActiveButton(props.data.id);
-            }}
+            onClick={() => props.setActiveButton(props.data.id)}
         >
             {props.data.name}
         </button>

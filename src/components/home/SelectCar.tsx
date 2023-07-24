@@ -18,40 +18,38 @@ export const SelectCar = () => {
     const carList = carModels.filter(el => el.id === active)
 
     return (
-        <>
-            <section className="pick-section">
-                <div className="container">
-                    <div className="pick-container">
-                        <div className="pick-container__title">
-                            <h3>Vehicle Models</h3>
-                            <h2>Our rental fleet</h2>
-                            <p>
-                                Choose from a variety of our amazing vehicles to rent for your
-                                next adventure or business trip
-                            </p>
-                        </div>
-                        <div className="pick-container__car-content">
-                            <div className="pick-box">
-                                {carModels.map(el => {
-                                    return (
-                                        <ButtonBox
-                                            data={el}
-                                            coloringButton={coloringButton}
-                                            setActiveButton={setActiveButton}
-                                            key={el.id}
-                                        />
-                                    )
-                                })}
-                            </div>
-                            {carList.map(el => {
+        <section className="selectCar__section">
+            <div className="container">
+                <div className="selectCar__container">
+                    <div className="selectCar__title">
+                        <h3>Vehicle Models</h3>
+                        <h2>Our rental fleet</h2>
+                        <p>
+                            Choose from a variety of our amazing vehicles to rent for your
+                            next adventure or business trip
+                        </p>
+                    </div>
+                    <div className="selectCar__content">
+                        <div className="selectCar__box">
+                            {carModels.map(el => {
                                 return (
-                                    <CarBox data={el} key={el.id}/>
+                                    <ButtonBox
+                                        data={el}
+                                        coloringButton={coloringButton}
+                                        setActiveButton={setActiveButton}
+                                        key={el.id}
+                                    />
                                 )
                             })}
                         </div>
+                        {carList.map(el => {
+                            return (
+                                <CarBox data={el} key={el.id}/>
+                            )
+                        })}
                     </div>
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 };
