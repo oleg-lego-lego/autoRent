@@ -2515,7 +2515,7 @@ footer {
     line-height: 24px;
     color: #000000;
     opacity: 0.5;
-    margin: 0 0 10px;
+    /*margin: 0 0 10px;*/
 }
 
 .signUpLink {

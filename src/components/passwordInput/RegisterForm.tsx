@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
-import s from '../../Login/Login.module.scss';
 import FormGroup from '@mui/material/FormGroup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -43,7 +42,7 @@ export const RegisterForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={s.wrapper}
+        <form onSubmit={handleSubmit(onSubmit)} className={'s.wrapper'}
               onKeyDown={(e) => onEnterPress(e.key)}>
             <FormGroup>
                 <TextField
@@ -58,7 +57,7 @@ export const RegisterForm = () => {
                         }
                     })}
                 />
-                <div className={s.authError}>{errors.email && <div>{errors.email.message}</div>}</div>
+                <div className={'s.authError'}>{errors.email && <div>{errors.email.message}</div>}</div>
 
                 <PasswordInput
                     name="password"
@@ -70,7 +69,7 @@ export const RegisterForm = () => {
                         }
                     }}
                 />
-                <div className={s.authError}>{errors.password && <div>{errors.password.message}</div>}</div>
+                <div className={'s.authError'}>{errors.password && <div>{errors.password.message}</div>}</div>
 
                 <PasswordInput name="confirmPassword"
                                label={'Confirm password'}
@@ -80,8 +79,9 @@ export const RegisterForm = () => {
                                        value === password || 'The passwords do not match'
                                }}
                 />
-                <div className={s.authError}>{errors.confirmPassword &&
-                    <div>{errors.confirmPassword.message}</div>}</div>
+                <div className={'s.authError'}>{errors.confirmPassword &&
+                    <div>{errors.confirmPassword.message}</div>}
+                </div>
 
                 <Button type={'submit'} variant={'contained'} color={'primary'} style={{marginTop: '30px'}}
                         fullWidth>

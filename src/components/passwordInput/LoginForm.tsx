@@ -40,7 +40,7 @@ export const LoginForm = () => {
             <FormGroup>
                 <TextField
                     label="Email"
-                    margin="none"
+                    // margin="none"
                     variant="standard"
                     {...register('email', {
                         required: 'Email is required',

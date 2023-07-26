@@ -1,9 +1,9 @@
 import React from 'react';
-import {CollapsibleTable} from "./TableBookCar";
 import FormControl from "@mui/material/FormControl";
 import {LoginForm} from "../passwordInput/LoginForm";
 import {NavLink} from "react-router-dom";
 import Paper from "@mui/material/Paper";
+import {PATH} from "../../App";
 
 export const LoginAccount = () => {
     return (
@@ -18,7 +18,7 @@ export const LoginAccount = () => {
                             <LoginForm/>
                         </FormControl>
                         <p className={'login__text'}>Do not have an account ?</p>
-                        <NavLink to={'Path.Registration'} className={'signUpLink'}>Sing up</NavLink>
+                        <NavLink to={PATH.REGISTRATION} className={'signUpLink'}>Sing up</NavLink>
                     </Paper>
                 </div>
             </div>
