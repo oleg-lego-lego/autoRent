@@ -2489,6 +2489,86 @@ footer {
     }
 }
 
+.login__container {
+    padding: 30px;
+    text-align: center;
+}
+
+.formControl {
+    width: 400px;
+}
+
+.login__title {
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 32px;
+    color: #000000;
+    margin: 0 0 20px;
+    letter-spacing: 0.01em;
+}
+
+.login__text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+    opacity: 0.5;
+    margin: 0 0 10px;
+}
+
+.signUpLink {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #366EFF;
+    text-decoration-line: none;
+}
+
+.signUpLink:hover {
+    opacity: 0.7;
+    text-decoration-line: underline;
+}
+
+.signUpLink:active {
+    opacity: 0.5;
+    text-decoration-line: underline;
+}
+
+.form__wrapper {
+    /*width: inherit;*/
+    margin-bottom: 20px;
+}
+
+.form__authError {
+    color: red;
+    height: 1px;
+}
+
+.forgotPassword {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin: 0 0 15px 190px;
+    text-decoration: none;
+}
+
+.forgotPassword:hover {
+    color: #366EFF;
+}
+
+.forgotPassword:active {
+    color: #366EFF;
+    opacity: 0.7;
+}
+
+.asd {
+    font-size: larger !important;
+}
+
+
 
 
 
