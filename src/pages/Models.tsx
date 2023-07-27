@@ -8,19 +8,17 @@ export const Models = () => {
     const carModels = useAppSelector(state => state.carModels.items)
 
     return (
-        <>
-            <section className="models-section">
-                <HeroPages name={'Car Models'}/>
-                <div className="container">
-                    <div className="models-div">
-                        {carModels.map(el => {
-                            return (
-                                <Model model={el} key={el.id}/>
-                            )
-                        })}
-                    </div>
+        <section>
+            <HeroPages name={'Car Models'}/>
+            <div className="container">
+                <div className="models-div">
+                    {carModels.map(el => {
+                        return (
+                            <Model model={el} key={el.id}/>
+                        )
+                    })}
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 };
