@@ -1,5 +1,6 @@
 import React from 'react';
-import {CommentType} from "./CommentBlog";
+import {CommentType} from "../../app/reducer/comentBlog/comentBLog";
+
 
 type CommentPropsType = {
     comment: CommentType
@@ -7,15 +8,12 @@ type CommentPropsType = {
 
 export const Comment = (props: CommentPropsType) => {
     return (
-        <div className="all-testimonials__box box-2">
-                <span className="quotes-icon">
-                    <i className="fa-solid fa-quote-right"></i>
-                </span>
+        <div className="comment__box">
             <p>
                 {props.comment.comment}
             </p>
-            <div className="all-testimonials__box__name">
-                <div className="all-testimonials__box__name__profile">
+            <div className="comment__name">
+                <div className="comment__profile">
                     <img src={props.comment.img} alt="user_img"/>
                     <span>
                       <h4>{props.comment.name}</h4>

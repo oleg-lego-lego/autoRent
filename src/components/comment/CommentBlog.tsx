@@ -5,10 +5,10 @@ import {comment} from "../../app/reducer/comentBlog/comentBLog";
 
 export const CommentsBlog = () => {
     return (
-        <section className="testimonials-section">
+        <section className="comment__blog">
             <div className="container">
-                <div className="testimonials-content">
-                    <div className="testimonials-content__title">
+                <div className="comment__content">
+                    <div className="comment__title">
                         <h4>Reviewed by People</h4>
                         <h2>Client's Testimonials</h2>
                         <p>
@@ -19,7 +19,7 @@ export const CommentsBlog = () => {
                         </p>
                     </div>
 
-                    <div className="all-testimonials">
+                    <div className="all__comment">
                         {comment.map(el => {
                             return (
                                 <Comment comment={el} key={el.id}/>
