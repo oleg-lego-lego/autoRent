@@ -8,7 +8,7 @@ type AboutTextIconsPropsType = {
 
 export const AboutTextIcons = (props: AboutTextIconsPropsType) => {
     return (
-        <div className="about-main__text__icons__box">
+        <div className="about__icons-box">
             <img src={props.img} alt="car-icon"/>
             <span>
                 <h4>{props.count}</h4>

@@ -15,13 +15,13 @@ export const Navbar = () => {
                     </Link>
                 </div>
                 <ul className="navbar__links">
-                    <NavbarLink title={'Home'} to={PATH.HOME} className={'home-link'}/>
-                    <NavbarLink title={'About'} to={PATH.ABOUT} className={'about-link'}/>
-                    <NavbarLink title={'Car Models'} to={PATH.MODELS} className={'models-link'}/>
-                    <NavbarLink title={'Comment'} to={PATH.COMMENT} className={'test-link'}/>
-                    <NavbarLink title={'Contact'} to={PATH.CONTACT} className={'contact-link'}/>
-                    <NavbarLink title={'Favorites'} to={PATH.FAVORITES} className={'home-link'}/>
-                    <NavbarLink title={'Login'} to={PATH.LOGIN_ACCOUNT} className={'home-link'}/>
+                    <NavbarLink title={'Home'} to={PATH.HOME}/>
+                    <NavbarLink title={'About'} to={PATH.ABOUT}/>
+                    <NavbarLink title={'Car Models'} to={PATH.MODELS}/>
+                    <NavbarLink title={'Comment'} to={PATH.COMMENT}/>
+                    <NavbarLink title={'Contact'} to={PATH.CONTACT}/>
+                    <NavbarLink title={'Favorites'} to={PATH.FAVORITES}/>
+                    <NavbarLink title={'Login'} to={PATH.LOGIN_ACCOUNT}/>
                 </ul>
             </div>
 

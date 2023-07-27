@@ -1,17 +1,21 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {PATH} from "../../App";
 
 type NavbarLinkProps = {
-    className: string
     to: PATH
     title: string
+    className?: string
 }
 
 export const NavbarLink = (props: NavbarLinkProps) => {
+    const setActive = ({isActive}: { isActive: boolean }) => ({color: isActive ? 'red' : ''})
+
     return (
         <li>
-            <Link className={props.className} to={props.to}>{props.title}</Link>
+            <NavLink style={setActive} to={props.to}>
+                {props.title}
+            </NavLink>
         </li>
     );
 };
