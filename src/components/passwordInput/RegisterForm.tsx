@@ -4,6 +4,10 @@ import FormGroup from '@mui/material/FormGroup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {PasswordInput} from "./PasswordInput";
+import {Navigate} from "react-router-dom";
+import {PATH} from "../../App";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {addLogin} from "../../app/reducer/login/login-reducer";
 
 
 export type RegisterFormType = {
@@ -21,16 +25,17 @@ export const RegisterForm = () => {
         },
         mode: 'onTouched'
     });
+
     let password = watch('password', '')
 
-    // const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch()
     const [redirect, setRedirect] = useState<boolean>(false)
-
 
     const onSubmit: SubmitHandler<RegisterFormType> = async (data) => {
         const {confirmPassword, ...restData} = data
         // const res = await dispatch(registerTC(restData))
-        // setRedirect(res)
+        dispatch(addLogin(restData))
+        setRedirect(true)
     }
 
     const onEnterPress = (key: string) => {
@@ -38,7 +43,7 @@ export const RegisterForm = () => {
     }
 
     if (redirect) {
-        // return <Navigate to={'Path.Login'}/>
+        return <Navigate to={PATH.LOGIN_ACCOUNT}/>
     }
 
     return (

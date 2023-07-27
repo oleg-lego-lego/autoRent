@@ -3,10 +3,14 @@ import FormGroup from '@mui/material/FormGroup';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import {NavLink} from 'react-router-dom';
+import {Navigate, NavLink} from 'react-router-dom';
 import Button from '@mui/material/Button';
-import React from 'react';
+import React, {useState} from 'react';
 import {PasswordInput} from "./PasswordInput";
+import {PATH} from "../../App";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {checkUser} from "../../app/reducer/login/login-reducer";
+import {LoginListType} from "../../app/reducer/login/loginList";
 
 
 type LoginFormType = {
@@ -14,7 +18,10 @@ type LoginFormType = {
     password: string
     rememberMe: boolean
 }
+
+
 export const LoginForm = () => {
+    const [redirectValue, setRedirectValue] =useState<boolean | LoginListType>(false)
     const {register, control, handleSubmit, formState: {errors}} = useForm<LoginFormType>({
         defaultValues: {
             email: '',
@@ -24,11 +31,25 @@ export const LoginForm = () => {
         mode: 'onTouched'
     });
 
-    const onSubmit: SubmitHandler<LoginFormType> = data => {
-        // dispatch(loginTC(data))
+    const dispatch = useAppDispatch()
+    const loginList = useAppSelector(state => state.loginList)
+
+    const onSubmit: SubmitHandler<LoginFormType> = (data) => {
+        dispatch(checkUser(data))
     }
+
+    const asd = () => {
+        const redirect = loginList.login.find(el => el.email === el.email)
+        console.log(loginList.login)
+        // setRedirectValue(redirect)
+    }
+
     const onEnterPress = (key: string) => {
         key === 'Enter' && handleSubmit(onSubmit)
+    }
+
+    if (redirectValue) {
+        return <Navigate to={PATH.HOME}/>
     }
 
     return (
