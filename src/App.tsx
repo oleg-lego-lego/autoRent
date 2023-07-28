@@ -8,7 +8,7 @@ import {Models} from "./pages/Models";
 import {CommentPage} from "./pages/СommentPage";
 import {Contact} from "./pages/Contact";
 import {Favorites} from "./pages/Favotites";
-import Banner from "./components/Banner";
+import {Banner} from "./components/Banner";
 import {Footer} from "./components/Footer";
 import {NotFound} from "./components/notFound/NotFound";
 import {Login} from "./components/login_account/Login";
