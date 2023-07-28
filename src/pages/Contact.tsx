@@ -1,58 +1,48 @@
 import React from 'react';
 import {HeroPages} from "../components/HeroPages";
+import {ToContactUs} from "../ data/toContactUs";
+import {ContactUs} from "../components/ContactUs";
 
 export const Contact = () => {
     return (
-        <>
-            <section className="contact-page">
-                <HeroPages name="Contact"/>
-                <div className="container">
-                    <div className="contact-div">
-                        <div className="contact-div__text">
-                            <h2>Need additional information?</h2>
-                            <p>
-                                A multifaceted professional skilled in multiple fields of
-                                research, development as well as a learning specialist. Over 15
-                                years of experience.
-                            </p>
-                            <a href="/">
-                                <i className="fa-solid fa-phone"></i>&nbsp; (123) 456-7869
-                            </a>
-                            <a href="/">
-                                <i className="fa-solid fa-envelope"></i>&nbsp;
-                                carrental@carmail.com
-                            </a>
-                            <a href="/">
-                                <i className="fa-solid fa-location-dot"></i>&nbsp; Belgrade,
-                                Serbia
-                            </a>
-                        </div>
-                        <div className="contact-div__form">
-                            <form>
-                                <label>
-                                    Full Name <b>*</b>
-                                </label>
-                                <input type="text" placeholder='E.g: "Joe Shmoe"'></input>
+        <section>
+            <HeroPages name={'Contact'}/>
+            <div className="container">
+                <div className="contact__information">
+                    <div className="contact__text">
+                        <h2>Need additional information?</h2>
+                        <p>
+                            A multifaceted professional skilled in multiple fields of
+                            research, development as well as a learning specialist. Over 15
+                            years of experience.
+                        </p>
+                        <ContactUs title={ToContactUs.TELEPHONE} href={'tel:' + ToContactUs.TELEPHONE}/>
+                        <ContactUs title={'email: ' + ToContactUs.EMAIL} href={'mailto:' + ToContactUs.EMAIL}/>
+                        <ContactUs title={'Moscow'} href={'tel:' + ToContactUs.TELEPHONE}/>
+                    </div>
+                    <div className="contact__form">
+                        <form>
+                            <label>
+                                Full Name <b>*</b>
+                            </label>
+                            <input type="text" placeholder='E.g: "Joe Smith"'/>
 
-                                <label>
-                                    Email <b>*</b>
-                                </label>
-                                <input type="email" placeholder="youremail@example.com"></input>
+                            <label>
+                                Email <b>*</b>
+                            </label>
+                            <input type="email" placeholder="youremail@example.com"/>
 
-                                <label>
-                                    Tell us about it <b>*</b>
-                                </label>
-                                <textarea placeholder="Write Here.."></textarea>
-
-                                <button type="submit">
-                                    <i className="fa-solid fa-envelope-open-text"></i>&nbsp; Send
-                                    Message
-                                </button>
-                            </form>
-                        </div>
+                            <label>
+                                Tell us about it <b>*</b>
+                            </label>
+                            <textarea placeholder="Write Here..."/>
+                            <button type="submit">
+                                Send Message
+                            </button>
+                        </form>
                     </div>
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 };

@@ -8,7 +8,6 @@ export const NotFound = () => {
     const description = 'It looks like the page you are looking for has disappeared! go to page...';
 
     return (
-        <>
             <TemplatePage
                 header={header}
                 description={description}
@@ -19,8 +18,6 @@ export const NotFound = () => {
                 imgDescription={'Empty favorites'}
                 imgClassName={'notFound_img'}
             />
-        </>
-
     );
 };
 
