@@ -1630,7 +1630,7 @@ footer {
     padding: 10rem 0;
 }
 
-.footer-content {
+.footer__content {
     display: grid;
     color: #010103;
     grid-template-columns: 27fr 21fr 21fr 21fr;
@@ -1640,86 +1640,86 @@ footer {
 }
 
 @media (max-width: 1100px) {
-    .footer-content {
+    .footer__content {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 650px) {
-    .footer-content {
+    .footer__content {
         grid-template-columns: 1fr;
     }
 }
 
-.footer-content__1 {
+.footer__contact-us {
     list-style: none;
 }
 
 @media (max-width: 650px) {
-    .footer-content__1 {
+    .footer__contact-us {
         text-align: center;
     }
 }
 
-.footer-content__1 li a {
+.footer__contact-us li a {
     text-decoration: none;
     color: #010103;
     transition: all 0.2s;
 }
 
-.footer-content__1 li a:hover {
+.footer__contact-us li a:hover {
     color: #ff4d30;
 }
 
-.footer-content__1 li:nth-child(1) {
+.footer__contact-us li:nth-child(1) {
     font-size: 2.4rem;
     margin-bottom: 1.5rem;
 }
 
-.footer-content__1 li:nth-child(1) span {
+.footer__contact-us li:nth-child(1) span {
     font-weight: 700;
 }
 
-.footer-content__1 li:nth-child(2) {
+.footer__contact-us li:nth-child(2) {
     font-size: 1.6rem;
     color: #706f7b;
     line-height: 1.7;
     margin-bottom: 3rem;
 }
 
-.footer-content__1 li:nth-child(3), .footer-content__1 li:nth-child(4) {
+.footer__contact-us li:nth-child(3), .footer__contact-us li:nth-child(4) {
     font-size: 1.6rem;
     font-family: "Rubik", sans-serif;
     font-weight: 500;
     margin-bottom: 1rem;
 }
 
-.footer-content__2 {
+.footer__company-us {
     list-style: none;
 }
 
 @media (max-width: 650px) {
-    .footer-content__2 {
+    .footer__company-us {
         text-align: center;
     }
 }
 
-.footer-content__2 a {
+.footer__company-us a {
     text-decoration: none;
     color: #010103;
     transition: all 0.2s;
 }
 
-.footer-content__2 a:hover {
+.footer__company-us a:hover {
     color: #ff4d30;
 }
 
-.footer-content__2 li {
+.footer__company-us li {
     font-size: 1.6rem;
     margin-bottom: 1rem;
 }
 
-.footer-content__2 li:nth-child(1) {
+.footer__company-us li:nth-child(1) {
     font-size: 2.4rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -1727,7 +1727,7 @@ footer {
     cursor: auto;
 }
 
-.footer-content__2 input {
+.footer__company-us input {
     font-family: "Rubik", sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -1741,12 +1741,12 @@ footer {
 }
 
 @media (max-width: 1100px) {
-    .footer-content__2 input {
+    .footer__company-us input {
         width: 100%;
     }
 }
 
-.submit-email {
+.submit__email {
     text-decoration: none;
     color: white;
     font-weight: 700;
@@ -1757,13 +1757,11 @@ footer {
     transition: all 0.3s;
     border: 2px solid #ff4d30;
     font-size: 1.6rem;
-    width: -moz-fit-content;
-    /*width: fit-content;*/
     cursor: pointer;
     width: 100%;
 }
 
-.submit-email:hover {
+.submit__email:hover {
     box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.4);
     background-color: #fa4226;
 }
