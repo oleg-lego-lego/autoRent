@@ -5,8 +5,6 @@ export const Login = () => {
     return (
         <>
             <LoginAccount/>
-
-
         </>
     );
 };

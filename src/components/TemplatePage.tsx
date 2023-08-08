@@ -22,7 +22,7 @@ export const TemplatePage = (props: TemplatePagePropsType) => {
                         <span> 😕</span>
                     </h2>
                     <p>{props.description}
-                        <NavbarLink title={props.linkTitle} to={props.path} className={props.linkClassName}/>
+                        <NavbarLink title={props.linkTitle} to={props.path} className={props.linkClassName} />
                     </p>
                     <img src={props.img} alt={props.imgDescription} className={props.imgClassName}/>
                 </div>

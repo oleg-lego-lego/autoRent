@@ -150,24 +150,29 @@ li {
     text-decoration: none;
 }
 
-.mobile-hamb {
+.mobile__menu {
     font-size: 2.8rem;
     display: none;
     cursor: pointer;
     transition: all 0.3s;
 }
 
-.mobile-hamb:hover {
+.mobile__menu img {
+    width: 80px;
+    cursor: pointer;
+}
+
+.mobile__menu:hover {
     color: #ff4d30;
 }
 
 @media (max-width: 1000px) {
-    .mobile-hamb {
+    .mobile__menu {
         display: flex;
     }
 }
 
-.mobile-navbar {
+.mobile__navbar {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -182,8 +187,8 @@ li {
     transition: all 0.5s ease-in-out;
 }
 
-.mobile-navbar__close {
-    font-size: 3rem;
+.mobile__navbar__close {
+    font-size: 4rem;
     position: absolute;
     top: 3.5rem;
     right: 3.5rem;
@@ -191,11 +196,11 @@ li {
     transition: all 0.3s;
 }
 
-.mobile-navbar__close:hover {
+.mobile__navbar__close:hover {
     color: #ff4d30;
 }
 
-.mobile-navbar__links {
+.mobile__navbar__links {
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -204,18 +209,18 @@ li {
     text-align: center;
 }
 
-.mobile-navbar__links li a {
+.mobile__navbar__links li a {
     text-decoration: none;
     color: #010103;
     font-weight: 500;
     transition: all 0.3s;
 }
 
-.mobile-navbar__links li a:hover {
+.mobile__navbar__links li a:hover {
     color: #ff4d30;
 }
 
-.open-nav {
+.open__nav {
     left: 0;
 }
 
@@ -528,7 +533,7 @@ li {
 .error-message {
     color: #721c24;
     background-color: #f8d7da;
-    padding: 1rem 1.4rem;
+    padding: 1rem;
     margin-bottom: 1.8rem;
     margin-top: -1rem;
     border: 1px solid #f5c6cb;

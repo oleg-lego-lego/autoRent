@@ -10,8 +10,7 @@ export const Favorites = () => {
     const carModelFavorites = carModel.filter(el => el.favorites !== false)
 
     return (
-        <>
-            <section className="models-section">
+            <section>
                 <HeroPages name={'Favorites'}/>
                 <div className="container">
                     {!carModelFavorites.length
@@ -26,8 +25,5 @@ export const Favorites = () => {
                     }
                 </div>
             </section>
-
-        </>
-
     );
 };

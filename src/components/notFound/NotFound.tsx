@@ -8,16 +8,16 @@ export const NotFound = () => {
     const description = 'It looks like the page you are looking for has disappeared! go to page...';
 
     return (
-            <TemplatePage
-                header={header}
-                description={description}
-                linkTitle={'Home'}
-                path={PATH.HOME}
-                linkClassName={'favorites--empty-link'}
-                img={notFound}
-                imgDescription={'Empty favorites'}
-                imgClassName={'notFound_img'}
-            />
+        <TemplatePage
+            header={header}
+            description={description}
+            linkTitle={'Home'}
+            path={PATH.HOME}
+            linkClassName={'favorites--empty-link'}
+            img={notFound}
+            imgDescription={'Empty favorites'}
+            imgClassName={'notFound_img'}
+        />
     );
 };
 
