@@ -5,6 +5,8 @@ import favoritesTrue from "../../images/favoritesTrue.svg";
 import favoritesFalse from "../../images/favoritesFalse.svg";
 import {useAppDispatch} from "../../hooks/redux";
 import {carModelsFavorites} from "../../app/reducer/carModels-reducer";
+import {PATH} from "../../App";
+import {Link} from "react-router-dom";
 
 type CarBoxPropsType = {
     data: CarModelsType
@@ -59,9 +61,9 @@ export const CarBox = (props: CarBoxPropsType) => {
                         <TableCar description={'Transmission'} title={props.data.transmission}/>
                         <TableCar description={'Fuel'} title={props.data.fuel}/>
                     </div>
-                    <a className="cta-btn" href="src/components/home/CarBox#booking-section">
+                    <Link className="cta-btn" onClick={() => window.scrollTo(0, 600)} to={PATH.HOME}>
                         Reserve Now
-                    </a>
+                    </Link>
                 </div>
             </div>
         </>
