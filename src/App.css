@@ -427,7 +427,7 @@ li {
 .book-content__box h2 {
     font-size: 2.4rem;
     font-weight: 700;
-    margin-bottom: 2.7rem;
+    margin-bottom: 1.1rem;
 }
 
 .book-content__box .box-form {
@@ -487,9 +487,13 @@ li {
 
 .book-content__box .box-form__car-time input {
     outline: none;
-    color: #878585;
-    padding-right: 3rem;
     border: 1px solid #ccd7e6;
+    font-size: 1.5rem;
+    color: #ababab;
+    font-family: "Rubik", sans-serif;
+    border-radius: 3px;
+    font-weight: 400;
+    padding: 1.2rem 1.3rem;
 }
 
 .book-content__box .box-form__car-time label {
@@ -534,15 +538,13 @@ li {
     color: #721c24;
     background-color: #f8d7da;
     padding: 1rem;
-    margin-bottom: 1.8rem;
-    margin-top: -1rem;
+    margin-bottom: 1rem;
     border: 1px solid #f5c6cb;
     border-radius: 0.8rem;
     font-size: 1.6rem;
     font-weight: 500;
-    display: none;
-    justify-content: space-between;
     align-items: center;
+    width: fit-content;
 }
 
 .error-message i {

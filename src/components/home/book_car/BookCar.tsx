@@ -5,78 +5,27 @@ import CarToyota from "../../../images/cars-big/toyota-corolla.jpg";
 import CarBmw from "../../../images/cars-big/bmw320.jpg";
 import CarMercedes from "../../../images/cars-big/benz.jpg";
 import CarPassat from "../../../images/cars-big/passatcc.jpg";
-import {v1} from "uuid";
-import {BookCarType} from "../../../app/reducer/bookCar";
-import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
+import {BookingModal} from "./BookingModal";
 
 export const BookCar = () => {
-    const dispatch = useAppDispatch()
-    const costCatDay = useAppSelector(state => state.carModels.items)
     const [modal, setModal] = useState(false); //  class - active-modal
 
     // booking car
-    const [carType, setCarType] = useState("");
-    const [pickTime, setPickTime] = useState("");
-    const [dropTime, setDropTime] = useState("");
-    const [carImg, setCarImg] = useState("");
-
-    // modal infos
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [age, setAge] = useState("");
-
-    const priceCar = costCatDay.map(el => el.name === carType ? el.price : 0).find(Number) // fix
-
-    const orderCar = () => {
-        const newRentCar: BookCarType = {
-            carType,
-            pickTime,
-            dropTime,
-            carImg,
-            name,
-            lastName,
-            phone,
-            age,
-            id: v1(),
-            price: priceCar
-        }
-        dispatch(bookCarAdd(newRentCar))
-    }
-
-    // taking value of modal inputs
-    const handleName = (e: ChangeEvent<HTMLInputElement>) => {
-        setName(e.target.value);
-    };
-
-    const handleLastName = (e: ChangeEvent<HTMLInputElement>) => {
-        setLastName(e.target.value);
-    };
-
-    const handlePhone = (e: ChangeEvent<HTMLInputElement>) => {
-        setPhone(e.target.value);
-    };
-
-    const handleAge = (e: ChangeEvent<HTMLInputElement>) => {
-        setAge(e.target.value);
-    };
+    const [carType, setCarType] = useState('');
+    const [pickTime, setPickTime] = useState('');
+    const [dropTime, setDropTime] = useState('');
+    const [carImg, setCarImg] = useState('');
+    const [error, setError] = useState('')
 
     // open modal when all inputs are fulfilled
     const openModal = (e: React.MouseEvent) => {
         e.preventDefault();
-        const errorMsg = document.querySelector(".error-message");
-        if (
-            pickTime === "" ||
-            dropTime === "" ||
-            carType === ""
-        ) {
-            // errorMsg && errorMsg.style.display = "flex";
+        if (pickTime === "" || dropTime === "" || carType === "") {
+            setError('error: Not all fields are filled!')
         } else {
             setModal(!modal);
             const modalDiv = document.querySelector(".booking-modal");
             modalDiv && modalDiv.scroll(0, 0);
-            // errorMsg && errorMsg.style.display = "none";
         }
     };
 
@@ -101,15 +50,25 @@ export const BookCar = () => {
     const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
         setCarType(e.target.value);
         setCarImg(e.target.value);
+        setError('')
     };
 
     const handlePickTime = (e: ChangeEvent<HTMLInputElement>) => {
-        setPickTime(e.target.value);
+        errorHandleTime(dropTime, e.target.value, setPickTime)
     };
 
     const handleDropTime = (e: ChangeEvent<HTMLInputElement>) => {
-        setDropTime(e.target.value);
+        errorHandleTime(pickTime, e.target.value, setDropTime)
     };
+
+    const errorHandleTime = (value: string, targetValue: string, setTime: (value: string) => void) => {
+        if (value === targetValue || value < targetValue) {
+            setTime(targetValue);
+            setError('')
+        } else {
+            setError('error: wrong rental date')
+        }
+    }
 
     // based on value name show car img
     let imgUrl;
@@ -149,21 +108,26 @@ export const BookCar = () => {
                 <div
                     onClick={openModal}
                     className={`modal-overlay ${modal ? "active-modal" : ""}`}
-                ></div>
-
+                />
                 <div className="container">
                     <div className="book-content">
                         <div className="book-content__box">
-                            <h2>Book a car</h2>
+                            <h2>
+                                Book a car
+                            </h2>
+                            <div style={!error ? {display: 'none'} : {display: ''}} className={'error-message'}>
+                                {error}
+                            </div>
 
-                            <p className="error-message">
-                                All fields required! <i className="fa-solid fa-xmark"></i>
-                            </p>
+                            {/*<p className="error-message">*/}
+                            {/*    All fields required! <i className="fa-solid fa-xmark"></i>*/}
+                            {/*</p>*/}
 
                             <p className="booking-done">
                                 Check your email to confirm an order.{" "}
                                 <i onClick={hideMessage} className="fa-solid fa-xmark"></i>
                             </p>
+
 
                             <form className="box-form">
                                 <div className="box-form__car-type">
@@ -183,29 +147,29 @@ export const BookCar = () => {
                                 </div>
 
                                 <div className="box-form__car-time">
-                                    <label htmlFor="picktime">
+                                    <label htmlFor="pickTime">
                                         Pick-up
                                         <b>*</b>
                                     </label>
                                     <input
-                                        id="picktime"
+                                        id="pickTime"
                                         value={pickTime}
                                         onChange={handlePickTime}
                                         type="date"
-                                    ></input>
+                                    />
                                 </div>
 
                                 <div className="box-form__car-time">
-                                    <label htmlFor="droptime">
+                                    <label htmlFor="dropTime">
                                         Drop-of
                                         <b>*</b>
                                     </label>
                                     <input
-                                        id="droptime"
+                                        id="dropTime"
                                         value={dropTime}
                                         onChange={handleDropTime}
                                         type="date"
-                                    ></input>
+                                    />
                                 </div>
 
                                 <button onClick={openModal} type="submit">
@@ -218,114 +182,15 @@ export const BookCar = () => {
             </section>
 
             {/* modal ------------------------------------ */}
-
-            <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
-                {/* title */}
-                <div className="booking-modal__title">
-                    <h2>Complete Reservation</h2>
-                    <i onClick={openModal} className="fa-solid fa-xmark"></i>
-                </div>
-                {/* message */}
-                <div className="booking-modal__message">
-                    <h4>
-                        Upon completing this reservation enquiry, you will receive:
-                    </h4>
-                    <p>
-                        Your rental voucher to produce on arrival at the rental desk and a
-                        toll-free customer support number.
-                    </p>
-                </div>
-                {/* car info */}
-                <div className="booking-modal__car-info">
-                    <div className="dates-div">
-                        <div className="booking-modal__car-info__dates">
-                            <h5>Rent a car for a date</h5>
-                            <span>
-                            <div>
-                                  <h6>Pick-Up Date</h6>
-                                  <p>{pickTime}</p>
-                            </div>
-                            </span>
-                        </div>
-
-                        <div className="booking-modal__car-info__dates">
-                            <span>
-                                <div>
-                                    <h6>Drop-Off Date</h6>
-                                    <p>{dropTime}</p>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="booking-modal__car-info__model">
-                        <h5>
-                            <span>Car -</span> {carType} <span>- {priceCar}$ per day</span>
-                        </h5>
-                        {imgUrl && <img src={imgUrl} alt="car_img"/>}
-                    </div>
-                </div>
-                {/* personal info */}
-                <div className="booking-modal__person-info">
-                    <h4>Personal Information</h4>
-                    <form className="info-form">
-                        <div className="info-form__2col">
-                            <span>
-                                <label>
-                                  First Name <b>*</b>
-                                </label>
-                                <input
-                                    value={name}
-                                    onChange={handleName}
-                                    type="text"
-                                    placeholder="Enter your first name"
-                                ></input>
-                            </span>
-
-                            <span>
-                                <label>
-                                  Last Name <b>*</b>
-                                </label>
-                                <input
-                                    value={lastName}
-                                    onChange={handleLastName}
-                                    type="text"
-                                    placeholder="Enter your last name"
-                                ></input>
-                            </span>
-
-                            <span>
-                                <label>
-                                  Phone Number <b>*</b>
-                                </label>
-                                <input
-                                    value={phone}
-                                    onChange={handlePhone}
-                                    type="tel"
-                                    placeholder="Enter your phone number"
-                                ></input>
-                            </span>
-
-                            <span>
-                                <label>
-                                  Age <b>*</b>
-                                </label>
-                                <input
-                                    value={age}
-                                    onChange={handleAge}
-                                    type="number"
-                                    placeholder="18"
-                                ></input>
-                            </span>
-                        </div>
-
-                        <div className="reserve-button">
-                            <button onClick={orderCar}>Reserve Now</button>
-                        </div>
-                    </form>
-                    <button onClick={orderCar}>$</button>
-                </div>
-            </div>
+            <BookingModal
+                modal={modal}
+                openModal={openModal}
+                carType={carType}
+                pickTime={pickTime}
+                dropTime={dropTime}
+                imgUrl={imgUrl}
+                carImg={carImg}
+            />
         </>
     );
 };
