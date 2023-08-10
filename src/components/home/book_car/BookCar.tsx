@@ -16,6 +16,9 @@ export const BookCar = () => {
     const [dropTime, setDropTime] = useState('');
     const [carImg, setCarImg] = useState('');
     const [error, setError] = useState('')
+    const [errorPickTime, setErrorPickTime] = useState(false)
+    const [errorDropTime, setErrorDropTime] = useState(false)
+
 
     // open modal when all inputs are fulfilled
     const openModal = (e: React.MouseEvent) => {
@@ -54,20 +57,24 @@ export const BookCar = () => {
     };
 
     const handlePickTime = (e: ChangeEvent<HTMLInputElement>) => {
-        if (!dropTime || dropTime > e.target.value || dropTime === e.target.value) {
-            setPickTime(e.target.value);
+        if (!dropTime || dropTime >= e.target.value || dropTime === e.target.value) {
+            setPickTime(e.target.value)
             setError('')
+            setErrorPickTime(false)
         } else {
             setError('error: wrong rental date')
+            setErrorPickTime(true)
         }
     };
 
     const handleDropTime = (e: ChangeEvent<HTMLInputElement>) => {
-        if (pickTime === e.target.value || pickTime < e.target.value) {
+        if (pickTime <= e.target.value || pickTime === e.target.value) {
             setDropTime(e.target.value);
             setError('')
+            setErrorDropTime(false)
         } else {
             setError('error: wrong rental date')
+            setErrorDropTime(true)
         }
     };
 
@@ -163,7 +170,7 @@ export const BookCar = () => {
                                     </label>
                                     <input
                                         id="pickTime"
-                                        value={pickTime}
+                                        value={errorPickTime ? '' : pickTime}
                                         onChange={handlePickTime}
                                         type="date"
                                     />
@@ -176,7 +183,7 @@ export const BookCar = () => {
                                     </label>
                                     <input
                                         id="dropTime"
-                                        value={dropTime}
+                                        value={errorDropTime ? '' : dropTime}
                                         onChange={handleDropTime}
                                         type="date"
                                     />
