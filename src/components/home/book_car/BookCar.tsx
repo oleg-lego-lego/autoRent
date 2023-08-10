@@ -172,7 +172,11 @@ export const BookCar = () => {
                                     />
                                 </div>
 
-                                <button onClick={openModal} type="submit">
+                                <button
+                                    onClick={openModal}
+                                    // type="submit"
+                                    disabled={error !== ''}
+                                >
                                     Search
                                 </button>
                             </form>
