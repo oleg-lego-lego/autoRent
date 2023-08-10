@@ -54,21 +54,31 @@ export const BookCar = () => {
     };
 
     const handlePickTime = (e: ChangeEvent<HTMLInputElement>) => {
-        errorHandleTime(dropTime, e.target.value, setPickTime)
-    };
-
-    const handleDropTime = (e: ChangeEvent<HTMLInputElement>) => {
-        errorHandleTime(pickTime, e.target.value, setDropTime)
-    };
-
-    const errorHandleTime = (value: string, targetValue: string, setTime: (value: string) => void) => {
-        if (value === targetValue || value < targetValue) {
-            setTime(targetValue);
+        if (!dropTime || dropTime > e.target.value || dropTime === e.target.value) {
+            setPickTime(e.target.value);
             setError('')
         } else {
             setError('error: wrong rental date')
         }
-    }
+    };
+
+    const handleDropTime = (e: ChangeEvent<HTMLInputElement>) => {
+        if (pickTime === e.target.value || pickTime < e.target.value) {
+            setDropTime(e.target.value);
+            setError('')
+        } else {
+            setError('error: wrong rental date')
+        }
+    };
+
+    // const errorHandleTime = (value: string, targetValue: string, setTime: (value: string) => void) => {
+    //     if (value === targetValue || value < targetValue) {
+    //         setTime(targetValue);
+    //         setError('')
+    //     } else {
+    //         setError('error: wrong rental date')
+    //     }
+    // }
 
     // based on value name show car img
     let imgUrl;
