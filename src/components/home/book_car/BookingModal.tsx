@@ -35,7 +35,14 @@ export const BookingModal = (props: BookingModalPropsType) => {
     };
 
     const handlePhone = (e: ChangeEvent<HTMLInputElement>) => {
+        let phone = e.target.value;
+        if (!phone.match('[0-9]{34}')) {
+            console.log('Please provide valid phone number');
+        } else {
+            console.log(12)
+        }
         setPhone(e.target.value);
+        console.log(e.target.value)
     };
 
     const handleAge = (e: ChangeEvent<HTMLInputElement>) => {
@@ -142,8 +149,13 @@ export const BookingModal = (props: BookingModalPropsType) => {
                                 <input
                                     value={phone}
                                     onChange={handlePhone}
-                                    type="tel"
+                                    // type="tel"
                                     placeholder="Enter your phone number"
+
+                                    type="tel"
+                                    // name="phone"
+                                    // // placeholder="Phone number"
+                                    // onKeyDown={e => /[+\-.,]$/.test(e.key) && e.preventDefault()}
                                 />
                             </span>
 

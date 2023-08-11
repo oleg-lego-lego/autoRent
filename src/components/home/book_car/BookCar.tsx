@@ -78,15 +78,6 @@ export const BookCar = () => {
         }
     };
 
-    // const errorHandleTime = (value: string, targetValue: string, setTime: (value: string) => void) => {
-    //     if (value === targetValue || value < targetValue) {
-    //         setTime(targetValue);
-    //         setError('')
-    //     } else {
-    //         setError('error: wrong rental date')
-    //     }
-    // }
-
     // based on value name show car img
     let imgUrl;
     switch (carImg) {
@@ -117,6 +108,10 @@ export const BookCar = () => {
         const doneMsg = document.querySelector(".booking-done");
         // doneMsg.style.display = "none";
     };
+
+    const inputError = (inputError: string, error12?: boolean) => {
+        return `${!error12}` && error && inputError === '' ? {borderColor: 'red'} : {}
+    }
 
     return (
         <>
@@ -152,7 +147,7 @@ export const BookCar = () => {
                                         Select Your Car Type
                                         <b>*</b>
                                     </label>
-                                    <select value={carType} onChange={handleCar}>
+                                    <select value={carType} onChange={handleCar} style={inputError(carType)}>
                                         <option>Select your car type</option>
                                         <option value="Audi A1 S-Line">Audi A1 S-Line</option>
                                         <option value="VW Golf 6">VW Golf 6</option>
@@ -173,6 +168,7 @@ export const BookCar = () => {
                                         value={errorPickTime ? '' : pickTime}
                                         onChange={handlePickTime}
                                         type="date"
+                                        style={inputError(pickTime, errorPickTime)}
                                     />
                                 </div>
 
@@ -186,13 +182,13 @@ export const BookCar = () => {
                                         value={errorDropTime ? '' : dropTime}
                                         onChange={handleDropTime}
                                         type="date"
+                                        style={inputError(dropTime, errorDropTime)}
                                     />
                                 </div>
 
-                                <button
-                                    onClick={openModal}
+                                <button onClick={openModal}
                                     // type="submit"
-                                    disabled={error !== ''}
+                                        disabled={error !== ''}
                                 >
                                     Search
                                 </button>
