@@ -6,6 +6,7 @@ import CarBmw from "../../../images/cars-big/bmw320.jpg";
 import CarMercedes from "../../../images/cars-big/benz.jpg";
 import CarPassat from "../../../images/cars-big/passatcc.jpg";
 import {BookingModal} from "./BookingModal";
+import {BoxFormTimeInput} from "./BoxFormTimeInput";
 
 export const BookCar = () => {
     const [modal, setModal] = useState(false); //  class - active-modal
@@ -111,7 +112,6 @@ export const BookCar = () => {
     return (
         <>
             <section id="booking-section" className="book-section">
-                {/* overlay */}
                 <div
                     onClick={openModal}
                     className={`modal-overlay ${modal ? "active-modal" : ""}`}
@@ -153,33 +153,19 @@ export const BookCar = () => {
                                     </select>
                                 </div>
 
-                                <div className="box-form__car-time">
-                                    <label htmlFor="pickTime">
-                                        Pick-up
-                                        <b>*</b>
-                                    </label>
-                                    <input
-                                        id="pickTime"
-                                        value={pickTime}
-                                        onChange={handlePickTime}
-                                        type="date"
-                                        style={inputError(pickTime)}
-                                    />
-                                </div>
+                                <BoxFormTimeInput
+                                    title={'Pick-up'}
+                                    valueTime={pickTime}
+                                    handleTime={handlePickTime}
+                                    inputError={inputError}
+                                />
 
-                                <div className="box-form__car-time">
-                                    <label htmlFor="dropTime">
-                                        Drop-of
-                                        <b>*</b>
-                                    </label>
-                                    <input
-                                        id="dropTime"
-                                        value={dropTime}
-                                        onChange={handleDropTime}
-                                        type="date"
-                                        style={inputError(dropTime)}
-                                    />
-                                </div>
+                                <BoxFormTimeInput
+                                    title={'Drop-of'}
+                                    valueTime={dropTime}
+                                    handleTime={handleDropTime}
+                                    inputError={inputError}
+                                />
 
                                 <button onClick={openModal}
                                     // type="submit"
