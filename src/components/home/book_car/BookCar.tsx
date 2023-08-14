@@ -16,9 +16,6 @@ export const BookCar = () => {
     const [dropTime, setDropTime] = useState('');
     const [carImg, setCarImg] = useState('');
     const [error, setError] = useState('')
-    const [errorPickTime, setErrorPickTime] = useState(false)
-    const [errorDropTime, setErrorDropTime] = useState(false)
-
 
     // open modal when all inputs are fulfilled
     const openModal = (e: React.MouseEvent) => {
@@ -60,10 +57,9 @@ export const BookCar = () => {
         if (!dropTime || dropTime >= e.target.value || dropTime === e.target.value) {
             setPickTime(e.target.value)
             setError('')
-            setErrorPickTime(false)
         } else {
             setError('error: wrong rental date')
-            setErrorPickTime(true)
+            setPickTime('')
         }
     };
 
@@ -71,10 +67,9 @@ export const BookCar = () => {
         if (pickTime <= e.target.value || pickTime === e.target.value) {
             setDropTime(e.target.value);
             setError('')
-            setErrorDropTime(false)
         } else {
             setError('error: wrong rental date')
-            setErrorDropTime(true)
+            setDropTime('')
         }
     };
 
@@ -109,8 +104,8 @@ export const BookCar = () => {
         // doneMsg.style.display = "none";
     };
 
-    const inputError = (inputError: string, error12?: boolean) => {
-        return `${!error12}` && error && inputError === '' ? {borderColor: 'red'} : {}
+    const inputError = (inputError: string) => {
+        return  error && !inputError ? {borderColor: 'red'} : {}
     }
 
     return (
@@ -165,10 +160,10 @@ export const BookCar = () => {
                                     </label>
                                     <input
                                         id="pickTime"
-                                        value={errorPickTime ? '' : pickTime}
+                                        value={pickTime}
                                         onChange={handlePickTime}
                                         type="date"
-                                        style={inputError(pickTime, errorPickTime)}
+                                        style={inputError(pickTime)}
                                     />
                                 </div>
 
@@ -179,10 +174,10 @@ export const BookCar = () => {
                                     </label>
                                     <input
                                         id="dropTime"
-                                        value={errorDropTime ? '' : dropTime}
+                                        value={dropTime}
                                         onChange={handleDropTime}
                                         type="date"
-                                        style={inputError(dropTime, errorDropTime)}
+                                        style={inputError(dropTime)}
                                     />
                                 </div>
 
