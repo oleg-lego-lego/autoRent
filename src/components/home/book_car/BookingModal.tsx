@@ -23,7 +23,9 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const [phone, setPhone] = useState("");
     const [age, setAge] = useState("");
 
-    const priceCar = costCatDay.map(el => el.name === props.carType ? el.price : 0).find(Number) // fix
+    const matchingCost = costCatDay.find(el => el.name === props.carType);
+    const priceCar = matchingCost ? matchingCost.price : 0;
+
 
     // taking value of modal inputs
     const handleName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,14 +37,8 @@ export const BookingModal = (props: BookingModalPropsType) => {
     };
 
     const handlePhone = (e: ChangeEvent<HTMLInputElement>) => {
-        let phone = e.target.value;
-        if (!phone.match('[0-9]{34}')) {
-            console.log('Please provide valid phone number');
-        } else {
-            console.log(12)
-        }
-        setPhone(e.target.value);
-        console.log(e.target.value)
+        const inputPhoneNumber = e.target.value.replace(/\D/g, '');
+        setPhone(inputPhoneNumber);
     };
 
     const handleAge = (e: ChangeEvent<HTMLInputElement>) => {
@@ -143,18 +139,17 @@ export const BookingModal = (props: BookingModalPropsType) => {
                             </span>
 
                         <span>
-                                <label>
+                                <label htmlFor="phone">
                                   Phone Number <b>*</b>
                                 </label>
                                 <input
+                                    type="tel"
+                                    id="phone"
                                     value={phone}
                                     onChange={handlePhone}
-                                    // type="tel"
                                     placeholder="Enter your phone number"
-
-                                    type="tel"
-                                    // name="phone"
-                                    // // placeholder="Phone number"
+                                    pattern={"[0-9]{10}"}
+                                    required
                                     // onKeyDown={e => /[+\-.,]$/.test(e.key) && e.preventDefault()}
                                 />
                             </span>
