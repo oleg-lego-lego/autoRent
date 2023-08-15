@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {BookCarType} from "../../../app/reducer/bookCar";
 import {v1} from "uuid";
 import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
+import {PhoneValidationExample} from "./PhoneInput";
 
 type BookingModalPropsType = {
     modal: boolean
@@ -153,6 +154,8 @@ export const BookingModal = (props: BookingModalPropsType) => {
                                     // onKeyDown={e => /[+\-.,]$/.test(e.key) && e.preventDefault()}
                                 />
                             </span>
+
+<PhoneValidationExample/>
 
                         <span>
                                 <label>
