@@ -3,7 +3,7 @@ import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {BookCarType} from "../../../app/reducer/bookCar";
 import {v1} from "uuid";
 import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
-import {PhoneValidationExample} from "./PhoneInput";
+import {PhoneValidation} from "./PhoneValidation";
 
 type BookingModalPropsType = {
     modal: boolean
@@ -37,9 +37,8 @@ export const BookingModal = (props: BookingModalPropsType) => {
         setLastName(e.target.value);
     };
 
-    const handlePhone = (e: ChangeEvent<HTMLInputElement>) => {
-        const inputPhoneNumber = e.target.value.replace(/\D/g, '');
-        setPhone(inputPhoneNumber);
+    const validPhoneNumber = (phoneNumber: string) => {
+        setPhone(phoneNumber);
     };
 
     const handleAge = (e: ChangeEvent<HTMLInputElement>) => {
@@ -139,23 +138,23 @@ export const BookingModal = (props: BookingModalPropsType) => {
                                 />
                             </span>
 
-                        <span>
-                                <label htmlFor="phone">
-                                  Phone Number <b>*</b>
-                                </label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    value={phone}
-                                    onChange={handlePhone}
-                                    placeholder="Enter your phone number"
-                                    pattern={"[0-9]{10}"}
-                                    required
-                                    // onKeyDown={e => /[+\-.,]$/.test(e.key) && e.preventDefault()}
-                                />
-                            </span>
+                        {/*<span>*/}
+                        {/*        <label htmlFor="phone">*/}
+                        {/*          Phone Number <b>*</b>*/}
+                        {/*        </label>*/}
+                        {/*        <input*/}
+                        {/*            type="tel"*/}
+                        {/*            id="phone"*/}
+                        {/*            value={phone}*/}
+                        {/*            onChange={handlePhone}*/}
+                        {/*            placeholder="Enter your phone number"*/}
+                        {/*            pattern={"[0-9]{10}"}*/}
+                        {/*            required*/}
+                        {/*            // onKeyDown={e => /[+\-.,]$/.test(e.key) && e.preventDefault()}*/}
+                        {/*        />*/}
+                        {/*    </span>*/}
 
-<PhoneValidationExample/>
+                        <PhoneValidation validPhoneNumber={validPhoneNumber}/>
 
                         <span>
                                 <label>

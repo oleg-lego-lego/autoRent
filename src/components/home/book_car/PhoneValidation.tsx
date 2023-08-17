@@ -3,8 +3,12 @@ import PhoneInput from 'react-phone-number-input';
 import {parsePhoneNumberFromString, PhoneNumber} from 'libphonenumber-js';
 import 'react-phone-number-input/style.css';
 
+type PhoneValidationPropsType = {
+    validPhoneNumber: (phoneNumber: string) => void
+}
 
-export const PhoneValidationExample: React.FC = () => {
+
+export const PhoneValidation = (props: PhoneValidationPropsType) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isValid, setIsValid] = useState(false);
 
@@ -19,6 +23,7 @@ export const PhoneValidationExample: React.FC = () => {
             const phoneNumberInstance = parsePhoneNumberFromString(value) as PhoneNumber;
 
             // Проверка на валидность номера и его длину
+            props.validPhoneNumber(value)
             return !!phoneNumberInstance && phoneNumberInstance.isValid();
         } catch (error) {
             return false;
@@ -27,12 +32,12 @@ export const PhoneValidationExample: React.FC = () => {
 
     return (
         <div>
-            <h2>Валидация номера телефона</h2>
+            <h2>Phone Number <b>*</b></h2>
             <PhoneInput
-                international
-                placeholder="Введите номер телефона"
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}
+                international
+                placeholder="Enter your phone number"
             />
             {phoneNumber && !isValid && <p style={{color: 'red'}}>Неверный номер телефона</p>}
             {phoneNumber && isValid && <p style={{color: 'green'}}>Верный номер телефона</p>}
