@@ -4,6 +4,7 @@ import {BookCarType} from "../../../app/reducer/bookCar";
 import {v1} from "uuid";
 import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
 import {PhoneValidation} from "./PhoneValidation";
+import {InputFormModal} from "./InputFormModal";
 
 type BookingModalPropsType = {
     modal: boolean
@@ -114,29 +115,44 @@ export const BookingModal = (props: BookingModalPropsType) => {
                 <h4>Personal Information</h4>
                 <form className="info-form">
                     <div className="info-form__2col">
-                            <span>
-                                <label>
-                                  First Name <b>*</b>
-                                </label>
-                                <input
-                                    value={name}
-                                    onChange={handleName}
-                                    type="text"
-                                    placeholder="Enter your first name"
-                                />
-                            </span>
+                        <InputFormModal
+                            title={'First Name'}
+                            value={name}
+                            onChange={handleName}
+                            type={'text'}
+                            placeholder={'Enter your first name'}
+                        />
+                            {/*<span>*/}
+                            {/*    <label>*/}
+                            {/*      First Name <b>*</b>*/}
+                            {/*    </label>*/}
+                            {/*    <input*/}
+                            {/*        value={name}*/}
+                            {/*        onChange={handleName}*/}
+                            {/*        type="text"*/}
+                            {/*        placeholder="Enter your first name"*/}
+                            {/*    />*/}
+                            {/*</span>*/}
 
-                        <span>
-                                <label>
-                                  Last Name <b>*</b>
-                                </label>
-                                <input
-                                    value={lastName}
-                                    onChange={handleLastName}
-                                    type="text"
-                                    placeholder="Enter your last name"
-                                />
-                            </span>
+                        <InputFormModal
+                            title={'Last Name'}
+                            value={lastName}
+                            onChange={handleLastName}
+                            type={'text'}
+                            placeholder={'Enter your last name'}
+                        />
+
+                        {/*<span>*/}
+                        {/*        <label>*/}
+                        {/*          Last Name <b>*</b>*/}
+                        {/*        </label>*/}
+                        {/*        <input*/}
+                        {/*            value={lastName}*/}
+                        {/*            onChange={handleLastName}*/}
+                        {/*            type="text"*/}
+                        {/*            placeholder="Enter your last name"*/}
+                        {/*        />*/}
+                        {/*    </span>*/}
 
                         {/*<span>*/}
                         {/*        <label htmlFor="phone">*/}
@@ -156,17 +172,32 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
                         <PhoneValidation validPhoneNumber={validPhoneNumber}/>
 
-                        <span>
-                                <label>
-                                  Age <b>*</b>
-                                </label>
-                                <input
-                                    value={age}
-                                    onChange={handleAge}
-                                    type="number"
-                                    placeholder="18"
-                                />
-                            </span>
+                        <InputFormModal
+                            title={'Age'}
+                            value={age}
+                            onChange={handleAge}
+                            type={'number'}
+                            placeholder={'18'}
+                        />
+                        <InputFormModal
+                            title={'Age'}
+                            value={age}
+                            onChange={handleAge}
+                            type={'number'}
+                            placeholder={'18'}
+                        />
+
+                        {/*<span>*/}
+                        {/*        <label>*/}
+                        {/*          Age <b>*</b>*/}
+                        {/*        </label>*/}
+                        {/*        <input*/}
+                        {/*            value={age}*/}
+                        {/*            onChange={handleAge}*/}
+                        {/*            type="number"*/}
+                        {/*            placeholder="18"*/}
+                        {/*        />*/}
+                        {/*    </span>*/}
                     </div>
                 </form>
                 <div className="reserve-button">
