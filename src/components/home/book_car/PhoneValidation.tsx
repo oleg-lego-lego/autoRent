@@ -31,7 +31,7 @@ export const PhoneValidation = (props: PhoneValidationPropsType) => {
     };
 
     return (
-        <div>
+        <div className="PhoneValidation">
             <h2>Phone Number <b>*</b></h2>
             <PhoneInput
                 value={phoneNumber}

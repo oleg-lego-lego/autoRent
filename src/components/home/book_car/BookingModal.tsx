@@ -122,17 +122,17 @@ export const BookingModal = (props: BookingModalPropsType) => {
                             type={'text'}
                             placeholder={'Enter your first name'}
                         />
-                            {/*<span>*/}
-                            {/*    <label>*/}
-                            {/*      First Name <b>*</b>*/}
-                            {/*    </label>*/}
-                            {/*    <input*/}
-                            {/*        value={name}*/}
-                            {/*        onChange={handleName}*/}
-                            {/*        type="text"*/}
-                            {/*        placeholder="Enter your first name"*/}
-                            {/*    />*/}
-                            {/*</span>*/}
+                        {/*<span>*/}
+                        {/*    <label>*/}
+                        {/*      First Name <b>*</b>*/}
+                        {/*    </label>*/}
+                        {/*    <input*/}
+                        {/*        value={name}*/}
+                        {/*        onChange={handleName}*/}
+                        {/*        type="text"*/}
+                        {/*        placeholder="Enter your first name"*/}
+                        {/*    />*/}
+                        {/*</span>*/}
 
                         <InputFormModal
                             title={'Last Name'}
@@ -172,13 +172,6 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
                         <PhoneValidation validPhoneNumber={validPhoneNumber}/>
 
-                        <InputFormModal
-                            title={'Age'}
-                            value={age}
-                            onChange={handleAge}
-                            type={'number'}
-                            placeholder={'18'}
-                        />
                         <InputFormModal
                             title={'Age'}
                             value={age}

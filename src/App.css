@@ -769,6 +769,36 @@ li {
     margin-bottom: 2rem;
 }
 
+.PhoneValidation {
+
+}
+
+.PhoneValidation h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #777777;
+    margin-bottom: 4px;
+}
+
+.PhoneValidation .PhoneInputInput {
+    padding: 14px 15px;
+    background-color: #dbdbdb;
+    color: #555;
+    font-size: 1.5rem;
+    font-weight: 500;
+    outline: none;
+    border: none;
+}
+
+.PhoneValidation h2 b {
+    color: #ff4d30;
+}
+
+.PhoneInputCountryIcon {
+    width: 20px !important;
+    height: 20px !important;
+}
+
 .input-time {
     text-align: center;
     width: 8rem;
@@ -1626,7 +1656,7 @@ li {
 }
 
 @media (max-width: 550px) {
-    .download__btn  a img {
+    .download__btn a img {
         width: 22rem;
     }
 }
