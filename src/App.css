@@ -799,6 +799,11 @@ li {
     height: 20px !important;
 }
 
+.PhoneInputCountryIcon--border {
+    background-color: white !important;
+    box-shadow: none !important;
+}
+
 .input-time {
     text-align: center;
     width: 8rem;

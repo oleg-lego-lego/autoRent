@@ -25,6 +25,8 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const [phone, setPhone] = useState("");
     const [age, setAge] = useState("");
 
+    const [error, setError] = useState('')
+
     const matchingCost = costCatDay.find(el => el.name === props.carType);
     const priceCar = matchingCost ? matchingCost.price : 0;
 
@@ -47,6 +49,12 @@ export const BookingModal = (props: BookingModalPropsType) => {
     };
 
     const orderCar = () => {
+        if (!name || !lastName || !phone || !age) {
+            setError('error: Not all fields are filled!')
+        } else {
+            setError('')
+        }
+
         const newRentCar: BookCarType = {
             carType: props.carType,
             pickTime: props.pickTime,
@@ -113,6 +121,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
             {/* personal info */}
             <div className="booking-modal__person-info">
                 <h4>Personal Information</h4>
+                <div>{error}</div>
                 <form className="info-form">
                     <div className="info-form__2col">
                         <InputFormModal
