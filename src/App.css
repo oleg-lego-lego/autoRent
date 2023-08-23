@@ -780,15 +780,19 @@ li {
     margin-bottom: 4px;
 }
 
-.PhoneValidation .PhoneInputInput {
+.PhoneInputInput {
     padding: 14px 15px;
     background-color: #dbdbdb;
     color: #555;
     font-size: 1.5rem;
     font-weight: 500;
     outline: none;
-    border: none;
+    border-color: white;
 }
+
+/*.error1 {*/
+/*    border: 2px solid red;*/
+/*}*/
 
 .PhoneValidation h2 b {
     color: #ff4d30;
@@ -871,7 +875,8 @@ li {
     font-size: 1.5rem;
     font-weight: 500;
     outline: none;
-    border: none;
+    /*border: none;*/
+    border-color: white;
 }
 
 .reserve-button {

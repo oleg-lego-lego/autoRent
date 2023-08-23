@@ -1,4 +1,6 @@
 import React, {ChangeEvent} from 'react';
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 type InputFormModalPropsType = {
     title: string
@@ -6,6 +8,8 @@ type InputFormModalPropsType = {
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
     type: string
     placeholder: string
+    inputError: (inputError: string) => {}
+    error: string
 }
 
 export const InputFormModal = (props: InputFormModalPropsType) => {
@@ -19,7 +23,10 @@ export const InputFormModal = (props: InputFormModalPropsType) => {
                 onChange={props.onChange}
                 type={props.type}
                 placeholder={props.placeholder}
+                style={props.inputError(props.value)}
+                // style={{borderColor: 'red'}}
             />
+            {props.error && <span>{props.error}</span>}
         </span>
     );
 };

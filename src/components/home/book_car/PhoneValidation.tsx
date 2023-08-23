@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PhoneInput from 'react-phone-number-input';
 import {parsePhoneNumberFromString, PhoneNumber} from 'libphonenumber-js';
 import 'react-phone-number-input/style.css';
 
 type PhoneValidationPropsType = {
-    validPhoneNumber: (phoneNumber: string) => void
+    validPhoneNumber: (phoneNumber: string, value: boolean) => void
 }
 
 
@@ -21,14 +21,23 @@ export const PhoneValidation = (props: PhoneValidationPropsType) => {
     const validatePhoneNumber = (value: string): boolean => {
         try {
             const phoneNumberInstance = parsePhoneNumberFromString(value) as PhoneNumber;
-
-            // Проверка на валидность номера и его длину
-            props.validPhoneNumber(value)
             return !!phoneNumberInstance && phoneNumberInstance.isValid();
         } catch (error) {
             return false;
         }
     };
+
+    // const inputError = (inputError: string) => {
+    //     return isValid && !inputError ? {border: '2px solid red'} : {};
+    // }
+    //
+    // const inputClass = isValid ? '' : 'error1';
+    // props.validPhoneNumber(phoneNumber, isValid)
+
+    useEffect(() => {
+        // Вызывается после завершения рендеринга компонента
+        props.validPhoneNumber(phoneNumber, isValid);
+    }, [phoneNumber, isValid]);
 
     return (
         <div className="PhoneValidation">
@@ -39,8 +48,9 @@ export const PhoneValidation = (props: PhoneValidationPropsType) => {
                 international
                 placeholder="Enter your phone number"
             />
-            {phoneNumber && !isValid && <p style={{color: 'red'}}>Неверный номер телефона</p>}
-            {phoneNumber && isValid && <p style={{color: 'green'}}>Верный номер телефона</p>}
+
+            {phoneNumber && !isValid && <p style={{color: 'red', fontSize: '16px'}}>error: wrong phone number</p>}
+            {phoneNumber && isValid && <p style={{color: 'green' , fontSize: '16px'}}>Valid phone number</p>}
         </div>
     );
 };
