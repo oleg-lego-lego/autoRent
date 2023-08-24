@@ -6,6 +6,7 @@ import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
 import {PhoneValidation} from "./PhoneValidation";
 import {InputFormModal} from "./InputFormModal";
 import {BookingModalTitle} from "./BookingModalTitle";
+import {BookingModalCarInfo} from "./BookingModalCarInfo";
 
 type BookingModalPropsType = {
     modal: boolean
@@ -86,36 +87,14 @@ export const BookingModal = (props: BookingModalPropsType) => {
     return (
         <div className={`booking-modal ${props.modal ? "active-modal" : ""}`}>
             <BookingModalTitle/>
-            <div className="booking-modal__car-info">
-                <div className="dates-div">
-                    <div className="booking-modal__car-info__dates">
-                        <h5>Rent a car for a date</h5>
-                        <span>
-                            <div>
-                                  <h6>Pick-Up Date</h6>
-                                  <p>{props.pickTime}</p>
-                            </div>
-                            </span>
-                    </div>
+            <BookingModalCarInfo
+                carType={props.carType}
+                priceCar={priceCar}
+                imgUrl={props.imgUrl}
+                pickTime={props.pickTime}
+                dropTime={props.dropTime}
+            />
 
-                    <div className="booking-modal__car-info__dates">
-                            <span>
-                                <div>
-                                    <h6>Drop-Off Date</h6>
-                                    <p>{props.dropTime}</p>
-                                </div>
-                            </span>
-                    </div>
-                </div>
-
-                <div className="booking-modal__car-info__model">
-                    <h5>
-                        <span>Car -</span> {props.carType} <span>- {priceCar}$ per day</span>
-                    </h5>
-                    {props.imgUrl && <img src={props.imgUrl} alt="car_img"/>}
-                </div>
-            </div>
-            {/* personal info */}
             <div className="booking-modal__person-info">
                 <h4>Personal Information</h4>
                 <form className="info-form">
