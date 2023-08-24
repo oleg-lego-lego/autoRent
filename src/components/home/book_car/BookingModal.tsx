@@ -264,7 +264,6 @@ export const BookingModal = (props: BookingModalPropsType) => {
                             inputError={inputError}
                             error={nameError}
                         />
-                        {/*{nameError && <span>{nameError}</span>}*/}
 
                         <InputFormModal
                             title={'Last Name'}
@@ -276,7 +275,6 @@ export const BookingModal = (props: BookingModalPropsType) => {
                             error={lastNameError}
                         />
 
-                        {/*{lastNameError && <span>{lastNameError}</span>}*/}
 
                         <PhoneValidation validPhoneNumber={validPhoneNumber}/>
 
@@ -289,7 +287,6 @@ export const BookingModal = (props: BookingModalPropsType) => {
                             inputError={inputError}
                             error={ageError}
                         />
-                        {/*{ageError && <span>{ageError}</span>}*/}
                     </div>
                 </form>
                 <div className="reserve-button">
