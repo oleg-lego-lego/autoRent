@@ -25,8 +25,6 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const [phone, setPhone] = useState("");
     const [age, setAge] = useState("");
 
-    const [error, setError] = useState('')
-
     const [nameError, setNameError] = useState('');
     const [lastNameError, setLastNameError] = useState('');
     const [phoneError, setPhoneError] = useState('');
@@ -35,28 +33,13 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const matchingCost = costCatDay.find(el => el.name === props.carType);
     const priceCar = matchingCost ? matchingCost.price : 0;
 
-    const handleName = (e: ChangeEvent<HTMLInputElement>) => {
-        // if (e.target.name === 'name') {
-            setName(e.target.value);
-        // }
-        // setName(e.target.value);
-    };
-
-    const handleLastName = (e: ChangeEvent<HTMLInputElement>) => {
-        // if (e.target.name === 'lastName') {
-            setLastName(e.target.value);
-        // }
-        // setLastName(e.target.value);
-    };
-
     const validPhoneNumber = (phoneNumber: string, value: boolean) => {
-        console.log(phoneNumber)
-        console.log(value)
-        // if(value) {
+        // if (value) {
+        //     setPhoneError('')
         //     setPhone(phoneNumber)
         // } else {
-        //     setError('asdasd')
-        //     setPhone('')
+        //     // setPhone('')
+        //     setPhoneError('asd')
         // }
         // if (e.target.name === 'phone') {
         //     setPhone(e.target.value);
@@ -64,11 +47,13 @@ export const BookingModal = (props: BookingModalPropsType) => {
         value ? setPhone(phoneNumber) : setPhone('')
     };
 
-    const handleAge = (e: ChangeEvent<HTMLInputElement>) => {
-        // if (e.target.name === 'age') {
-            setAge(e.target.value);
-        // }
-        // setAge(e.target.value)
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>,
+                               setValue: (value: string) => void,
+                               setError: (error: string) => void) => {
+        if (e) {
+            setValue(e.currentTarget.value);
+            setError('');
+        }
     };
 
     const orderCar = () => {
@@ -179,31 +164,17 @@ export const BookingModal = (props: BookingModalPropsType) => {
         }
     }
 
-    const handleSubmit = () => {
-        // Проверяем поля и устанавливаем ошибку, если что-то не введено
-
-
-
-
-
-        // if (!name || !lastName || !phone || !age) {
-        //     setError('error: Not all fields are filled!');
-        // } else if (Number(age) < 17) {
-        //     setError('error: you cannot book a car, you are under 18 years old!');
-        //     setAge('');
-        // } else if (!phone) {
-        //     setError('error: check phone number!');
-        // } else {
-        //     setError('');
-        //     dispatch(bookCarAdd(newRentCar));
-        // }
-    }
-
-    const inputError = (inputError: string) => {
-        return error && !inputError ? {borderColor: 'red'} : {}
-    }
-
-
+    // if (!name || !lastName || !phone || !age) {
+    //     setError('error: Not all fields are filled!');
+    // } else if (Number(age) < 17) {
+    //     setError('error: you cannot book a car, you are under 18 years old!');
+    //     setAge('');
+    // } else if (!phone) {
+    //     setError('error: check phone number!');
+    // } else {
+    //     setError('');
+    //     dispatch(bookCarAdd(newRentCar));
+    // }
     return (
         <div className={`booking-modal ${props.modal ? "active-modal" : ""}`}>
             <div className="booking-modal__title">
@@ -252,39 +223,40 @@ export const BookingModal = (props: BookingModalPropsType) => {
             {/* personal info */}
             <div className="booking-modal__person-info">
                 <h4>Personal Information</h4>
-                <div>{error}</div>
                 <form className="info-form">
                     <div className="info-form__2col">
                         <InputFormModal
                             title={'First Name'}
                             value={name}
-                            onChange={handleName}
+                            onChange={handleInputChange}
+                            setValue={setName}
+                            setError={setNameError}
                             type={'text'}
                             placeholder={'Enter your first name'}
-                            inputError={inputError}
                             error={nameError}
                         />
 
                         <InputFormModal
                             title={'Last Name'}
                             value={lastName}
-                            onChange={handleLastName}
+                            onChange={handleInputChange}
+                            setValue={setLastName}
+                            setError={setLastNameError}
                             type={'text'}
                             placeholder={'Enter your last name'}
-                            inputError={inputError}
                             error={lastNameError}
                         />
-
 
                         <PhoneValidation validPhoneNumber={validPhoneNumber} error={phoneError}/>
 
                         <InputFormModal
                             title={'Age'}
                             value={age}
-                            onChange={handleAge}
+                            onChange={handleInputChange}
+                            setValue={setAge}
+                            setError={setAgeError}
                             type={'number'}
                             placeholder={'18'}
-                            inputError={inputError}
                             error={ageError}
                         />
                     </div>

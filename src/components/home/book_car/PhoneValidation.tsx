@@ -43,8 +43,8 @@ export const PhoneValidation = (props: PhoneValidationPropsType) => {
             />
 
             {phoneNumber && !isValid && <p style={{color: 'red', fontSize: '14px'}}>error: wrong phone number</p>}
-            {phoneNumber && isValid && <p style={{color: 'green' , fontSize: '14px'}}>Valid phone number</p>}
-            {props.error && <span style={inputErrorText}>{props.error}</span>}
+            {phoneNumber && isValid && <p style={{color: 'green', fontSize: '14px'}}>Valid phone number</p>}
+            {props.error && !phoneNumber && <span style={inputErrorText}>{props.error}</span>}
         </div>
     );
 };
