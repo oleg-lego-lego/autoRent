@@ -34,16 +34,6 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const priceCar = matchingCost ? matchingCost.price : 0;
 
     const validPhoneNumber = (phoneNumber: string, value: boolean) => {
-        // if (value) {
-        //     setPhoneError('')
-        //     setPhone(phoneNumber)
-        // } else {
-        //     // setPhone('')
-        //     setPhoneError('asd')
-        // }
-        // if (e.target.name === 'phone') {
-        //     setPhone(e.target.value);
-        // }
         value ? setPhone(phoneNumber) : setPhone('')
     };
 
@@ -69,112 +59,29 @@ export const BookingModal = (props: BookingModalPropsType) => {
             id: v1(),
             price: priceCar
         }
-//         // Инициализация объекта ошибок
-//         const errors: any = {};
-//
-// // Проверка имени
-//         if (!name) {
-//             errors.name = 'Please enter your name';
-//         }
-//
-// // Проверка фамилии
-//         if (!lastName) {
-//             errors.lastName = 'Please enter your last name';
-//         }
-//
-// // Проверка номера телефона
-//         if (!phone) {
-//             errors.phone = 'Please enter your phone number';
-//         }
-//
-// // Проверка возраста
-//         if (!age) {
-//             errors.age = 'Please enter your age';
-//         } else if (Number(age) < 17) {
-//             errors.age = 'You cannot book a car, you are under 18 years old';
-//             setAge('');
-//         }
-//
-// // Установка состояния ошибок
-//         setError(Object.values(errors).join('\n'));
-//
-// // Если нет ошибок, отправить данные
-//         if (Object.keys(errors).length === 0) {
-//             setError('');
-//             dispatch(bookCarAdd(newRentCar));
-//         }
 
+        const errors = {
+            name: !name ? 'Please enter your name' : '',
+            lastName: !lastName ? 'Please enter your last name' : '',
+            phone: !phone ? 'Please enter your phone number' : '',
+            age: !age
+                ? 'Please enter your age'
+                : Number(age) < 17
+                    ? 'You cannot book a car, you are under 18 years old'
+                    : Number(age) > 80 ? 'You cannot book a car, you are over 80 years old'
+                        : ''
+        };
 
-        // setError('');
+        setNameError(errors.name);
+        setLastNameError(errors.lastName);
+        setPhoneError(errors.phone);
+        setAgeError(errors.age);
 
-        // Обновляем соответствующее состояние на основе значения в поле ввода
-        // if (e.target.name === 'name') {
-        //     setName(e.target.value);
-        // } else if (e.target.name === 'lastName') {
-        //     setLastName(e.target.value);
-        // } else if (e.target.name === 'phone') {
-        //     setPhone(e.target.value);
-        // } else if (e.target.name === 'age') {
-        //     setAge(e.target.value);
-        // }
-
-        // if (!name) {
-        //     setError('Please enter your name');
-        // } else if (!lastName) {
-        //     setError('Please enter your last name');
-        // } else if (!phone) {
-        //     setError('Please enter your phone number');
-        // } else if (!age) {
-        //     setError('Please enter your age');
-        // } else if (Number(age) < 17) {
-        //     setError('You cannot book a car, you are under 18 years old');
-        //     setAge('');
-        // } else {
-        //     setError('');
-        //     // Если ошибок нет, отправляем данные
-        //     dispatch(bookCarAdd(newRentCar));
-        // }
-
-        if (!name) {
-            setNameError('Please enter your name');
-        } else {
-            setNameError('');
-        }
-
-        if (!lastName) {
-            setLastNameError('Please enter your last name');
-        } else {
-            setLastNameError('');
-        }
-
-        if (!phone) {
-            setPhoneError('Please enter your phone number');
-        } else {
-            setPhoneError('');
-        }
-
-        if (!age) {
-            setAgeError('Please enter your age');
-        } else if (Number(age) < 17) {
-            setAgeError('You cannot book a car, you are under 18 years old');
-            setAge('');
-        } else {
-            setAgeError('');
+        if (Object.values(errors).every(error => error === '')) {
             dispatch(bookCarAdd(newRentCar));
         }
     }
 
-    // if (!name || !lastName || !phone || !age) {
-    //     setError('error: Not all fields are filled!');
-    // } else if (Number(age) < 17) {
-    //     setError('error: you cannot book a car, you are under 18 years old!');
-    //     setAge('');
-    // } else if (!phone) {
-    //     setError('error: check phone number!');
-    // } else {
-    //     setError('');
-    //     dispatch(bookCarAdd(newRentCar));
-    // }
     return (
         <div className={`booking-modal ${props.modal ? "active-modal" : ""}`}>
             <div className="booking-modal__title">
