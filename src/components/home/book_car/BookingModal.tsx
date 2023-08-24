@@ -5,6 +5,7 @@ import {v1} from "uuid";
 import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
 import {PhoneValidation} from "./PhoneValidation";
 import {InputFormModal} from "./InputFormModal";
+import {BookingModalTitle} from "./BookingModalTitle";
 
 type BookingModalPropsType = {
     modal: boolean
@@ -84,20 +85,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
     return (
         <div className={`booking-modal ${props.modal ? "active-modal" : ""}`}>
-            <div className="booking-modal__title">
-                <h2>Complete Reservation</h2>
-                {/*<i onClick={openModal} className="fa-solid fa-xmark"></i>*/}
-            </div>
-            <div className="booking-modal__message">
-                <h4>
-                    Upon completing this reservation enquiry, you will receive:
-                </h4>
-                <p>
-                    Your rental voucher to produce on arrival at the rental desk and a
-                    toll-free customer support number.
-                </p>
-            </div>
-            {/* car info */}
+            <BookingModalTitle/>
             <div className="booking-modal__car-info">
                 <div className="dates-div">
                     <div className="booking-modal__car-info__dates">
