@@ -276,7 +276,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
                         />
 
 
-                        <PhoneValidation validPhoneNumber={validPhoneNumber}/>
+                        <PhoneValidation validPhoneNumber={validPhoneNumber} error={phoneError}/>
 
                         <InputFormModal
                             title={'Age'}

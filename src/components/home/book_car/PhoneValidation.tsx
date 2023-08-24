@@ -5,8 +5,8 @@ import 'react-phone-number-input/style.css';
 
 type PhoneValidationPropsType = {
     validPhoneNumber: (phoneNumber: string, value: boolean) => void
+    error: string
 }
-
 
 export const PhoneValidation = (props: PhoneValidationPropsType) => {
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -14,7 +14,6 @@ export const PhoneValidation = (props: PhoneValidationPropsType) => {
 
     const handlePhoneNumberChange = (value: string) => {
         setPhoneNumber(value);
-        // Проверка на валидность номера телефона
         setIsValid(validatePhoneNumber(value));
     };
 
@@ -27,17 +26,11 @@ export const PhoneValidation = (props: PhoneValidationPropsType) => {
         }
     };
 
-    // const inputError = (inputError: string) => {
-    //     return isValid && !inputError ? {border: '2px solid red'} : {};
-    // }
-    //
-    // const inputClass = isValid ? '' : 'error1';
-    // props.validPhoneNumber(phoneNumber, isValid)
-
     useEffect(() => {
-        // Вызывается после завершения рендеринга компонента
         props.validPhoneNumber(phoneNumber, isValid);
-    }, [phoneNumber, isValid]);
+    }, [phoneNumber, isValid, props]);
+
+    const inputErrorText = props.error ? {fontSize: '1.4rem', color: 'red'} : {};
 
     return (
         <div className="PhoneValidation">
@@ -49,8 +42,9 @@ export const PhoneValidation = (props: PhoneValidationPropsType) => {
                 placeholder="Enter your phone number"
             />
 
-            {phoneNumber && !isValid && <p style={{color: 'red', fontSize: '16px'}}>error: wrong phone number</p>}
-            {phoneNumber && isValid && <p style={{color: 'green' , fontSize: '16px'}}>Valid phone number</p>}
+            {phoneNumber && !isValid && <p style={{color: 'red', fontSize: '14px'}}>error: wrong phone number</p>}
+            {phoneNumber && isValid && <p style={{color: 'green' , fontSize: '14px'}}>Valid phone number</p>}
+            {props.error && <span style={inputErrorText}>{props.error}</span>}
         </div>
     );
 };
