@@ -10,6 +10,8 @@ import {BookingModalCarInfo} from "./BookingModalCarInfo";
 
 type BookingModalPropsType = {
     modal: boolean
+    setModal: (valueModal: boolean) => void
+    setShowDoneMessage: (doneMessage: string) => void
     openModal: any
     pickTime: string
     dropTime: string
@@ -81,6 +83,8 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
         if (Object.values(errors).every(error => error === '')) {
             dispatch(bookCarAdd(newRentCar));
+            props.setModal(!props.modal)
+            props.setShowDoneMessage('The order has been placed correctly and is in your personal account.')
         }
     }
 

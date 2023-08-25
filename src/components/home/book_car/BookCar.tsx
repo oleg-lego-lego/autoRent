@@ -11,14 +11,14 @@ import {BoxFormTimeInput} from "./BoxFormTimeInput";
 export const BookCar = () => {
     const [modal, setModal] = useState(false); //  class - active-modal
 
-    // booking car
     const [carType, setCarType] = useState('');
     const [pickTime, setPickTime] = useState('');
     const [dropTime, setDropTime] = useState('');
     const [carImg, setCarImg] = useState('');
     const [error, setError] = useState('')
 
-    // open modal when all inputs are fulfilled
+    const [showDoneMessage, setShowDoneMessage] = useState('');
+
     const openModal = (e: React.MouseEvent) => {
         e.preventDefault();
         if (pickTime === "" || dropTime === "" || carType === "") {
@@ -30,7 +30,6 @@ export const BookCar = () => {
         }
     };
 
-    // disable page scroll when modal is displayed
     useEffect(() => {
         if (modal) {
             document.body.style.overflow = "hidden";
@@ -39,15 +38,6 @@ export const BookCar = () => {
         }
     }, [modal]);
 
-    // confirm modal booking
-    const confirmBooking = (e: React.MouseEvent) => {
-        // e.preventDefault();
-        // setModal(!modal);
-        // const doneMsg = document.querySelector(".booking-done");
-        // doneMsg.style.display = "flex";
-    };
-
-    // taking value of booking inputs
     const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
         setCarType(e.target.value);
         setCarImg(e.target.value);
@@ -74,7 +64,6 @@ export const BookCar = () => {
         }
     };
 
-    // based on value name show car img
     let imgUrl;
     switch (carImg) {
         case "Audi A1 S-Line":
@@ -99,42 +88,32 @@ export const BookCar = () => {
             imgUrl = "";
     }
 
-    // hide message
-    const hideMessage = () => {
-        const doneMsg = document.querySelector(".booking-done");
-        // doneMsg.style.display = "none";
-    };
-
     const inputError = (inputError: string) => {
-        return  error && !inputError ? {borderColor: 'red'} : {}
+        return error && !inputError ? {borderColor: 'red'} : {}
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShowDoneMessage('');
+        }, 8000);
+    }, [showDoneMessage]);
 
     return (
         <>
             <section id="booking-section" className="book-section">
-                <div
-                    onClick={openModal}
-                    className={`modal-overlay ${modal ? "active-modal" : ""}`}
-                />
+                <div className={`modal-overlay ${modal ? "active-modal" : ""}`}/>
                 <div className="container">
                     <div className="book-content">
                         <div className="book-content__box">
                             <h2>
                                 Book a car
                             </h2>
-                            <div style={!error ? {display: 'none'} : {display: ''}} className={'error-message'}>
+                            <div style={!error ? {display: 'none'} : {}} className={'error-message'}>
                                 {error}
                             </div>
-
-                            {/*<p className="error-message">*/}
-                            {/*    All fields required! <i className="fa-solid fa-xmark"></i>*/}
-                            {/*</p>*/}
-
-                            <p className="booking-done">
-                                Check your email to confirm an order.{" "}
-                                <i onClick={hideMessage} className="fa-solid fa-xmark"></i>
-                            </p>
-
+                            <div style={!showDoneMessage ? {display: 'none'} : {}} className={'done-message'}>
+                                {showDoneMessage}
+                            </div>
 
                             <form className="box-form">
                                 <div className="box-form__car-type">
@@ -167,10 +146,7 @@ export const BookCar = () => {
                                     inputError={inputError}
                                 />
 
-                                <button onClick={openModal}
-                                    // type="submit"
-                                        disabled={error !== ''}
-                                >
+                                <button onClick={openModal} disabled={error !== ''}>
                                     Search
                                 </button>
                             </form>
@@ -179,10 +155,11 @@ export const BookCar = () => {
                 </div>
             </section>
 
-            {/* modal ------------------------------------ */}
             <BookingModal
                 modal={modal}
+                setModal={setModal}
                 openModal={openModal}
+                setShowDoneMessage={setShowDoneMessage}
                 carType={carType}
                 pickTime={pickTime}
                 dropTime={dropTime}

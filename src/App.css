@@ -547,8 +547,16 @@ li {
     width: fit-content;
 }
 
-.error-message i {
-    cursor: pointer;
+.done-message{
+    background-color: #c3fabe;
+    border: 1px solid transparent;
+    border-radius: 0.8rem;
+    color: #2a6817;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    margin-top: -1rem;
+    padding: 1rem 1.4rem;
+    width: fit-content;
 }
 
 .booking-done {
