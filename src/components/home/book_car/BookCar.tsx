@@ -7,6 +7,7 @@ import CarMercedes from "../../../images/cars-big/benz.jpg";
 import CarPassat from "../../../images/cars-big/passatcc.jpg";
 import {BookingModal} from "./BookingModal";
 import {BoxFormTimeInput} from "./BoxFormTimeInput";
+import {BookShowMessage} from "./BookShowMessage";
 
 export const BookCar = () => {
     const [modal, setModal] = useState(false); //  class - active-modal
@@ -108,12 +109,8 @@ export const BookCar = () => {
                             <h2>
                                 Book a car
                             </h2>
-                            <div style={!error ? {display: 'none'} : {}} className={'error-message'}>
-                                {error}
-                            </div>
-                            <div style={!showDoneMessage ? {display: 'none'} : {}} className={'done-message'}>
-                                {showDoneMessage}
-                            </div>
+                            <BookShowMessage message={error} className={'error-message'}/>
+                            <BookShowMessage message={showDoneMessage} className={'done-message'}/>
 
                             <form className="box-form">
                                 <div className="box-form__car-type">
