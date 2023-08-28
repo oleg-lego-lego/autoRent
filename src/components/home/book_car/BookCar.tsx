@@ -9,6 +9,19 @@ import {BookingModal} from "./BookingModal";
 import {BoxFormTimeInput} from "./BoxFormTimeInput";
 import {BookShowMessage} from "./BookShowMessage";
 
+export enum MODELS_CAR {
+    AUDI_A1 = 'Audi A1 S-Line',
+    VOLKSWAGEN_GOLF = 'VW Golf 6',
+    TOYOTA_COROLLA = 'Toyota Corolla',
+    BMW_320 = 'BMW 320',
+    MERCEDES_GLK = 'Mercedes GLK',
+    VOLKSWAGEN_PASSAT_CC = 'VW Passat CC'
+}
+
+interface CarImages {
+    [key: string]: string;
+}
+
 export const BookCar = () => {
     const [modal, setModal] = useState(false); //  class - active-modal
 
@@ -65,29 +78,16 @@ export const BookCar = () => {
         }
     };
 
-    let imgUrl;
-    switch (carImg) {
-        case "Audi A1 S-Line":
-            imgUrl = CarAudi;
-            break;
-        case "VW Golf 6":
-            imgUrl = CarGolf;
-            break;
-        case "Toyota Corolla":
-            imgUrl = CarToyota;
-            break;
-        case "BMW 320":
-            imgUrl = CarBmw;
-            break;
-        case "Mercedes GLK":
-            imgUrl = CarMercedes;
-            break;
-        case "VW Passat CC":
-            imgUrl = CarPassat;
-            break;
-        default:
-            imgUrl = "";
-    }
+    const carImages: CarImages = {
+        [MODELS_CAR.AUDI_A1]: CarAudi,
+        [MODELS_CAR.VOLKSWAGEN_GOLF]: CarGolf,
+        [MODELS_CAR.TOYOTA_COROLLA]: CarToyota,
+        [MODELS_CAR.BMW_320]: CarBmw,
+        [MODELS_CAR.MERCEDES_GLK]: CarMercedes,
+        [MODELS_CAR.VOLKSWAGEN_PASSAT_CC]: CarPassat
+    };
+
+    const imgUrl: string = carImages[carImg];
 
     const inputError = (inputError: string) => {
         return error && !inputError ? {borderColor: 'red'} : {}
@@ -115,17 +115,18 @@ export const BookCar = () => {
                             <form className="box-form">
                                 <div className="box-form__car-type">
                                     <label>
-                                        Select Your Car Type
-                                        <b>*</b>
+                                        Select Your Car Type <b>*</b>
                                     </label>
                                     <select value={carType} onChange={handleCar} style={inputError(carType)}>
                                         <option>Select your car type</option>
-                                        <option value="Audi A1 S-Line">Audi A1 S-Line</option>
-                                        <option value="VW Golf 6">VW Golf 6</option>
-                                        <option value="Toyota Corolla">Toyota Corolla</option>
-                                        <option value="BMW 320">BMW 320</option>
-                                        <option value="Mercedes GLK">Mercedes-Benz GLK</option>
-                                        <option value="VW Passat CC">VW Passat CC</option>
+                                        <option value={MODELS_CAR.AUDI_A1}>{MODELS_CAR.AUDI_A1}</option>
+                                        <option value={MODELS_CAR.VOLKSWAGEN_GOLF}>{MODELS_CAR.VOLKSWAGEN_GOLF}</option>
+                                        <option value={MODELS_CAR.TOYOTA_COROLLA}>{MODELS_CAR.TOYOTA_COROLLA}</option>
+                                        <option value={MODELS_CAR.BMW_320}>{MODELS_CAR.BMW_320}</option>
+                                        <option value={MODELS_CAR.MERCEDES_GLK}>{MODELS_CAR.MERCEDES_GLK}</option>
+                                        <option
+                                            value={MODELS_CAR.VOLKSWAGEN_PASSAT_CC}>{MODELS_CAR.VOLKSWAGEN_PASSAT_CC}
+                                        </option>
                                     </select>
                                 </div>
 

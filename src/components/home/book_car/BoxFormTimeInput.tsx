@@ -11,8 +11,7 @@ export const BoxFormTimeInput = (props: BoxFormTimeInputPropsType) => {
     return (
         <div className="box-form__car-time">
             <label htmlFor="dropTime">
-                {props.title}
-                <b>*</b>
+                {props.title} <b>*</b>
             </label>
             <input
                 id={props.valueTime}
