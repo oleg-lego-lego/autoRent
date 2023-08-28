@@ -90,7 +90,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
     return (
         <div className={`booking-modal ${props.modal ? "active-modal" : ""}`}>
-            <BookingModalTitle/>
+            <BookingModalTitle setModal={props.setModal}/>
             <BookingModalCarInfo
                 carType={props.carType}
                 priceCar={priceCar}

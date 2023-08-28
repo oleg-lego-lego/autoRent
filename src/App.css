@@ -640,15 +640,21 @@ li {
     text-transform: uppercase;
 }
 
-.booking-modal__title i {
+.booking-modal__button {
     font-size: 2.5rem;
-    color: rgba(255, 255, 255, 0.919);
     cursor: pointer;
     transition: all 0.2s;
+    border: none;
+    background-color: transparent;
+    color: white;
 }
 
-.booking-modal__title i:hover {
-    color: white;
+.booking-modal__button:hover {
+    color: black;
+}
+
+.booking-modal__button:active {
+    color: #6c6767;
 }
 
 .booking-modal__message {

@@ -1,10 +1,19 @@
 import React from 'react';
 
-export const BookingModalTitle = () => {
+type BookingModalTitlePropsType = {
+    setModal: (valueModal: boolean) => void
+}
+
+export const BookingModalTitle = (props: BookingModalTitlePropsType) => {
+    const setModalHandler = () => {
+        props.setModal(false)
+    }
+
     return (
         <>
             <div className="booking-modal__title">
                 <h2>Complete Reservation</h2>
+                <button className="booking-modal__button" onClick={setModalHandler}>x</button>
             </div>
             <div className="booking-modal__message">
                 <h4>
