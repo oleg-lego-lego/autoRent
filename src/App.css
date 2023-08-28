@@ -640,6 +640,13 @@ li {
     text-transform: uppercase;
 }
 
+
+@media (max-width: 400px) {
+    .booking-modal__title h2{
+        width: 200px;
+    }
+}
+
 .booking-modal__button {
     font-size: 2.5rem;
     cursor: pointer;
