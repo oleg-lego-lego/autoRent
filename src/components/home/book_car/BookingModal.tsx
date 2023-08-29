@@ -16,6 +16,9 @@ type BookingModalPropsType = {
     pickTime: string
     dropTime: string
     carType: string
+    setCarType: (value: string) => void
+    setPickTime: (value: string) => void
+    setDropTime: (value: string) => void
     imgUrl: string
     carImg: string
 }
@@ -34,20 +37,23 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const [phoneError, setPhoneError] = useState('');
     const [ageError, setAgeError] = useState('');
 
+    const [phoneDel, setPhoneDel] = useState(false)
+
     const matchingCost = costCatDay.find(el => el.name === props.carType);
     const priceCar = matchingCost ? matchingCost.price : 0;
 
     const validPhoneNumber = (phoneNumber: string, value: boolean) => {
         value ? setPhone(phoneNumber) : setPhone('')
+        console.log(value)
+        console.log(phoneNumber)
+        console.log(phone)
     };
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>,
                                setValue: (value: string) => void,
                                setError: (error: string) => void) => {
-        if (e) {
             setValue(e.currentTarget.value);
             setError('');
-        }
     };
 
     const orderCar = () => {
@@ -85,6 +91,15 @@ export const BookingModal = (props: BookingModalPropsType) => {
             dispatch(bookCarAdd(newRentCar));
             props.setModal(!props.modal)
             props.setShowDoneMessage('The order has been placed correctly and is in your personal account.')
+            props.setCarType('')
+            props.setPickTime('')
+            props.setDropTime('')
+            setName('')
+            setLastName('')
+            // setPhone('')
+            setAge('')
+            // validPhoneNumber('', false)
+            setPhoneDel(true)
         }
     }
 
@@ -125,7 +140,13 @@ export const BookingModal = (props: BookingModalPropsType) => {
                             error={lastNameError}
                         />
 
-                        <PhoneValidation validPhoneNumber={validPhoneNumber} error={phoneError}/>
+                        <PhoneValidation
+                            validPhoneNumber={validPhoneNumber}
+                            error={phoneError}
+                            phone={phone}
+                            setPhone={setPhone}
+                            phoneDel={phoneDel}
+                        />
 
                         <InputFormModal
                             title={'Age'}

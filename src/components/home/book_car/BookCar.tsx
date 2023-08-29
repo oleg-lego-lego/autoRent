@@ -161,6 +161,9 @@ export const BookCar = () => {
                 carType={carType}
                 pickTime={pickTime}
                 dropTime={dropTime}
+                setCarType={setCarType}
+                setPickTime={setPickTime}
+                setDropTime={setDropTime}
                 imgUrl={imgUrl}
                 carImg={carImg}
             />
