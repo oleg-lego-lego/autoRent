@@ -5,16 +5,17 @@ import {ContactUs} from "../components/ContactUs";
 
 export const Contact = () => {
     return (
-        <section>
+        <>
             <HeroPages name={'Contact'}/>
             <div className="container">
                 <div className="contact__information">
                     <div className="contact__text">
-                        <h2>Need additional information?</h2>
+                        <h2>Would you like more information?</h2>
                         <p>
-                            A multifaceted professional skilled in multiple fields of
-                            research, development as well as a learning specialist. Over 15
-                            years of experience.
+                            If you'd like to stay updated with more information about us, feel free to get in touch, and
+                            we'll keep you informed with the latest updates about our vehicles and services. Your
+                            satisfaction is our priority, and we're here to ensure you have all the details you need for
+                            a great experience. Don't hesitate to reach out, and we'll be happy to assist you.
                         </p>
                         <ContactUs title={ToContactUs.TELEPHONE} href={'tel:' + ToContactUs.TELEPHONE}/>
                         <ContactUs title={'email: ' + ToContactUs.EMAIL} href={'mailto:' + ToContactUs.EMAIL}/>
@@ -43,6 +44,6 @@ export const Contact = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </>
     );
 };
