@@ -1,14 +1,16 @@
 import React from 'react';
+import {useAppSelector} from "../../../hooks/redux";
 
 type BookingModalCarInfoPropsType = {
-    pickTime: string
-    dropTime: string
-    carType: string
     imgUrl: string
     priceCar: number
 }
 
 export const BookingModalCarInfo = (props: BookingModalCarInfoPropsType) => {
+    const carType = useAppSelector(state => state.bookCar.carType)
+    const pickTime = useAppSelector(state => state.bookCar.pickTime)
+    const dropTime = useAppSelector(state => state.bookCar.dropTime)
+
     return (
         <div className="booking-modal__car-info">
             <div className="dates-div">
@@ -17,7 +19,7 @@ export const BookingModalCarInfo = (props: BookingModalCarInfoPropsType) => {
                     <span>
                         <div>
                             <h6>Pick-Up Date</h6>
-                            <p>{props.pickTime}</p>
+                            <p>{pickTime}</p>
                         </div>
                     </span>
                 </div>
@@ -26,7 +28,7 @@ export const BookingModalCarInfo = (props: BookingModalCarInfoPropsType) => {
                     <span>
                         <div>
                             <h6>Drop-Off Date</h6>
-                            <p>{props.dropTime}</p>
+                            <p>{dropTime}</p>
                         </div>
                     </span>
                 </div>
@@ -34,7 +36,7 @@ export const BookingModalCarInfo = (props: BookingModalCarInfoPropsType) => {
 
             <div className="booking-modal__car-info__model">
                 <h5>
-                    <span>Car -</span> {props.carType} <span>- {props.priceCar}$ per day</span>
+                    <span>Car -</span> {carType} <span>- {props.priceCar}$ per day</span>
                 </h5>
                 {props.imgUrl && <img src={props.imgUrl} alt="car_img"/>}
             </div>

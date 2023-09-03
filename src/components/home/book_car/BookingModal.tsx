@@ -2,14 +2,21 @@ import React, {ChangeEvent, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {BookCarType} from "../../../app/reducer/bookCar";
 import {v1} from "uuid";
-import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
+import {
+    bookCarAdd,
+    setCarType,
+    setDropTime,
+    setModal,
+    setPickTime,
+    setShowDoneMessage
+} from "../../../app/reducer/bookCar-reducer";
 import {PhoneValidation} from "./PhoneValidation";
 import {InputFormModal} from "./InputFormModal";
 import {BookingModalTitle} from "./BookingModalTitle";
 import {BookingModalCarInfo} from "./BookingModalCarInfo";
 
 type BookingModalPropsType = {
-    modal: boolean
+    modal: any
     setModal: (valueModal: boolean) => void
     setShowDoneMessage: (doneMessage: string) => void
     openModal: any
@@ -27,6 +34,13 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const dispatch = useAppDispatch()
     const costCatDay = useAppSelector(state => state.carModels.items)
 
+    const modal = useAppSelector(state => state.bookCar.modal)
+
+    const carType = useAppSelector(state => state.bookCar.carType)
+    const pickTime = useAppSelector(state => state.bookCar.pickTime)
+    const dropTime = useAppSelector(state => state.bookCar.dropTime)
+    const carImg = useAppSelector(state => state.bookCar.carImg)
+
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [phone, setPhone] = useState("");
@@ -39,8 +53,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
     const [isValid, setIsValid] = useState(false);
 
-
-    const matchingCost = costCatDay.find(el => el.name === props.carType);
+    const matchingCost = costCatDay.find(el => el.name === carType);
     const priceCar = matchingCost ? matchingCost.price : 0;
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>,
@@ -52,10 +65,10 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
     const orderCar = () => {
         const newRentCar: BookCarType = {
-            carType: props.carType,
-            pickTime: props.pickTime,
-            dropTime: props.dropTime,
-            carImg: props.carImg,
+            carType,
+            pickTime,
+            dropTime,
+            carImg,
             name,
             lastName,
             phone,
@@ -87,11 +100,11 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
         if (Object.values(errors).every(error => error === '')) {
             dispatch(bookCarAdd(newRentCar));
-            props.setModal(!props.modal)
-            props.setShowDoneMessage('The order has been placed correctly and is in your personal account.')
-            props.setCarType('')
-            props.setPickTime('')
-            props.setDropTime('')
+            dispatch(setModal(!modal))
+            dispatch(setShowDoneMessage('The order has been placed correctly and is in your personal account.'))
+            dispatch(setCarType(''))
+            dispatch(setPickTime(''))
+            dispatch(setDropTime(''))
             setName('')
             setLastName('')
             setPhone('')
@@ -100,15 +113,9 @@ export const BookingModal = (props: BookingModalPropsType) => {
     }
 
     return (
-        <div className={`booking-modal ${props.modal ? "active-modal" : ""}`}>
-            <BookingModalTitle setModal={props.setModal}/>
-            <BookingModalCarInfo
-                carType={props.carType}
-                priceCar={priceCar}
-                imgUrl={props.imgUrl}
-                pickTime={props.pickTime}
-                dropTime={props.dropTime}
-            />
+        <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
+            <BookingModalTitle/>
+            <BookingModalCarInfo priceCar={priceCar} imgUrl={props.imgUrl}/>
 
             <div className="booking-modal__person-info">
                 <h4>Personal Information</h4>
