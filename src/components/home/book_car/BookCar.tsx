@@ -100,58 +100,56 @@ export const BookCar = () => {
     }, [showDoneMessage]);
 
     return (
-        <>
-            <section id="booking-section" className="book-section">
-                <div className={`modal-overlay ${modal ? "active-modal" : ""}`}/>
-                <div className="container">
-                    <div className="book-content">
-                        <div className="book-content__box">
-                            <h2>
-                                Book a car
-                            </h2>
-                            <BookShowMessage message={error} className={'error-message'}/>
-                            <BookShowMessage message={showDoneMessage} className={'done-message'}/>
+        <section id="booking-section" className="book-section">
+            <div className={`modal-overlay ${modal ? "active-modal" : ""}`}/>
+            <div className="container">
+                <div className="book-content">
+                    <div className="book-content__box">
+                        <h2>
+                            Book a car
+                        </h2>
+                        <BookShowMessage message={error} className={'error-message'}/>
+                        <BookShowMessage message={showDoneMessage} className={'done-message'}/>
 
-                            <form className="box-form">
-                                <div className="box-form__car-type">
-                                    <label>
-                                        Select Your Car Type <b>*</b>
-                                    </label>
-                                    <select value={carType} onChange={handleCar} style={inputError(carType)}>
-                                        <option>Select your car type</option>
-                                        <option value={MODELS_CAR.AUDI_A1}>{MODELS_CAR.AUDI_A1}</option>
-                                        <option value={MODELS_CAR.VOLKSWAGEN_GOLF}>{MODELS_CAR.VOLKSWAGEN_GOLF}</option>
-                                        <option value={MODELS_CAR.TOYOTA_COROLLA}>{MODELS_CAR.TOYOTA_COROLLA}</option>
-                                        <option value={MODELS_CAR.BMW_320}>{MODELS_CAR.BMW_320}</option>
-                                        <option value={MODELS_CAR.MERCEDES_GLK}>{MODELS_CAR.MERCEDES_GLK}</option>
-                                        <option
-                                            value={MODELS_CAR.VOLKSWAGEN_PASSAT_CC}>{MODELS_CAR.VOLKSWAGEN_PASSAT_CC}
-                                        </option>
-                                    </select>
-                                </div>
+                        <form className="box-form">
+                            <div className="box-form__car-type">
+                                <label>
+                                    Select Your Car Type <b>*</b>
+                                </label>
+                                <select value={carType} onChange={handleCar} style={inputError(carType)}>
+                                    <option>Select your car type</option>
+                                    <option value={MODELS_CAR.AUDI_A1}>{MODELS_CAR.AUDI_A1}</option>
+                                    <option value={MODELS_CAR.VOLKSWAGEN_GOLF}>{MODELS_CAR.VOLKSWAGEN_GOLF}</option>
+                                    <option value={MODELS_CAR.TOYOTA_COROLLA}>{MODELS_CAR.TOYOTA_COROLLA}</option>
+                                    <option value={MODELS_CAR.BMW_320}>{MODELS_CAR.BMW_320}</option>
+                                    <option value={MODELS_CAR.MERCEDES_GLK}>{MODELS_CAR.MERCEDES_GLK}</option>
+                                    <option
+                                        value={MODELS_CAR.VOLKSWAGEN_PASSAT_CC}>{MODELS_CAR.VOLKSWAGEN_PASSAT_CC}
+                                    </option>
+                                </select>
+                            </div>
 
-                                <BoxFormTimeInput
-                                    title={'Pick-up'}
-                                    valueTime={pickTime}
-                                    handleTime={handlePickTime}
-                                    inputError={inputError}
-                                />
+                            <BoxFormTimeInput
+                                title={'Pick-up'}
+                                valueTime={pickTime}
+                                handleTime={handlePickTime}
+                                inputError={inputError}
+                            />
 
-                                <BoxFormTimeInput
-                                    title={'Drop-of'}
-                                    valueTime={dropTime}
-                                    handleTime={handleDropTime}
-                                    inputError={inputError}
-                                />
+                            <BoxFormTimeInput
+                                title={'Drop-of'}
+                                valueTime={dropTime}
+                                handleTime={handleDropTime}
+                                inputError={inputError}
+                            />
 
-                                <button onClick={openModal} disabled={error !== ''}>
-                                    Search
-                                </button>
-                            </form>
-                        </div>
+                            <button onClick={openModal} disabled={error !== ''}>
+                                Search
+                            </button>
+                        </form>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <BookingModal
                 modal={modal}
@@ -167,6 +165,6 @@ export const BookCar = () => {
                 imgUrl={imgUrl}
                 carImg={carImg}
             />
-        </>
+        </section>
     );
 };
