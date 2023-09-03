@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect} from 'react';
 import CarAudi from "../../../images/cars-big/audia1.jpg";
 import CarGolf from "../../../images/cars-big/golf6.jpg";
 import CarToyota from "../../../images/cars-big/toyota-corolla.jpg";
@@ -8,6 +8,16 @@ import CarPassat from "../../../images/cars-big/passatcc.jpg";
 import {BookingModal} from "./BookingModal";
 import {BoxFormTimeInput} from "./BoxFormTimeInput";
 import {BookShowMessage} from "./BookShowMessage";
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
+import {
+    setCarImg,
+    setCarType,
+    setDropTime,
+    setError,
+    setModal,
+    setPickTime,
+    setShowDoneMessage
+} from "../../../app/reducer/bookCar-reducer";
 
 export enum MODELS_CAR {
     AUDI_A1 = 'Audi A1 S-Line',
@@ -23,22 +33,25 @@ interface CarImages {
 }
 
 export const BookCar = () => {
-    const [modal, setModal] = useState(false); //  class - active-modal
+    const dispatch = useAppDispatch()
 
-    const [carType, setCarType] = useState('');
-    const [pickTime, setPickTime] = useState('');
-    const [dropTime, setDropTime] = useState('');
-    const [carImg, setCarImg] = useState('');
-    const [error, setError] = useState('')
+    const modal = useAppSelector(state => state.bookCar.modal)
 
-    const [showDoneMessage, setShowDoneMessage] = useState('');
+    const carType = useAppSelector(state => state.bookCar.carType)
+    const pickTime = useAppSelector(state => state.bookCar.pickTime)
+    const dropTime = useAppSelector(state => state.bookCar.dropTime)
+    const carImg = useAppSelector(state => state.bookCar.carImg)
+
+    const error = useAppSelector(state => state.bookCar.error)
+
+    const showDoneMessage = useAppSelector(state => state.bookCar.showDoneMessage)
 
     const openModal = (e: React.MouseEvent) => {
         e.preventDefault();
         if (pickTime === "" || dropTime === "" || carType === "") {
-            setError('error: Not all fields are filled!')
+            dispatch(setError('error: Not all fields are filled!'))
         } else {
-            setModal(!modal);
+            dispatch(setModal(!modal))
             const modalDiv = document.querySelector(".booking-modal");
             modalDiv && modalDiv.scroll(0, 0);
         }
@@ -53,28 +66,28 @@ export const BookCar = () => {
     }, [modal]);
 
     const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
-        setCarType(e.target.value);
-        setCarImg(e.target.value);
-        setError('')
+        dispatch(setCarType(e.target.value))
+        dispatch(setCarImg(e.target.value))
+        dispatch(setError(''))
     };
 
     const handlePickTime = (e: ChangeEvent<HTMLInputElement>) => {
         if (!dropTime || dropTime >= e.target.value || dropTime === e.target.value) {
-            setPickTime(e.target.value)
-            setError('')
+            dispatch(setPickTime(e.target.value))
+            dispatch(setError(''))
         } else {
-            setError('error: wrong rental date')
-            setPickTime('')
+            dispatch(setPickTime(''))
+            dispatch(setError('error: wrong rental date'))
         }
     };
 
     const handleDropTime = (e: ChangeEvent<HTMLInputElement>) => {
         if (pickTime <= e.target.value || pickTime === e.target.value) {
-            setDropTime(e.target.value);
-            setError('')
+            dispatch(setDropTime(e.target.value))
+            dispatch(setError(''))
         } else {
-            setError('error: wrong rental date')
-            setDropTime('')
+            dispatch(setDropTime(''))
+            dispatch(setError('error: wrong rental date'))
         }
     };
 
@@ -95,9 +108,9 @@ export const BookCar = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            setShowDoneMessage('');
+            dispatch(setShowDoneMessage(''))
         }, 8000);
-    }, [showDoneMessage]);
+    }, [dispatch, showDoneMessage]);
 
     return (
         <section id="booking-section" className="book-section">
@@ -105,9 +118,7 @@ export const BookCar = () => {
             <div className="container">
                 <div className="book-content">
                     <div className="book-content__box">
-                        <h2>
-                            Book a car
-                        </h2>
+                        <h2>Book a car</h2>
                         <BookShowMessage message={error} className={'error-message'}/>
                         <BookShowMessage message={showDoneMessage} className={'done-message'}/>
 
