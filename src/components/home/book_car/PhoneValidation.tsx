@@ -2,21 +2,21 @@ import React from 'react';
 import PhoneInput from 'react-phone-number-input';
 import {parsePhoneNumberFromString, PhoneNumber} from 'libphonenumber-js';
 import 'react-phone-number-input/style.css';
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
+import {setIsValid, setPhone} from "../../../app/reducer/bookCar-reducer";
 
 
-type PhoneValidationPropsType = {
-    error: string;
-    phone: string;
-    setPhone: (valueNumber: string) => void;
-    isValid: boolean
-    setIsValid: (validValue: boolean) => void;
-};
+export const PhoneValidation = () => {
+    const dispatch = useAppDispatch()
 
-export const PhoneValidation = (props: PhoneValidationPropsType) => {
+    const phone = useAppSelector(state => state.bookCar.phone)
+    const isValid = useAppSelector(state => state.bookCar.isValid)
+    const phoneError = useAppSelector(state => state.bookCar.phoneError)
+
     const handlePhoneNumberChange = (value: string) => {
-        props.setPhone(value);
+        dispatch(setPhone(value))
         const valid = validatePhoneNumber(value);
-        props.setIsValid(valid);
+        dispatch(setIsValid(valid))
     };
 
     const validatePhoneNumber = (value: string): boolean => {
@@ -28,23 +28,21 @@ export const PhoneValidation = (props: PhoneValidationPropsType) => {
         }
     };
 
-    const inputErrorText = props.error ? {fontSize: '1.4rem', color: 'red'} : {};
+    const inputErrorText = phoneError ? {fontSize: '1.4rem', color: 'red'} : {};
 
     return (
         <div className="PhoneValidation">
             <h2>Phone Number <b>*</b></h2>
             <PhoneInput
-                value={props.phone}
+                value={phone}
                 onChange={handlePhoneNumberChange}
                 international
                 placeholder="Enter your phone number"
             />
 
-            {props.phone && !props.isValid && <p style={{color: 'red', fontSize: '14px'}}>error: wrong phone number</p>}
-            {props.phone && props.isValid && <p style={{color: 'green', fontSize: '14px'}}>Valid phone number</p>}
-            {props.error && !props.phone && <span style={inputErrorText}>{props.error}</span>}
+            {phone && !isValid && <p style={{color: 'red', fontSize: '14px'}}>error: wrong phone number</p>}
+            {phone && isValid && <p style={{color: 'green', fontSize: '14px'}}>Valid phone number</p>}
+            {phoneError && !phone && <span style={inputErrorText}>{phoneError}</span>}
         </div>
     );
 };
-
-

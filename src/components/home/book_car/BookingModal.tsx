@@ -1,12 +1,20 @@
-import React, {ChangeEvent, useState} from 'react';
+import React from 'react';
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {BookCarType} from "../../../app/reducer/bookCar";
 import {v1} from "uuid";
 import {
     bookCarAdd,
+    setAge,
+    setAgeError,
     setCarType,
     setDropTime,
+    setLastName,
+    setLastNameError,
     setModal,
+    setName,
+    setNameError,
+    setPhone,
+    setPhoneError,
     setPickTime,
     setShowDoneMessage
 } from "../../../app/reducer/bookCar-reducer";
@@ -16,18 +24,7 @@ import {BookingModalTitle} from "./BookingModalTitle";
 import {BookingModalCarInfo} from "./BookingModalCarInfo";
 
 type BookingModalPropsType = {
-    modal: any
-    setModal: (valueModal: boolean) => void
-    setShowDoneMessage: (doneMessage: string) => void
-    openModal: any
-    pickTime: string
-    dropTime: string
-    carType: string
-    setCarType: (value: string) => void
-    setPickTime: (value: string) => void
-    setDropTime: (value: string) => void
     imgUrl: string
-    carImg: string
 }
 
 export const BookingModal = (props: BookingModalPropsType) => {
@@ -41,26 +38,37 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const dropTime = useAppSelector(state => state.bookCar.dropTime)
     const carImg = useAppSelector(state => state.bookCar.carImg)
 
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [age, setAge] = useState("");
+    const name = useAppSelector(state => state.bookCar.name)
+    const lastName = useAppSelector(state => state.bookCar.lastName)
+    const phone = useAppSelector(state => state.bookCar.phone)
+    const age = useAppSelector(state => state.bookCar.age)
 
-    const [nameError, setNameError] = useState('');
-    const [lastNameError, setLastNameError] = useState('');
-    const [phoneError, setPhoneError] = useState('');
-    const [ageError, setAgeError] = useState('');
+    const nameError = useAppSelector(state => state.bookCar.nameError)
+    const lastNameError = useAppSelector(state => state.bookCar.lastNameError)
+    const ageError = useAppSelector(state => state.bookCar.ageError)
 
-    const [isValid, setIsValid] = useState(false);
+    const isValid = useAppSelector(state => state.bookCar.isValid)
 
     const matchingCost = costCatDay.find(el => el.name === carType);
     const priceCar = matchingCost ? matchingCost.price : 0;
 
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>,
-                               setValue: (value: string) => void,
-                               setError: (error: string) => void) => {
-        setValue(e.currentTarget.value);
-        setError('');
+    const handleChange = (nameInput: string, value: string,) => {
+        switch (nameInput) {
+            case 'First Name':
+                dispatch(setName(value));
+                dispatch(setNameError(''));
+                break;
+            case 'Last Name':
+                dispatch(setLastName(value));
+                dispatch(setLastNameError(''));
+                break;
+            case 'Age':
+                dispatch(setAge(value));
+                dispatch(setAgeError(''));
+                break;
+            default:
+                break;
+        }
     };
 
     const orderCar = () => {
@@ -93,10 +101,10 @@ export const BookingModal = (props: BookingModalPropsType) => {
                         : ''
         };
 
-        setNameError(errors.name);
-        setLastNameError(errors.lastName);
-        setPhoneError(errors.phone);
-        setAgeError(errors.age);
+        dispatch(setNameError(errors.name))
+        dispatch(setLastNameError(errors.lastName))
+        dispatch(setPhoneError(errors.phone))
+        dispatch(setAgeError(errors.age))
 
         if (Object.values(errors).every(error => error === '')) {
             dispatch(bookCarAdd(newRentCar));
@@ -105,10 +113,10 @@ export const BookingModal = (props: BookingModalPropsType) => {
             dispatch(setCarType(''))
             dispatch(setPickTime(''))
             dispatch(setDropTime(''))
-            setName('')
-            setLastName('')
-            setPhone('')
-            setAge('')
+            dispatch(setName(''))
+            dispatch(setLastName(''))
+            dispatch(setPhone(''))
+            dispatch(setAge(''))
         }
     }
 
@@ -124,7 +132,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
                         <InputFormModal
                             title={'First Name'}
                             value={name}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
                             setValue={setName}
                             setError={setNameError}
                             type={'text'}
@@ -135,7 +143,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
                         <InputFormModal
                             title={'Last Name'}
                             value={lastName}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
                             setValue={setLastName}
                             setError={setLastNameError}
                             type={'text'}
@@ -143,18 +151,12 @@ export const BookingModal = (props: BookingModalPropsType) => {
                             error={lastNameError}
                         />
 
-                        <PhoneValidation
-                            error={phoneError}
-                            phone={phone}
-                            setPhone={setPhone}
-                            isValid={isValid}
-                            setIsValid={setIsValid}
-                        />
+                        <PhoneValidation/>
 
                         <InputFormModal
                             title={'Age'}
                             value={age}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
                             setValue={setAge}
                             setError={setAgeError}
                             type={'number'}

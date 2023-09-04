@@ -48,7 +48,7 @@ export const BookCar = () => {
 
     const openModal = (e: React.MouseEvent) => {
         e.preventDefault();
-        if (pickTime === "" || dropTime === "" || carType === "") {
+        if (!pickTime || !dropTime || !carType) {
             dispatch(setError('error: Not all fields are filled!'))
         } else {
             dispatch(setModal(!modal))
@@ -162,20 +162,7 @@ export const BookCar = () => {
                 </div>
             </div>
 
-            <BookingModal
-                modal={modal}
-                setModal={setModal}
-                openModal={openModal}
-                setShowDoneMessage={setShowDoneMessage}
-                carType={carType}
-                pickTime={pickTime}
-                dropTime={dropTime}
-                setCarType={setCarType}
-                setPickTime={setPickTime}
-                setDropTime={setDropTime}
-                imgUrl={imgUrl}
-                carImg={carImg}
-            />
+            <BookingModal imgUrl={imgUrl}/>
         </section>
     );
 };

@@ -3,7 +3,7 @@ import React, {ChangeEvent} from 'react';
 type InputFormModalPropsType = {
     title: string
     value: string
-    onChange: (e: ChangeEvent<HTMLInputElement>, setValue: (value: string) => void, setError: (error: string) => void) => void
+    onChange: (nameInput: string, value: string) => void
     setValue: (value: string) => void
     setError: (error: string) => void
     type: string
@@ -16,7 +16,7 @@ export const InputFormModal = (props: InputFormModalPropsType) => {
     const inputError = props.error ? {border: '1.5px solid red'} : {}
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        props.onChange(e, props.setValue, props.setError);
+        props.onChange(props.title, e.currentTarget.value);
     };
 
     return (
