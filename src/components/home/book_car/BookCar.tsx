@@ -115,9 +115,13 @@ export const BookCar = () => {
         }, 8000);
     }, [dispatch, showDoneMessage]);
 
+    const modalClose = () => {
+        dispatch(setModal(!modal))
+    }
+
     return (
         <section id="booking-section" className="book-section">
-            <div className={`modal-overlay ${modal ? "active-modal" : ""}`}/>
+            <div className={`modal-overlay ${modal ? "active-modal" : ""}`} onClick={modalClose}/>
             <div className="container">
                 <div className="book-content">
                     <div className="book-content__box">
