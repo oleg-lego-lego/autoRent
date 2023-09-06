@@ -3,15 +3,15 @@ import PhoneInput from 'react-phone-number-input';
 import {parsePhoneNumberFromString, PhoneNumber} from 'libphonenumber-js';
 import 'react-phone-number-input/style.css';
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {setIsValid, setPhone} from "../../../app/reducer/bookCar-reducer";
+import {setIsValid, setPhone} from "../../../app/reducer/bookCarInputValue-reducer";
 
 
 export const PhoneValidation = () => {
     const dispatch = useAppDispatch()
 
-    const phone = useAppSelector(state => state.bookCar.phone)
-    const isValid = useAppSelector(state => state.bookCar.isValid)
-    const phoneError = useAppSelector(state => state.bookCar.phoneError)
+    const phone = useAppSelector(state => state.bookCarInputValue.phone)
+    const isValid = useAppSelector(state => state.bookCarInputValue.isValid)
+    const phoneError = useAppSelector(state => state.bookCarInputValue.phoneError)
 
     const handlePhoneNumberChange = (value: string) => {
         dispatch(setPhone(value))

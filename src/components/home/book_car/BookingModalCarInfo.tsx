@@ -7,9 +7,9 @@ type BookingModalCarInfoPropsType = {
 }
 
 export const BookingModalCarInfo = (props: BookingModalCarInfoPropsType) => {
-    const carType = useAppSelector(state => state.bookCar.carType)
-    const pickTime = useAppSelector(state => state.bookCar.pickTime)
-    const dropTime = useAppSelector(state => state.bookCar.dropTime)
+    const carType = useAppSelector(state => state.bookCarInputValue.carType)
+    const pickTime = useAppSelector(state => state.bookCarInputValue.pickTime)
+    const dropTime = useAppSelector(state => state.bookCarInputValue.dropTime)
 
     return (
         <div className="booking-modal__car-info">

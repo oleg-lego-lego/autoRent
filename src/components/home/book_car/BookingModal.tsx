@@ -2,26 +2,19 @@ import React from 'react';
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {BookCarType} from "../../../app/reducer/bookCar";
 import {v1} from "uuid";
-import {
-    bookCarAdd,
-    setAge,
-    setAgeError,
-    setCarType,
-    setDropTime,
-    setLastName,
-    setLastNameError,
-    setModal,
-    setName,
-    setNameError,
-    setPhone,
-    setPhoneError,
-    setPickTime,
-    setShowDoneMessage
-} from "../../../app/reducer/bookCar-reducer";
 import {PhoneValidation} from "./PhoneValidation";
 import {InputFormModal} from "./InputFormModal";
 import {BookingModalTitle} from "./BookingModalTitle";
 import {BookingModalCarInfo} from "./BookingModalCarInfo";
+import {
+    setAge,
+    setAgeError, setCarType, setDropTime, setLastName, setLastNameError, setModal,
+    setName,
+    setNameError, setPhone,
+    setPhoneError, setPickTime,
+    setShowDoneMessage
+} from "../../../app/reducer/bookCarInputValue-reducer";
+import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
 
 type BookingModalPropsType = {
     imgUrl: string
@@ -31,23 +24,23 @@ export const BookingModal = (props: BookingModalPropsType) => {
     const dispatch = useAppDispatch()
     const costCatDay = useAppSelector(state => state.carModels.items)
 
-    const modal = useAppSelector(state => state.bookCar.modal)
+    const modal = useAppSelector(state => state.bookCarInputValue.modal)
 
-    const carType = useAppSelector(state => state.bookCar.carType)
-    const pickTime = useAppSelector(state => state.bookCar.pickTime)
-    const dropTime = useAppSelector(state => state.bookCar.dropTime)
-    const carImg = useAppSelector(state => state.bookCar.carImg)
+    const carType = useAppSelector(state => state.bookCarInputValue.carType)
+    const pickTime = useAppSelector(state => state.bookCarInputValue.pickTime)
+    const dropTime = useAppSelector(state => state.bookCarInputValue.dropTime)
+    const carImg = useAppSelector(state => state.bookCarInputValue.carImg)
 
-    const name = useAppSelector(state => state.bookCar.name)
-    const lastName = useAppSelector(state => state.bookCar.lastName)
-    const phone = useAppSelector(state => state.bookCar.phone)
-    const age = useAppSelector(state => state.bookCar.age)
+    const name = useAppSelector(state => state.bookCarInputValue.name)
+    const lastName = useAppSelector(state => state.bookCarInputValue.lastName)
+    const phone = useAppSelector(state => state.bookCarInputValue.phone)
+    const age = useAppSelector(state => state.bookCarInputValue.age)
 
-    const nameError = useAppSelector(state => state.bookCar.nameError)
-    const lastNameError = useAppSelector(state => state.bookCar.lastNameError)
-    const ageError = useAppSelector(state => state.bookCar.ageError)
+    const nameError = useAppSelector(state => state.bookCarInputValue.nameError)
+    const lastNameError = useAppSelector(state => state.bookCarInputValue.lastNameError)
+    const ageError = useAppSelector(state => state.bookCarInputValue.ageError)
 
-    const isValid = useAppSelector(state => state.bookCar.isValid)
+    const isValid = useAppSelector(state => state.bookCarInputValue.isValid)
 
     const matchingCost = costCatDay.find(el => el.name === carType);
     const priceCar = matchingCost ? matchingCost.price : 0;

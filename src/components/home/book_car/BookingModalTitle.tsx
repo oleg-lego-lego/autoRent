@@ -1,10 +1,11 @@
 import React from 'react';
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {setModal} from "../../../app/reducer/bookCar-reducer";
+import {setModal} from "../../../app/reducer/bookCarInputValue-reducer";
+
 
 export const BookingModalTitle = () => {
     const dispatch = useAppDispatch()
-    const modal = useAppSelector(state => state.bookCar.modal)
+    const modal = useAppSelector(state => state.bookCarInputValue.modal)
 
     const setModalHandler = () => {
         dispatch(setModal(!modal))

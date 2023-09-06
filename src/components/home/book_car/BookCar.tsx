@@ -14,10 +14,10 @@ import {
     setCarType,
     setDropTime,
     setError,
-    setModal,
-    setPickTime,
+    setModal, setPickTime,
     setShowDoneMessage
-} from "../../../app/reducer/bookCar-reducer";
+} from "../../../app/reducer/bookCarInputValue-reducer";
+
 
 export enum MODELS_CAR {
     AUDI_A1 = 'Audi A1 S-Line',
@@ -35,16 +35,16 @@ interface CarImages {
 export const BookCar = () => {
     const dispatch = useAppDispatch()
 
-    const modal = useAppSelector(state => state.bookCar.modal)
+    const modal = useAppSelector(state => state.bookCarInputValue.modal)
 
-    const carType = useAppSelector(state => state.bookCar.carType)
-    const pickTime = useAppSelector(state => state.bookCar.pickTime)
-    const dropTime = useAppSelector(state => state.bookCar.dropTime)
-    const carImg = useAppSelector(state => state.bookCar.carImg)
+    const carType = useAppSelector(state => state.bookCarInputValue.carType)
+    const pickTime = useAppSelector(state => state.bookCarInputValue.pickTime)
+    const dropTime = useAppSelector(state => state.bookCarInputValue.dropTime)
+    const carImg = useAppSelector(state => state.bookCarInputValue.carImg)
 
-    const error = useAppSelector(state => state.bookCar.error)
+    const error = useAppSelector(state => state.bookCarInputValue.error)
 
-    const showDoneMessage = useAppSelector(state => state.bookCar.showDoneMessage)
+    const showDoneMessage = useAppSelector(state => state.bookCarInputValue.showDoneMessage)
 
     const openModal = (e: React.MouseEvent) => {
         e.preventDefault();
