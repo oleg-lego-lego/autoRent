@@ -14,9 +14,11 @@ import {
     setCarType,
     setDropTime,
     setError,
-    setModal, setPickTime,
+    setModal,
+    setPickTime,
     setShowDoneMessage
 } from "../../../app/reducer/bookCarInputValue-reducer";
+import {selectImagesBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
 
 
 export enum MODELS_CAR {
@@ -101,6 +103,7 @@ export const BookCar = () => {
     };
 
     const imgUrl: string = carImages[carImg];
+    dispatch(selectImagesBookCar(imgUrl))
 
     const inputError = (inputError: string) => {
         return error && !inputError ? {borderColor: 'red'} : {}
@@ -162,7 +165,7 @@ export const BookCar = () => {
                 </div>
             </div>
 
-            <BookingModal imgUrl={imgUrl}/>
+            <BookingModal/>
         </section>
     );
 };

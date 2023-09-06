@@ -2,13 +2,15 @@ import {configureStore} from "@reduxjs/toolkit";
 import carModelsReducer from "./reducer/carModels-reducer";
 import bookCarReducer from "./reducer/bookCar-reducer";
 import loginReducer from "./reducer/login/login-reducer";
-import BookCarInputValueReducer from "./reducer/bookCarInputValue-reducer";
+import bookCarInputValueReducer from "./reducer/bookCarInputValue-reducer";
+import bookCarMoreInfoReducer from "./reducer/bookCarMoreInfo-reducer";
 
 export const store = configureStore({
     reducer: {
         carModels: carModelsReducer,
         bookCar: bookCarReducer,
-        bookCarInputValue: BookCarInputValueReducer,
+        bookCarInputValue: bookCarInputValueReducer,
+        bookCarMoreInfo: bookCarMoreInfoReducer,
         loginList: loginReducer,
     },
 })

@@ -15,12 +15,10 @@ import {
     setShowDoneMessage
 } from "../../../app/reducer/bookCarInputValue-reducer";
 import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
+import {priceBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
 
-type BookingModalPropsType = {
-    imgUrl: string
-}
 
-export const BookingModal = (props: BookingModalPropsType) => {
+export const BookingModal = () => {
     const dispatch = useAppDispatch()
     const costCatDay = useAppSelector(state => state.carModels.items)
 
@@ -44,6 +42,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
 
     const matchingCost = costCatDay.find(el => el.name === carType);
     const priceCar = matchingCost ? matchingCost.price : 0;
+    dispatch(priceBookCar(priceCar))
 
     const handleChange = (nameInput: string, value: string,) => {
         switch (nameInput) {
@@ -116,7 +115,7 @@ export const BookingModal = (props: BookingModalPropsType) => {
     return (
         <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
             <BookingModalTitle/>
-            <BookingModalCarInfo priceCar={priceCar} imgUrl={props.imgUrl}/>
+            <BookingModalCarInfo/>
 
             <div className="booking-modal__person-info">
                 <h4>Personal Information</h4>
