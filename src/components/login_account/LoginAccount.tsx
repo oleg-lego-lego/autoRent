@@ -4,15 +4,12 @@ import {LoginForm} from "../passwordInput/LoginForm";
 import {NavLink} from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import {PATH} from "../../App";
-import {CollapsibleTable} from "./TableBookCar";
 
 export const LoginAccount = () => {
     return (
         <div className="container">
             <div className="favorites-section">
                 <div className="favorites--empty">
-                    <CollapsibleTable/>
-
                     <Paper className={'login__container'} elevation={0}>
                         <FormControl className={'formControl'}>
                             <h1 className={'login__title'}>Sign in</h1>

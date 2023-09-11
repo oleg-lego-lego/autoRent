@@ -120,16 +120,16 @@ export const BookCar = () => {
     }
 
     return (
-        <section id="booking-section" className="book-section">
-            <div className={`modal-overlay ${modal ? "active-modal" : ""}`} onClick={modalClose}/>
+        <section id="booking-section" className="book__section">
+            <div className={`modal__overlay ${modal ? "active__modal" : ""}`} onClick={modalClose}/>
             <div className="container">
-                <div className="book-content">
-                    <div className="book-content__box">
+                <div className="book__content">
+                    <div className="book__content__box">
                         <h2>Book a car</h2>
-                        <BookShowMessage message={error} className={'error-message'}/>
-                        <BookShowMessage message={showDoneMessage} className={'done-message'}/>
+                        <BookShowMessage message={error} className={'error__message'}/>
+                        <BookShowMessage message={showDoneMessage} className={'done__message'}/>
 
-                        <form className="box-form">
+                        <form className="box__form">
                             <div className="box-form__car-type">
                                 <label>
                                     Select Your Car Type <b>*</b>

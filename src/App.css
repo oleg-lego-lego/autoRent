@@ -390,17 +390,17 @@ li {
     display: flex;
 }
 
-.book-section {
+.book__section {
     position: relative;
     background: linear-gradient(to bottom, #f8f8f8 20%, #ffffff 80%);
 }
 
-.book-content {
+.book__content {
     margin: 0 auto;
     /*margin-bottom: 10rem;*/
 }
 
-.book-content__box {
+.book__content__box {
     background-color: #ffffff;
     width: 100%;
     padding: 4rem 4.5rem 5rem 5.5rem;
@@ -419,56 +419,56 @@ li {
 }
 
 @media (max-width: 400px) {
-    .book-content__box {
+    .book__content__box {
         padding: 4rem 2.5rem 5rem 2.5rem;
     }
 }
 
-.book-content__box h2 {
+.book__content__box h2 {
     font-size: 2.4rem;
     font-weight: 700;
     margin-bottom: 1.1rem;
 }
 
-.book-content__box .box-form {
+.book__content__box .box__form {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
     gap: 2rem;
 }
 
-.book-content__box .box-form b {
+.book__content__box .box__form b {
     color: #ff4d30;
 }
 
 @media (max-width: 1000px) {
-    .book-content__box .box-form {
+    .book__content__box .box__form {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 630px) {
-    .book-content__box .box-form {
+    .book__content__box .box__form {
         grid-template-columns: 1fr;
     }
 }
 
-.book-content__box .box-form__car-type {
+.book__content__box .box-form__car-type {
     display: flex;
     flex-direction: column;
 }
 
-.book-content__box .box-form__car-type label {
+.book__content__box .box-form__car-type label {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
 }
 
-.book-content__box .box-form__car-type label i {
+.book__content__box .box-form__car-type label i {
     color: #ff4d30;
 }
 
-.book-content__box .box-form__car-type select {
+.book__content__box .box-form__car-type select {
     font-size: 1.5rem;
     color: #ababab;
     font-family: "Rubik", sans-serif;
@@ -479,13 +479,13 @@ li {
     outline: none;
 }
 
-.book-content__box .box-form__car-time {
+.book__content__box .box-form__car-time {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.book-content__box .box-form__car-time input {
+.book__content__box .box-form__car-time input {
     outline: none;
     border: 1px solid #ccd7e6;
     font-size: 1.5rem;
@@ -496,25 +496,25 @@ li {
     padding: 1.2rem 1.3rem;
 }
 
-.book-content__box .box-form__car-time label {
+.book__content__box .box-form__car-time label {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
 }
 
-.book-content__box .box-form__car-time label i {
+.book__content__box .box-form__car-time label i {
     color: #ff4d30;
 }
 
-/*.book-content__box .box-form__car-time ::-webkit-datetime-edit {*/
+/*.book-book__content__box .box-form__car-time ::-webkit-datetime-edit {*/
 /*    padding: 1.3rem 1.3rem;*/
 /*}*/
-.book-content__box .box-form__car-time ::-webkit-calendar-picker-indicator {
+.book__content__box .box-form__car-time ::-webkit-calendar-picker-indicator {
     cursor: pointer;
     font-size: 1.6rem;
 }
 
-.book-content__box button {
+.book__content__box button {
     padding: 1.3rem 1.3rem;
     /*height: -moz-fit-content;*/
     height: fit-content;
@@ -530,11 +530,11 @@ li {
     transition: all 0.3s;
 }
 
-.book-content__box button:hover {
+.book__content__box button:hover {
     box-shadow: 0 10px 15px rgba(255, 83, 48, 0.55);
 }
 
-.error-message {
+.error__message {
     color: #721c24;
     background-color: #f8d7da;
     padding: 1rem;
@@ -547,7 +547,7 @@ li {
     width: fit-content;
 }
 
-.done-message{
+.done__message {
     background-color: #c3fabe;
     border: 1px solid transparent;
     border-radius: 0.8rem;
@@ -578,12 +578,12 @@ li {
     cursor: pointer;
 }
 
-.active-modal {
+.active__modal {
     opacity: 1 !important;
     display: flex !important;
 }
 
-.modal-overlay {
+.modal__overlay {
     opacity: 0;
     display: none;
     position: fixed;

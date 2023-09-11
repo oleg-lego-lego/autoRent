@@ -13,6 +13,7 @@ import {Footer} from "./components/Footer";
 import {NotFound} from "./components/notFound/NotFound";
 import {Login} from "./components/login_account/Login";
 import {RegistrationPage} from "./components/passwordInput/RegistrationPage";
+import {Garage} from "./components/garage/Garage";
 
 export enum PATH {
     HOME = '/',
@@ -24,7 +25,8 @@ export enum PATH {
     NOT_FOUND = '*',
     LOGIN_ACCOUNT = '/account',
     LOGIN = '/login',
-    REGISTRATION = '/registration'
+    REGISTRATION = '/registration',
+    GARAGE = '/Garage'
 }
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
                 <Route path={PATH.NOT_FOUND} element={<NotFound/>}/>
                 <Route path={PATH.LOGIN_ACCOUNT} element={<Login/>}/>
                 <Route path={PATH.REGISTRATION} element={<RegistrationPage/>}/>
+                <Route path={PATH.GARAGE} element={<Garage/>}/>
             </Routes>
             <Banner/>
             <Footer/>
