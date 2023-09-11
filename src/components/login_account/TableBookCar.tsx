@@ -20,25 +20,29 @@ export function CollapsibleTable() {
     }
 
     return (
-        <TableContainer component={Paper}>
-            <Table aria-label="collapsible table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell/>
-                        <TableCell className={'table__head table__none'}>Order</TableCell>
-                        <TableCell className={'table__head'}>Car</TableCell>
-                        <TableCell className={'table__head'}>Date-Up</TableCell>
-                        <TableCell className={'table__head table__none'}>Date-Off</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {bookCarList.map(el => {
-                        return (
-                            <TableDescriptionBookCar key={el.id} row={el} bookCarDeleteId={bookCarDeleteId}/>
-                        )
-                    })}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <>
+            <h1 className={'table__title'}>Your car orders.</h1>
+            <TableContainer component={Paper}>
+                <Table aria-label="collapsible table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell/>
+                            <TableCell className={'table__head table__none'}>Order</TableCell>
+                            <TableCell className={'table__head'}>Car</TableCell>
+                            <TableCell className={'table__head'}>Date-Up</TableCell>
+                            <TableCell className={'table__head table__none'}>Date-Off</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {bookCarList.map(el => {
+                            return (
+                                <TableDescriptionBookCar key={el.id} row={el}
+                                                         bookCarDeleteId={bookCarDeleteId}/>
+                            )
+                        })}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 }

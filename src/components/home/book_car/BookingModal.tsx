@@ -113,7 +113,7 @@ export const BookingModal = () => {
     }
 
     return (
-        <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
+        <div className={`booking-modal ${modal ? "active__modal" : ""}`}>
             <BookingModalTitle/>
             <BookingModalCarInfo/>
 

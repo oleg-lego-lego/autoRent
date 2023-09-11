@@ -21,7 +21,7 @@ export const NavbarLink = (props: NavbarLinkProps) => {
 
     return (
         <li>
-            <NavLink style={setActive} to={props.to} onClick={openNav}>
+            <NavLink style={setActive} to={props.to} onClick={openNav} className={props.className}>
                 {props.title}
             </NavLink>
         </li>

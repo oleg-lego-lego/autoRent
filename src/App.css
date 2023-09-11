@@ -2387,7 +2387,7 @@ footer {
 }
 
 .favorites-section {
-    padding: 10rem 0;
+    padding: 10rem 0 5rem;
     color: #010103;
     text-align: center;
 }
@@ -2409,7 +2409,7 @@ footer {
     font-size: 2.0rem;
     font-family: "Rubik", sans-serif;
     font-weight: 500;
-    margin-bottom: 4.2rem;
+    margin-bottom: 2.2rem;
 }
 
 .favorites--empty-link {
@@ -2467,6 +2467,24 @@ footer {
     }
 }
 
+.notCarOrder_img {
+    display: block;
+    margin: 0 auto;
+    width: 55rem;
+}
+
+@media (max-width: 650px) {
+    .notCarOrder_img {
+        width: 40rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .notCarOrder_img {
+        width: 27rem;
+    }
+}
+
 .buttonFavorites img {
     width: 40px;
     height: 40px;
@@ -2483,6 +2501,12 @@ footer {
 
 .button__delete {
     font-size: 2rem !important;
+}
+
+.table__title {
+    margin: 35px;
+    font-size: 50px;
+    color: #706f7b;
 }
 
 .table__head {
