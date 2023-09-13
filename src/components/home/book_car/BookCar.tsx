@@ -48,6 +48,8 @@ export const BookCar = () => {
 
     const showDoneMessage = useAppSelector(state => state.bookCarInputValue.showDoneMessage)
 
+    const selectCarOption: string = 'Select your car type'
+
     const openModal = (e: React.MouseEvent) => {
         e.preventDefault();
         if (!pickTime || !dropTime || !carType) {
@@ -68,14 +70,20 @@ export const BookCar = () => {
     }, [modal]);
 
     const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
-        dispatch(setCarType(e.target.value))
-        dispatch(setCarImg(e.target.value))
-        dispatch(setError(''))
+        const valueCar = e.currentTarget.value
+        if (valueCar === selectCarOption) {
+            dispatch(setCarType(''))
+        } else {
+            dispatch(setCarType(valueCar))
+            dispatch(setCarImg(valueCar))
+            dispatch(setError(''))
+        }
     };
 
     const handlePickTime = (e: ChangeEvent<HTMLInputElement>) => {
-        if (!dropTime || dropTime >= e.target.value || dropTime === e.target.value) {
-            dispatch(setPickTime(e.target.value))
+        const valuePickTime = e.currentTarget.value
+        if (!dropTime || dropTime >= valuePickTime || dropTime === valuePickTime) {
+            dispatch(setPickTime(valuePickTime))
             dispatch(setError(''))
         } else {
             dispatch(setPickTime(''))
@@ -84,8 +92,9 @@ export const BookCar = () => {
     };
 
     const handleDropTime = (e: ChangeEvent<HTMLInputElement>) => {
-        if (pickTime <= e.target.value || pickTime === e.target.value) {
-            dispatch(setDropTime(e.target.value))
+        const valueDropTime = e.currentTarget.value
+        if (pickTime <= valueDropTime || pickTime === valueDropTime) {
+            dispatch(setDropTime(valueDropTime))
             dispatch(setError(''))
         } else {
             dispatch(setDropTime(''))
@@ -135,7 +144,7 @@ export const BookCar = () => {
                                     Select Your Car Type <b>*</b>
                                 </label>
                                 <select value={carType} onChange={handleCar} style={inputError(carType)}>
-                                    <option>Select your car type</option>
+                                    <option>{selectCarOption}</option>
                                     <option value={MODELS_CAR.AUDI_A1}>{MODELS_CAR.AUDI_A1}</option>
                                     <option value={MODELS_CAR.VOLKSWAGEN_GOLF}>{MODELS_CAR.VOLKSWAGEN_GOLF}</option>
                                     <option value={MODELS_CAR.TOYOTA_COROLLA}>{MODELS_CAR.TOYOTA_COROLLA}</option>
