@@ -10,20 +10,20 @@ export const Favorites = () => {
     const carModelFavorites = carModel.filter(el => el.favorites !== false)
 
     return (
-            <section>
-                <HeroPages name={'Favorites'}/>
-                <div className="container">
-                    {!carModelFavorites.length
-                        ? <FavoritesEmpty/>
-                        : <div className="models-div">
-                            {carModelFavorites.map(el => {
-                                return (
-                                    <Model model={el} key={el.id}/>
-                                )
-                            })}
-                        </div>
-                    }
-                </div>
-            </section>
+        <>
+            <HeroPages name={'Favorites'}/>
+            <div className="container">
+                {!carModelFavorites.length
+                    ? <FavoritesEmpty/>
+                    : <div className="models-div">
+                        {carModelFavorites.map(el => {
+                            return (
+                                <Model model={el} key={el.id}/>
+                            )
+                        })}
+                    </div>
+                }
+            </div>
+        </>
     );
 };

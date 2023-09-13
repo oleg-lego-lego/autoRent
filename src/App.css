@@ -2387,7 +2387,13 @@ footer {
 }
 
 .favorites-section {
-    padding: 10rem 0 5rem;
+    padding: 8rem 0 5rem;
+    color: #010103;
+    text-align: center;
+}
+
+.garage__table-section {
+    padding: 6rem 0 9rem;
     color: #010103;
     text-align: center;
 }

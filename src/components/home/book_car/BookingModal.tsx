@@ -8,10 +8,17 @@ import {BookingModalTitle} from "./BookingModalTitle";
 import {BookingModalCarInfo} from "./BookingModalCarInfo";
 import {
     setAge,
-    setAgeError, setCarType, setDropTime, setLastName, setLastNameError, setModal,
+    setAgeError,
+    setCarType,
+    setDropTime,
+    setLastName,
+    setLastNameError,
+    setModal,
     setName,
-    setNameError, setPhone,
-    setPhoneError, setPickTime,
+    setNameError,
+    setPhone,
+    setPhoneError,
+    setPickTime,
     setShowDoneMessage
 } from "../../../app/reducer/bookCarInputValue-reducer";
 import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
