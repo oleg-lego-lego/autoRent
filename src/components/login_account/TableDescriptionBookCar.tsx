@@ -26,6 +26,7 @@ const useRowStyles = makeStyles({
 type TableDescriptionBookCarPropsType = {
     row: BookCarType
     bookCarDeleteId: (id: string) => void
+    countOrder: any
 }
 
 export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType) => {
@@ -35,6 +36,13 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
     const bookCarDeleteHandler = (id: string) => {
         props.bookCarDeleteId(id)
     }
+
+    const pickTimeDate = new Date(props.row.pickTime);
+    const dropTimeDate = new Date(props.row.dropTime);
+
+    const differenceInMilliseconds = Number(dropTimeDate) - Number(pickTimeDate);
+    const totalDay = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24)) + 1;
+    const totalCost = totalDay * Number(props.row.price)
 
     return (
         <React.Fragment>
@@ -47,7 +55,9 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                         <DeleteIcon aria-label="delete" className="button__delete"/>
                     </IconButton>
                 </TableCell>
-                <TableCell component="th" scope="row" className="table__head__description table__none">1</TableCell>
+                <TableCell component="th" scope="row" className="table__head__description table__none">
+                    {props.countOrder}
+                </TableCell>
                 <TableCell className="table__head__description">{props.row.carType}</TableCell>
                 <TableCell className="table__head__description">{props.row.pickTime}</TableCell>
                 <TableCell className="table__head__description table__none">{props.row.dropTime}</TableCell>
@@ -84,14 +94,14 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                                             {props.row.price}
                                         </TableCell>
                                         <TableCell className="table__title__depiction table__none">
-                                            {props.row.price}
+                                            {totalDay}
                                         </TableCell>
                                         <TableCell className="table__title__depiction">
-                                            {props.row.price}
+                                            {totalCost}
                                         </TableCell>
                                         <TableCell className="table__title__depiction">
                                             <img src="http://qrcoder.ru/code/?%E7%E0%EA%E0%E7+123&4&0" width="100"
-                                                 title="QR code"/>
+                                                 title="QR code" alt={'QR code'}/>
                                         </TableCell>
                                     </TableRow>
                                 </TableBody>

@@ -35,12 +35,13 @@ export function CollapsibleTable() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {bookCarList.map(el => {
+                            {bookCarList.map((el, index)=> {
                                 return (
                                     <TableDescriptionBookCar
                                         key={el.id}
                                         row={el}
                                         bookCarDeleteId={bookCarDeleteId}
+                                        countOrder={index + 1}
                                     />
                                 )
                             })}
