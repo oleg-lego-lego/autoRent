@@ -62,54 +62,56 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                 <TableCell className="table__head__description">{props.row.pickTime}</TableCell>
                 <TableCell className="table__head__description table__none">{props.row.dropTime}</TableCell>
             </TableRow>
-            <TableRow>
-                <TableCell style={{paddingBottom: 0, paddingTop: 0}} colSpan={6}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                        <Box margin={1}>
-                            <Typography variant="h6" gutterBottom component="div" className="table__description">
-                                Description
-                            </Typography>
-                            <Table size="small" aria-label="purchases">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell/>
-                                        <TableCell className="table__title__description table__none">
-                                            price
-                                        </TableCell>
-                                        <TableCell className="table__title__description table__none">
-                                            rental days
-                                        </TableCell>
-                                        <TableCell className="table__title__description">
-                                            Total($)
-                                        </TableCell>
-                                        <TableCell className="table__title__description">
-                                            QR code for rent
-                                        </TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell/>
-                                        <TableCell className="table__title__depiction table__none">
-                                            {props.row.price}
-                                        </TableCell>
-                                        <TableCell className="table__title__depiction table__none">
-                                            {totalDay}
-                                        </TableCell>
-                                        <TableCell className="table__title__depiction">
-                                            {totalCost}
-                                        </TableCell>
-                                        <TableCell className="table__title__depiction">
-                                            <img src="http://qrcoder.ru/code/?%E7%E0%EA%E0%E7+123&4&0" width="100"
-                                                 title="QR code" alt={'QR code'}/>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </Box>
-                    </Collapse>
-                </TableCell>
-            </TableRow>
+            {open &&
+                <TableRow>
+                    <TableCell style={{paddingBottom: 0, paddingTop: 0}} colSpan={6}>
+                        <Collapse in={open} timeout="auto" unmountOnExit>
+                            <Box margin={1}>
+                                <Typography variant="h6" gutterBottom component="div" className="table__description">
+                                    Description
+                                </Typography>
+                                <Table size="small" aria-label="purchases">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell/>
+                                            <TableCell className="table__title__description table__none">
+                                                price
+                                            </TableCell>
+                                            <TableCell className="table__title__description table__none">
+                                                rental days
+                                            </TableCell>
+                                            <TableCell className="table__title__description">
+                                                Total($)
+                                            </TableCell>
+                                            <TableCell className="table__title__description">
+                                                QR code for rent
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell/>
+                                            <TableCell className="table__title__depiction table__none">
+                                                {props.row.price}
+                                            </TableCell>
+                                            <TableCell className="table__title__depiction table__none">
+                                                {totalDay}
+                                            </TableCell>
+                                            <TableCell className="table__title__depiction">
+                                                {totalCost}
+                                            </TableCell>
+                                            <TableCell className="table__title__depiction">
+                                                <img src="http://qrcoder.ru/code/?%E7%E0%EA%E0%E7+123&4&0" width="100"
+                                                     title="QR code" alt={'QR code'}/>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </Box>
+                        </Collapse>
+                    </TableCell>
+                </TableRow>
+            }
         </React.Fragment>
     );
 };
