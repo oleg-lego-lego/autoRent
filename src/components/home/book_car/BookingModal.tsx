@@ -49,7 +49,6 @@ export const BookingModal = () => {
 
     const matchingCost = costCatDay.find(el => el.name === carType);
     const priceCar = matchingCost ? matchingCost.price : 0;
-    dispatch(priceBookCar(priceCar))
 
     const handleChange = (nameInput: string, value: string,) => {
         switch (nameInput) {
@@ -108,6 +107,7 @@ export const BookingModal = () => {
         if (Object.values(errors).every(error => error === '')) {
             dispatch(bookCarAdd(newRentCar));
             dispatch(setModal(!modal))
+            dispatch(priceBookCar(priceCar))
             dispatch(setShowDoneMessage('The order has been placed correctly and is in your personal account.'))
             dispatch(setCarType(''))
             dispatch(setPickTime(''))

@@ -10,13 +10,7 @@ import {BoxFormTimeInput} from "./BoxFormTimeInput";
 import {BookShowMessage} from "./BookShowMessage";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {
-    setCarImg,
-    setCarType,
-    setDropTime,
-    setError,
-    setModal,
-    setPickTime,
-    setShowDoneMessage
+    setCarType, setDropTime, setError, setModal, setPickTime, setShowDoneMessage
 } from "../../../app/reducer/bookCarInputValue-reducer";
 import {selectImagesBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
 
@@ -30,107 +24,93 @@ export enum MODELS_CAR {
     VOLKSWAGEN_PASSAT_CC = 'VW Passat CC'
 }
 
-interface CarImages {
+interface CarImagesType {
     [key: string]: string;
 }
 
+
 export const BookCar = () => {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
 
-    const modal = useAppSelector(state => state.bookCarInputValue.modal)
+    const modal = useAppSelector((state) => state.bookCarInputValue.modal);
+    const carType = useAppSelector((state) => state.bookCarInputValue.carType);
+    const pickTime = useAppSelector((state) => state.bookCarInputValue.pickTime);
+    const dropTime = useAppSelector((state) => state.bookCarInputValue.dropTime);
+    const error = useAppSelector((state) => state.bookCarInputValue.error);
+    const showDoneMessage = useAppSelector((state) => state.bookCarInputValue.showDoneMessage);
 
-    const carType = useAppSelector(state => state.bookCarInputValue.carType)
-    const pickTime = useAppSelector(state => state.bookCarInputValue.pickTime)
-    const dropTime = useAppSelector(state => state.bookCarInputValue.dropTime)
-    const carImg = useAppSelector(state => state.bookCarInputValue.carImg)
-
-    const error = useAppSelector(state => state.bookCarInputValue.error)
-
-    const showDoneMessage = useAppSelector(state => state.bookCarInputValue.showDoneMessage)
-
-    const selectCarOption: string = 'Select your car type'
-
-    const openModal = (e: React.MouseEvent) => {
-        e.preventDefault();
-        if (!pickTime || !dropTime || !carType) {
-            dispatch(setError('error: Not all fields are filled!'))
-        } else {
-            dispatch(setModal(!modal))
-            const modalDiv = document.querySelector(".booking-modal");
-            modalDiv && modalDiv.scroll(0, 0);
-        }
-    };
-
-    useEffect(() => {
-        if (modal) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-    }, [modal]);
+    const selectCarOption = 'Select your car type';
 
     const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
-        const valueCar = e.currentTarget.value
+        const valueCar = e.currentTarget.value;
         if (valueCar === selectCarOption) {
-            dispatch(setCarType(''))
+            dispatch(setCarType(''));
         } else {
-            dispatch(setCarType(valueCar))
-            dispatch(setCarImg(valueCar))
-            dispatch(setError(''))
+            dispatch(setCarType(valueCar));
+            dispatch(selectImagesBookCar(carImages[valueCar]));
+            dispatch(setError(''));
         }
     };
 
     const handlePickTime = (e: ChangeEvent<HTMLInputElement>) => {
-        const valuePickTime = e.currentTarget.value
+        const valuePickTime = e.currentTarget.value;
         if (!dropTime || dropTime >= valuePickTime || dropTime === valuePickTime) {
-            dispatch(setPickTime(valuePickTime))
-            dispatch(setError(''))
+            dispatch(setPickTime(valuePickTime));
+            dispatch(setError(''));
         } else {
-            dispatch(setPickTime(''))
-            dispatch(setError('error: wrong rental date'))
+            dispatch(setPickTime(''));
+            dispatch(setError('error: wrong rental date'));
         }
     };
 
     const handleDropTime = (e: ChangeEvent<HTMLInputElement>) => {
-        const valueDropTime = e.currentTarget.value
+        const valueDropTime = e.currentTarget.value;
         if (pickTime <= valueDropTime || pickTime === valueDropTime) {
-            dispatch(setDropTime(valueDropTime))
-            dispatch(setError(''))
+            dispatch(setDropTime(valueDropTime));
+            dispatch(setError(''));
         } else {
-            dispatch(setDropTime(''))
-            dispatch(setError('error: wrong rental date'))
+            dispatch(setDropTime(''));
+            dispatch(setError('error: wrong rental date'));
         }
     };
 
-    const carImages: CarImages = {
+    const carImages: CarImagesType = {
         [MODELS_CAR.AUDI_A1]: CarAudi,
         [MODELS_CAR.VOLKSWAGEN_GOLF]: CarGolf,
         [MODELS_CAR.TOYOTA_COROLLA]: CarToyota,
         [MODELS_CAR.BMW_320]: CarBmw,
         [MODELS_CAR.MERCEDES_GLK]: CarMercedes,
-        [MODELS_CAR.VOLKSWAGEN_PASSAT_CC]: CarPassat
+        [MODELS_CAR.VOLKSWAGEN_PASSAT_CC]: CarPassat,
     };
 
-    const imgUrl: string = carImages[carImg];
-    dispatch(selectImagesBookCar(imgUrl))
-
     const inputError = (inputError: string) => {
-        return error && !inputError ? {borderColor: 'red'} : {}
-    }
+        return error && !inputError ? {borderColor: 'red'} : {};
+    };
 
     useEffect(() => {
         setTimeout(() => {
-            dispatch(setShowDoneMessage(''))
+            dispatch(setShowDoneMessage(''));
         }, 8000);
     }, [dispatch, showDoneMessage]);
 
+    const openModal = (e: React.MouseEvent) => {
+        e.preventDefault();
+        if (!pickTime || !dropTime || !carType) {
+            dispatch(setError('error: Not all fields are filled!'));
+        } else {
+            dispatch(setModal(!modal));
+            const modalDiv = document.querySelector('.booking-modal');
+            modalDiv && modalDiv.scroll(0, 0);
+        }
+    };
+
     const modalClose = () => {
-        dispatch(setModal(!modal))
-    }
+        dispatch(setModal(!modal));
+    };
 
     return (
         <section id="booking-section" className="book__section">
-            <div className={`modal__overlay ${modal ? "active__modal" : ""}`} onClick={modalClose}/>
+            <div className={`modal__overlay ${modal ? 'active__modal' : ''}`} onClick={modalClose}/>
             <div className="container">
                 <div className="book__content">
                     <div className="book__content__box">
