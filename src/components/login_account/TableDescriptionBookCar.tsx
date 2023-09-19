@@ -15,6 +15,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import {BookCarType} from "../../app/reducer/bookCar";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {bookCarDelete, bookCarOpenDescription} from "../../app/reducer/bookCar-reducer";
+import {QRCodeCanvas} from "qrcode.react";
 
 
 const useRowStyles = makeStyles({
@@ -41,7 +42,7 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
     }
 
     const bookCarOpen = () => {
-      dispatch(bookCarOpenDescription(!openDescription))
+        dispatch(bookCarOpenDescription(!openDescription))
     }
 
     const pickTimeDate = new Date(props.row.pickTime);
@@ -50,6 +51,8 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
     const differenceInMilliseconds = Number(dropTimeDate) - Number(pickTimeDate);
     const totalDay = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24)) + 1;
     const totalCost = totalDay * Number(props.row.price)
+
+    const QR_CodeValue = props.row.id
 
     return (
         <React.Fragment>
@@ -108,8 +111,7 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                                                 {totalCost}
                                             </TableCell>
                                             <TableCell className="table__title__depiction">
-                                                <img src="http://qrcoder.ru/code/?%E7%E0%EA%E0%E7+123&4&0" width="100"
-                                                     title="QR code" alt={'QR code'}/>
+                                                <QRCodeCanvas value={QR_CodeValue} size={80}/>
                                             </TableCell>
                                         </TableRow>
                                     </TableBody>
