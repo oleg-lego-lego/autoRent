@@ -3,10 +3,12 @@ import {bookCarList, BookCarType} from "./bookCar";
 
 export interface BookCarStateType {
     bookCar: BookCarType[]
+    bookCarOpen: boolean
 }
 
 const initialState: BookCarStateType = {
     bookCar: bookCarList,
+    bookCarOpen: false
 }
 
 export const BookCarSlice = createSlice({
@@ -19,6 +21,9 @@ export const BookCarSlice = createSlice({
         bookCarDelete: (state, action) => {
             state.bookCar = state.bookCar.filter(el => el.id !== action.payload)
         },
+        bookCarOpenDescription: (state, action) => {
+            state.bookCarOpen = action.payload
+        }
     },
 })
 
@@ -26,6 +31,7 @@ export const BookCarSlice = createSlice({
 export const {
     bookCarAdd,
     bookCarDelete,
+    bookCarOpenDescription,
 } = BookCarSlice.actions
 
 export default BookCarSlice.reducer

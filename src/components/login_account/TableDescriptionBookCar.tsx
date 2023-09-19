@@ -13,8 +13,8 @@ import TableBody from "@material-ui/core/TableBody";
 import {makeStyles} from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {BookCarType} from "../../app/reducer/bookCar";
-import {useAppDispatch} from "../../hooks/redux";
-import {bookCarDelete} from "../../app/reducer/bookCar-reducer";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {bookCarDelete, bookCarOpenDescription} from "../../app/reducer/bookCar-reducer";
 
 
 const useRowStyles = makeStyles({
@@ -31,13 +31,17 @@ type TableDescriptionBookCarPropsType = {
 }
 
 export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType) => {
-    const [open, setOpen] = React.useState(false);
     const classes = useRowStyles();
 
     const dispatch = useAppDispatch()
+    const openDescription = useAppSelector(state => state.bookCar.bookCarOpen)
 
     const bookCarDeleteId = (id: string) => {
         dispatch(bookCarDelete(id))
+    }
+
+    const bookCarOpen = () => {
+      dispatch(bookCarOpenDescription(!openDescription))
     }
 
     const pickTimeDate = new Date(props.row.pickTime);
@@ -51,8 +55,8 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
         <React.Fragment>
             <TableRow className={classes.root}>
                 <TableCell>
-                    <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-                        {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
+                    <IconButton aria-label="expand row" size="small" onClick={bookCarOpen}>
+                        {openDescription ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
                     </IconButton>
                     <IconButton aria-label="delete" onClick={() => bookCarDeleteId(props.row.id)}>
                         <DeleteIcon aria-label="delete" className="button__delete"/>
@@ -65,10 +69,10 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                 <TableCell className="table__head__description">{props.row.pickTime}</TableCell>
                 <TableCell className="table__head__description table__none">{props.row.dropTime}</TableCell>
             </TableRow>
-            {open &&
+            {openDescription &&
                 <TableRow>
                     <TableCell style={{paddingBottom: 0, paddingTop: 0}} colSpan={6}>
-                        <Collapse in={open} timeout="auto" unmountOnExit>
+                        <Collapse in={openDescription} timeout="auto" unmountOnExit>
                             <Box margin={1}>
                                 <Typography variant="h6" gutterBottom component="div" className="table__description">
                                     Description
