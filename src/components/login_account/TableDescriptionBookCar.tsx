@@ -13,6 +13,8 @@ import TableBody from "@material-ui/core/TableBody";
 import {makeStyles} from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {BookCarType} from "../../app/reducer/bookCar";
+import {useAppDispatch} from "../../hooks/redux";
+import {bookCarDelete} from "../../app/reducer/bookCar-reducer";
 
 
 const useRowStyles = makeStyles({
@@ -25,16 +27,17 @@ const useRowStyles = makeStyles({
 
 type TableDescriptionBookCarPropsType = {
     row: BookCarType
-    bookCarDeleteId: (id: string) => void
-    countOrder: any
+    countOrder: number
 }
 
 export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType) => {
     const [open, setOpen] = React.useState(false);
     const classes = useRowStyles();
 
-    const bookCarDeleteHandler = (id: string) => {
-        props.bookCarDeleteId(id)
+    const dispatch = useAppDispatch()
+
+    const bookCarDeleteId = (id: string) => {
+        dispatch(bookCarDelete(id))
     }
 
     const pickTimeDate = new Date(props.row.pickTime);
@@ -51,7 +54,7 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                     <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
                         {open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
                     </IconButton>
-                    <IconButton aria-label="delete" onClick={() => bookCarDeleteHandler(props.row.id)}>
+                    <IconButton aria-label="delete" onClick={() => bookCarDeleteId(props.row.id)}>
                         <DeleteIcon aria-label="delete" className="button__delete"/>
                     </IconButton>
                 </TableCell>
