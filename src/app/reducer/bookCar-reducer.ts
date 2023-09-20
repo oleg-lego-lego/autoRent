@@ -3,12 +3,10 @@ import {bookCarList, BookCarType} from "./bookCar";
 
 export interface BookCarStateType {
     bookCar: BookCarType[]
-    bookCarOpen: boolean
 }
 
 const initialState: BookCarStateType = {
     bookCar: bookCarList,
-    bookCarOpen: false
 }
 
 export const BookCarSlice = createSlice({
@@ -22,12 +20,12 @@ export const BookCarSlice = createSlice({
             state.bookCar = state.bookCar.filter(el => el.id !== action.payload)
         },
         bookCarOpenDescription: (state, action) => {
-            state.bookCarOpen = action.payload
+            const {id, open} = action.payload
+            state.bookCar.map(el => el.id === id ? el.bookCarOpen = open : el)
         }
     },
 })
 
-// Action creators are generated for each case reducer function
 export const {
     bookCarAdd,
     bookCarDelete,
