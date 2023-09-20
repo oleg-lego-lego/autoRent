@@ -4,7 +4,6 @@ export interface BookCarInputValueStateType {
     carType: string
     pickTime: string
     dropTime: string
-    carImg: string
     error: string
     showDoneMessage: string
     modal: boolean
@@ -23,7 +22,6 @@ const initialState: BookCarInputValueStateType = {
     carType: '',
     pickTime: '',
     dropTime: '',
-    carImg: '',
     error: '',
     showDoneMessage: '',
     modal: false,
@@ -50,9 +48,6 @@ export const BookCarInputValueSlice = createSlice({
         },
         setDropTime: (state, action) => {
             state.dropTime = action.payload;
-        },
-        setCarImg: (state, action) => {
-            state.carImg = action.payload;
         },
         setError: (state, action) => {
             state.error = action.payload;
@@ -97,7 +92,6 @@ export const {
     setCarType,
     setPickTime,
     setDropTime,
-    setCarImg,
     setError,
     setShowDoneMessage,
     setModal,
