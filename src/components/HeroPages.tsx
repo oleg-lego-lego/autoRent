@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {PATH} from "../App";
 
 type HeroPagesProps = {
     name: string
@@ -13,7 +14,7 @@ export const HeroPages = ({name}: HeroPagesProps) => {
                 <div className="hero__text">
                     <h3>{name}</h3>
                     <p>
-                        <Link to="/">Home</Link> / {name}
+                        <Link to={PATH.HOME}>Home</Link> / {name}
                     </p>
                 </div>
             </div>
