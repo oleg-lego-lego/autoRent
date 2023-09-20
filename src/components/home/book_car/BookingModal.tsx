@@ -80,7 +80,8 @@ export const BookingModal = () => {
             phone,
             age,
             id: v1(),
-            price: priceCar
+            price: priceCar,
+            bookCarOpen: false
         }
 
         const errors = {
