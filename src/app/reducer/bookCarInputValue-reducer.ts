@@ -4,6 +4,7 @@ export interface BookCarInputValueStateType {
     carType: string
     pickTime: string
     dropTime: string
+    carImg: string
     error: string
     showDoneMessage: string
     modal: boolean
@@ -22,6 +23,7 @@ const initialState: BookCarInputValueStateType = {
     carType: '',
     pickTime: '',
     dropTime: '',
+    carImg: '',
     error: '',
     showDoneMessage: '',
     modal: false,
