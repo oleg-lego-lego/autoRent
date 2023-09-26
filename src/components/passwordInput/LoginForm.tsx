@@ -11,6 +11,10 @@ import {PATH} from "../../App";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {checkUser} from "../../app/reducer/login/login-reducer";
 import {LoginListType} from "../../app/reducer/login/loginList";
+import {makeStyles} from "@material-ui/styles";
+
+
+
 
 
 type LoginFormType = {
@@ -18,9 +22,16 @@ type LoginFormType = {
     password: string
     rememberMe: boolean
 }
+const useStyles = makeStyles({
+    textField: {
+        fontSize: '16px !important',
+    },
+});
+
 
 
 export const LoginForm = () => {
+    const classes = useStyles();
     const [redirectValue, setRedirectValue] =useState<boolean | LoginListType>(false)
     const {register, control, handleSubmit, formState: {errors}} = useForm<LoginFormType>({
         defaultValues: {
@@ -60,9 +71,17 @@ export const LoginForm = () => {
         >
             <FormGroup>
                 <TextField
-                    label="Email"
-                    // margin="none"
-                    variant="standard"
+                    className={'asdasd'}
+                    id="outlined-basic"
+                    variant="outlined"
+                    label={"Email"}
+                    // className={classes.textField}
+                    minRows={34}
+                    InputProps={{
+                        classes: {
+                            input: classes.textField, // Применение класса CSS к текстовому полю
+                        },
+                    }}
                     {...register('email', {
                         required: 'Email is required',
                         pattern: {

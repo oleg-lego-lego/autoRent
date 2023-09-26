@@ -642,7 +642,7 @@ li {
 
 
 @media (max-width: 400px) {
-    .booking-modal__title h2{
+    .booking-modal__title h2 {
         width: 200px;
     }
 }
@@ -2573,6 +2573,18 @@ footer {
 
 .formControl {
     width: 400px;
+}
+
+.qqqq {
+    font-size: 46px;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    /*font-size: 22px !important;*/
+}
+
+.asdasd {
+    /*width: 400px;*/
 }
 
 .login__title {
