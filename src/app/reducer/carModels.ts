@@ -109,3 +109,91 @@ export const carModels: CarModelsType[] = [
     },
 ]
 
+
+// const apiCars: CarModelsType[] = [
+//     {
+//         "id": "0",
+//         "name": "VW Golf 6",
+//         "price": 37,
+//         "favorites": false,
+//         "img": "https://i.ibb.co/d4qNqmv/golf6.jpg",
+//         "model": "Golf 6",
+//         "mark": "Volkswagen",
+//         "year": "2008",
+//         "doors": "4/5",
+//         "air": "Yes",
+//         "transmission": "Manual",
+//         "fuel": "Diesel"
+//     },
+//     {
+//         "id": "1",
+//         "name": "Audi A1 S-Line",
+//         "price": 45,
+//         "favorites": false,
+//         "img": "https://i.ibb.co/pRnh Zd0/audia1.jpg",
+//         "model": "Audi",
+//         "mark": "A1",
+//         "year": "2012",
+//         "doors": "4/5",
+//         "air": "Yes",
+//         "transmission": "Manual",
+//         "fuel": "Gasoline"
+//     },
+//     {
+//         "id": "2",
+//         "name": "Toyota Corolla",
+//         "price": 30,
+//         "favorites": false,
+//         "img": "https://i.ibb.co/5nrSyWL/toyota-corolla.jpg",
+//         "model": "Corolla",
+//         "mark": "Toyota",
+//         "year": "2006",
+//         "doors": "4/5",
+//         "air": "Yes",
+//         "transmission": "Automatic",
+//         "fuel": "Hybrid"
+//     },
+//     {
+//         "id": "3",
+//         "name": "BMW 320",
+//         "price": 35,
+//         "favorites": false,
+//         "img": "https://i.ibb.co/4j2hTWh/bmw320.jpg",
+//         "model": "320",
+//         "mark": "BMW",
+//         "year": "2012",
+//         "doors": "4/5",
+//         "air": "Yes",
+//         "transmission": "Manual",
+//         "fuel": "Diesel"
+//     },
+//     {
+//         "id": "4",
+//         "name": "Mercedes GLK",
+//         "price": 50,
+//         "favorites": false,
+//         "img": "https://i.ibb.co/jhB4TYV/benz.jpg",
+//         "model": "Benz GLK",
+//         "mark": "Mercedes",
+//         "year": "2006",
+//         "doors": "4/5",
+//         "air": "Yes",
+//         "transmission": "Manual",
+//         "fuel": "Diesel"
+//     },
+//     {
+//         "id": "5",
+//         "name": "VW Passat CC",
+//         "price": 25,
+//         "favorites": false,
+//         "img": "https://i.ibb.co/FqzLdj5/passatcc.jpg",
+//         "model": "Passat CC",
+//         "mark": "Volkswagen",
+//         "year": "2008",
+//         "doors": "4/5",
+//         "air": "Yes",
+//         "transmission": "Automatic",
+//         "fuel": "Gasoline"
+//     }
+// ]
+
