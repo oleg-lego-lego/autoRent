@@ -1,12 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {carModels, CarModelsType} from "./carModels";
+import {CarModelsType} from "./carModels";
 
 export interface CarModelsStateType {
     items: CarModelsType[]
 }
 
 const initialState: CarModelsStateType = {
-    items: carModels
+    items: []
 }
 
 export const CarModelsSlice = createSlice({
@@ -17,10 +17,13 @@ export const CarModelsSlice = createSlice({
             const {id, favorites} = action.payload
             state.items.map(el => el.id === id ? el.favorites = !favorites : el)
         },
+        getCars: (state, action) => {
+            state.items = action.payload
+        }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const {carModelsFavorites} = CarModelsSlice.actions
+export const {carModelsFavorites, getCars} = CarModelsSlice.actions
 
 export default CarModelsSlice.reducer
