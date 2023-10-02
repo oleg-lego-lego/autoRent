@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {Navbar} from "./components/navbar/navbar";
 import {Route, Routes} from "react-router-dom";
@@ -14,6 +14,9 @@ import {NotFound} from "./components/notFound/NotFound";
 import {Login} from "./components/login_account/Login";
 import {RegistrationPage} from "./components/passwordInput/RegistrationPage";
 import {Garage} from "./components/garage/Garage";
+import {carsApi} from "./api/cars-api";
+import {getCars} from "./app/reducer/carModels-reducer";
+import {useAppDispatch} from "./hooks/redux";
 
 export enum PATH {
     HOME = '/',
@@ -30,6 +33,15 @@ export enum PATH {
 }
 
 function App() {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        carsApi.getCars()
+            .then((res) => {
+                dispatch(getCars(res.data))
+            })
+    }, [dispatch])
+
     return (
         <>
             <Navbar/>
