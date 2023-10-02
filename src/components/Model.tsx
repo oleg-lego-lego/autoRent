@@ -6,7 +6,7 @@ import {CarModelsType} from "../app/reducer/carModels";
 import favoritesTrue from "../images/favoritesTrue.svg"
 import favoritesFalse from "../images/favoritesFalse.svg"
 import {PATH} from "../App";
-
+import {carsApi} from "../api/cars-api";
 
 export type ModelPropsType = {
     model: CarModelsType
@@ -16,7 +16,10 @@ export const Model = (props: ModelPropsType) => {
     const dispatch = useAppDispatch()
 
     const favoritesClick = (id: string, favorites: boolean) => {
-        dispatch(carModelsFavorites({id, favorites}))
+        carsApi.getFavorites(id, favorites)
+            .then(res => {
+                dispatch(carModelsFavorites(res.data))
+            })
     }
 
     const titleFavorites = props.model.favorites ? 'off favorites' : 'add favorites';
@@ -32,7 +35,7 @@ export const Model = (props: ModelPropsType) => {
                         </div>
                         <div
                             className={"buttonFavorites"}
-                            onClick={() => favoritesClick(props.model.id, props.model.favorites)}
+                            onClick={() => favoritesClick(props.model.id, !props.model.favorites)}
                         >
                             {props.model.favorites
                                 ? <img src={favoritesTrue} title={titleFavorites} alt="favoritesTrue"/>
