@@ -5,7 +5,7 @@ import {useAppSelector} from "../../hooks/redux";
 
 export const SelectCar = () => {
     const carModels = useAppSelector(state => state.carModels.items)
-    const [active, setActive] = useState(carModels[0].id);
+    const [active, setActive] = useState('0'); // fix
 
     const coloringButton = (id: string) => {
         return active === id ? "colored-button" : "";
