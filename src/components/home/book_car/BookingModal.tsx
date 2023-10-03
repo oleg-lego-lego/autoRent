@@ -23,6 +23,7 @@ import {
 } from "../../../app/reducer/bookCarInputValue-reducer";
 import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
 import {priceBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
+import {carsApi} from "../../../api/cars-api";
 
 
 export const BookingModal = () => {
@@ -106,7 +107,11 @@ export const BookingModal = () => {
         dispatch(setAgeError(errors.age))
 
         if (Object.values(errors).every(error => error === '')) {
-            dispatch(bookCarAdd(newRentCar));
+            carsApi.postBookCar(newRentCar)
+                .then(res => {
+                    dispatch(bookCarAdd(res.data))
+                    }
+                )
             dispatch(setModal(!modal))
             dispatch(priceBookCar(priceCar))
             dispatch(setShowDoneMessage('The order has been placed correctly and is in your personal account.'))
