@@ -15,5 +15,8 @@ export const carsApi = {
     },
     postBookCar(newRentCar: BookCarType) {
         return instance.post<BookCarType>('/bookCar/', newRentCar)
+    },
+    getBookCar() {
+        return instance.get<BookCarType>('/bookCar/')
     }
 }
