@@ -16,6 +16,7 @@ import {BookCarType} from "../../app/reducer/bookCar";
 import {useAppDispatch} from "../../hooks/redux";
 import {bookCarDelete, bookCarOpenDescription} from "../../app/reducer/bookCar-reducer";
 import {QRCodeCanvas} from "qrcode.react";
+import {carsApi} from "../../api/cars-api";
 
 
 const useRowStyles = makeStyles({
@@ -37,7 +38,10 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
     const dispatch = useAppDispatch()
 
     const bookCarDeleteId = (id: string) => {
-        dispatch(bookCarDelete(id))
+        carsApi.deleteBookCar(id)
+            .then(res => {
+                dispatch(bookCarDelete(id))
+            })
     }
 
     const bookCarOpen = (id: string, open: boolean) => {

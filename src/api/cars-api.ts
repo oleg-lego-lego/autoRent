@@ -18,5 +18,8 @@ export const carsApi = {
     },
     getBookCar() {
         return instance.get<BookCarType>('/bookCar/')
+    },
+    deleteBookCar(id: string) {
+        return instance.delete<BookCarType>(`/bookCar/${id}`)
     }
 }
