@@ -14,7 +14,7 @@ export const BookCarSlice = createSlice({
     initialState,
     reducers: {
         bookCarAdd: (state, action) => {
-            state.bookCar.push(action.payload)
+            state.bookCar = action.payload
         },
         bookCarDelete: (state, action) => {
             state.bookCar = state.bookCar.filter(el => el.id !== action.payload)

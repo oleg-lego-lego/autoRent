@@ -21,7 +21,6 @@ import {
     setPickTime,
     setShowDoneMessage
 } from "../../../app/reducer/bookCarInputValue-reducer";
-import {bookCarAdd} from "../../../app/reducer/bookCar-reducer";
 import {priceBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
 import {carsApi} from "../../../api/cars-api";
 
@@ -109,7 +108,8 @@ export const BookingModal = () => {
         if (Object.values(errors).every(error => error === '')) {
             carsApi.postBookCar(newRentCar)
                 .then(res => {
-                    dispatch(bookCarAdd(res.data))
+                    // dispatch(bookCarAdd(res.data))
+                    console.log(res.data)
                     }
                 )
             dispatch(setModal(!modal))

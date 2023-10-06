@@ -54,7 +54,7 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
     const QR_CodeValue = props.row.id
 
     return (
-        <React.Fragment>
+        <>
             <TableRow className={classes.root}>
                 <TableCell>
                     <IconButton aria-label="expand row" size="small"
@@ -125,7 +125,7 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                     </TableCell>
                 </TableRow>
             }
-        </React.Fragment>
+        </>
     );
 };
 
