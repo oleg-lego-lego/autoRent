@@ -6,8 +6,7 @@ import Button from '@mui/material/Button';
 import {PasswordInput} from "./PasswordInput";
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../App";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {addLogin} from "../../app/reducer/login/login-reducer";
+import {carsApiLogin} from "../../api/cars-api";
 
 
 export type RegisterFormType = {
@@ -26,15 +25,13 @@ export const RegisterForm = () => {
         mode: 'onTouched'
     });
 
-    let password = watch('password', '')
+    const password = watch('password', '')
 
-    const dispatch = useAppDispatch()
     const [redirect, setRedirect] = useState<boolean>(false)
 
     const onSubmit: SubmitHandler<RegisterFormType> = async (data) => {
         const {confirmPassword, ...restData} = data
-        // const res = await dispatch(registerTC(restData))
-        dispatch(addLogin(restData))
+        carsApiLogin.addLoginAccount(data).then()
         setRedirect(true)
     }
 
@@ -43,17 +40,18 @@ export const RegisterForm = () => {
     }
 
     if (redirect) {
-        return <Navigate to={PATH.LOGIN_ACCOUNT}/>
+        return <Navigate to={PATH.LOGIN}/>
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={'s.wrapper'}
-              onKeyDown={(e) => onEnterPress(e.key)}>
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            onKeyDown={(e) => onEnterPress(e.key)}
+        >
             <FormGroup>
                 <TextField
-                    label="Email"
-                    variant="standard"
-                    margin="none"
+                    label={'Email'}
+                    variant={'outlined'}
                     {...register('email', {
                         required: 'Email is required',
                         pattern: {
@@ -62,36 +60,56 @@ export const RegisterForm = () => {
                         }
                     })}
                 />
-                <div className={'s.authError'}>{errors.email && <div>{errors.email.message}</div>}</div>
 
-                <PasswordInput
-                    name="password"
-                    label={'Password'}
-                    register={register}
-                    options={{
-                        required: 'Password is required', minLength: {
-                            value: 8, message: 'Password must be more than 8 characters'
-                        }
-                    }}
-                />
-                <div className={'s.authError'}>{errors.password && <div>{errors.password.message}</div>}</div>
-
-                <PasswordInput name="confirmPassword"
-                               label={'Confirm password'}
-                               register={register}
-                               options={{
-                                   validate: (value: string) =>
-                                       value === password || 'The passwords do not match'
-                               }}
-                />
-                <div className={'s.authError'}>{errors.confirmPassword &&
-                    <div>{errors.confirmPassword.message}</div>}
+                <div className="authError">
+                    {errors.email && <div>{errors.email.message}</div>}
                 </div>
 
-                <Button type={'submit'} variant={'contained'} color={'primary'} style={{marginTop: '30px'}}
-                        fullWidth>
-                    Sign up
-                </Button>
+                <PasswordInput
+                    name={'password'}
+                    label={'Password'}
+                    register={register}
+                    options={
+                        {
+                            required: 'Password is required',
+                            minLength: {
+                                value: 8,
+                                message: 'Password must be more than 8 characters'
+                            }
+                        }
+                    }
+                />
+
+                <div className='authError'>
+                    {errors.password && <div>{errors.password.message}</div>}
+                </div>
+
+                <PasswordInput
+                    name={'confirmPassword'}
+                    label={'Confirm password'}
+                    register={register}
+                    options={
+                        {
+                            validate: (value: string) =>
+                                value === password || 'The passwords do not match'
+                        }
+                    }
+                />
+
+                <div className="authError">
+                    {errors.confirmPassword && <div>{errors.confirmPassword.message}</div>}
+                </div>
+
+                <div className="button__Login">
+                    <Button
+                        type={'submit'}
+                        variant={'contained'}
+                        color={'primary'}
+                        fullWidth
+                    >
+                        Sign up
+                    </Button>
+                </div>
             </FormGroup>
         </form>
     )
