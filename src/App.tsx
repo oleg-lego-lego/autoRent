@@ -53,7 +53,7 @@ function App() {
                 <Route path={PATH.CONTACT} element={<Contact/>}/>
                 <Route path={PATH.FAVORITES} element={<Favorites/>}/>
                 <Route path={PATH.NOT_FOUND} element={<NotFound/>}/>
-                <Route path={PATH.LOGIN_ACCOUNT} element={<Login/>}/>
+                <Route path={PATH.LOGIN} element={<Login/>}/>
                 <Route path={PATH.REGISTRATION} element={<RegistrationPage/>}/>
                 <Route path={PATH.GARAGE} element={<Garage/>}/>
             </Routes>
