@@ -34,21 +34,24 @@ export const PasswordInput: FC<PasswordInputPropsType> = (
         <TextField
             type={values.showPassword ? 'text' : 'password'}
             label={label}
-            margin="normal"
-            variant="standard"
-            autoComplete="on"
+            margin={'normal'}
+            variant={'outlined'}
+            autoComplete={'on'}
             fullWidth={isFullWidth}
-            InputProps={{
-                endAdornment: <InputAdornment position={'end'}>
-                    <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                    >
-                        {values.showPassword ? <VisibilityOff/> : <Visibility/>}
-                    </IconButton>
-                </InputAdornment>
-            }}
+            InputProps={
+                {
+                    endAdornment:
+                        <InputAdornment position={'end'}>
+                            <IconButton
+                                aria-label={'toggle password visibility'}
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                            >
+                                {values.showPassword ? <VisibilityOff/> : <Visibility/>}
+                            </IconButton>
+                        </InputAdornment>
+                }
+            }
             {...register(name, {
                 value: values.password,
                 onChange: handleChange,
