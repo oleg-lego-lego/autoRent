@@ -16,7 +16,7 @@ export const NavbarNavigation = (props: NavbarNavigationPropsType) => {
             <NavbarLink title={'Comment'} to={PATH.COMMENT} openNav={props.openNav} openValue={props.openValue}/>
             <NavbarLink title={'Contact'} to={PATH.CONTACT} openNav={props.openNav} openValue={props.openValue}/>
             <NavbarLink title={'Favorites'} to={PATH.FAVORITES} openNav={props.openNav} openValue={props.openValue}/>
-            <NavbarLink title={'Login'} to={PATH.LOGIN_ACCOUNT} openNav={props.openNav} openValue={props.openValue}/>
+            <NavbarLink title={'Login'} to={PATH.LOGIN} openNav={props.openNav} openValue={props.openValue}/>
             <NavbarLink title={'Garage'} to={PATH.GARAGE} openNav={props.openNav} openValue={props.openValue}/>
         </>
     );
