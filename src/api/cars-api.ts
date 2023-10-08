@@ -23,3 +23,14 @@ export const carsApi = {
         return instance.delete<BookCarType>(`/bookCar/${id}`)
     }
 }
+
+
+const instanceLogin = axios.create({
+    baseURL: 'https://652293b4f43b17938414a864.mockapi.io/carRent/',
+})
+
+export const carsApiLogin = {
+    addLoginAccount(newAccount: any) {
+        return instanceLogin.post('/login/', {newAccount})
+    },
+}
