@@ -14,9 +14,10 @@ import {NotFound} from "./components/notFound/NotFound";
 import {Login} from "./components/login_account/Login";
 import {RegistrationPage} from "./components/passwordInput/RegistrationPage";
 import {Garage} from "./components/garage/Garage";
-import {carsApi} from "./api/cars-api";
+import {carsApi, carsApiLogin} from "./api/cars-api";
 import {getCars} from "./app/reducer/carModels-reducer";
 import {useAppDispatch} from "./hooks/redux";
+import {addLogin} from "./app/reducer/login/login-reducer";
 
 export enum PATH {
     HOME = '/',
@@ -40,6 +41,14 @@ function App() {
             .then((res) => {
                 dispatch(getCars(res.data))
             })
+    }, [dispatch])
+
+    useEffect(() => {
+        carsApiLogin.getLoginAccount()
+            .then(res => {
+                    dispatch(addLogin(res.data))
+                }
+            )
     }, [dispatch])
 
     return (
