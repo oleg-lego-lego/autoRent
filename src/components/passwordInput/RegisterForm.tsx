@@ -7,6 +7,8 @@ import {PasswordInput} from "./PasswordInput";
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../App";
 import {carsApiLogin} from "../../api/cars-api";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {addLogin} from "../../app/reducer/login/login-reducer";
 
 
 export type RegisterFormType = {
@@ -16,6 +18,8 @@ export type RegisterFormType = {
 }
 
 export const RegisterForm = () => {
+    const dispatch = useAppDispatch()
+
     const {register, handleSubmit, watch, formState: {errors}} = useForm<RegisterFormType>({
         defaultValues: {
             email: '',
@@ -29,9 +33,13 @@ export const RegisterForm = () => {
 
     const [redirect, setRedirect] = useState<boolean>(false)
 
-    const onSubmit: SubmitHandler<RegisterFormType> = async (data) => {
-        const {confirmPassword, ...restData} = data
-        carsApiLogin.addLoginAccount(data).then()
+    const loginList = useAppSelector(state => state.loginList)
+    console.log(loginList)
+
+    const onSubmit: SubmitHandler<RegisterFormType> = (data) => {
+        // const {confirmPassword, ...restData} = data
+        carsApiLogin.addLoginAccount(data)
+            .then()
         setRedirect(true)
     }
 
