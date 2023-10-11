@@ -15,7 +15,7 @@ export const loginSlice = createSlice({
     initialState,
     reducers: {
         addLogin: (state, action) => {
-            state.login.push(action.payload)
+            state.login = action.payload
         },
         checkUser: (state, action) => {
             state.login.find(el => el.email === action.payload.email
@@ -24,7 +24,6 @@ export const loginSlice = createSlice({
     },
 })
 
-// Action creators are generated for each case reducer function
 export const {addLogin, checkUser} = loginSlice.actions
 
 export default loginSlice.reducer

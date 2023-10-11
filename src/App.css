@@ -2387,7 +2387,7 @@ footer {
 }
 
 .favorites-section {
-    padding: 8rem 0 5rem;
+    padding: 5rem 0 5rem;
     color: #010103;
     text-align: center;
 }
@@ -2571,6 +2571,7 @@ footer {
     text-align: center;
 }
 
+
 .formControl {
     width: 400px;
 }
@@ -2580,11 +2581,35 @@ footer {
 }
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-    /*font-size: 22px !important;*/
+    font-size: 22px !important;
+    padding: 6px 10px !important;
 }
 
-.asdasd {
-    /*width: 400px;*/
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    font-size: 22px !important;
+    padding: 6px 10px !important;
+}
+
+.css-1rv3ei8-MuiFormControl-root-MuiTextField-root {
+    margin-bottom: 0 !important;
+}
+
+.authError {
+    font-size: 12px;
+    color: red;
+    height: 1px;
+    margin-top: 2px !important;
+    margin-bottom: 10px !important;
+}
+
+.css-1fu7jd5-MuiButtonBase-root-MuiButton-root {
+    width: 120px !important;
+    font-size: 17px !important;
+    margin: 20px 0 5px !important;
+}
+
+.button__Login{
+    text-align:  center;
 }
 
 .login__title {
@@ -2604,7 +2629,7 @@ footer {
     line-height: 24px;
     color: #000000;
     opacity: 0.5;
-    /*margin: 0 0 10px;*/
+    margin-bottom: 1.2rem !important;
 }
 
 .signUpLink {

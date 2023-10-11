@@ -30,7 +30,10 @@ const instanceLogin = axios.create({
 })
 
 export const carsApiLogin = {
+    getLoginAccount() {
+        return instanceLogin.get('/login/')
+    },
     addLoginAccount(newAccount: any) {
-        return instanceLogin.post('/login/', {newAccount})
+        return instanceLogin.post('/login/', newAccount)
     },
 }
