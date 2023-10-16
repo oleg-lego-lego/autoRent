@@ -38,7 +38,8 @@ export const RegisterForm = () => {
 
     const onSubmit: SubmitHandler<RegisterFormType> = (data) => {
         const {confirmPassword, ...restData} = data
-        const findEmail = arr.find(i => i === restData.email)
+        const findEmail = arr.find(i => i.toLowerCase() === restData.email.toLowerCase())
+
         if (findEmail) {
             setErrorFindEmail('this email address is already registered')
         } else {
