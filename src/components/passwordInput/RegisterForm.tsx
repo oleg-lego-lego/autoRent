@@ -7,8 +7,7 @@ import {PasswordInput} from "./PasswordInput";
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../App";
 import {carsApiLogin} from "../../api/cars-api";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {addLogin} from "../../app/reducer/login/login-reducer";
+import {useAppSelector} from "../../hooks/redux";
 
 
 export type RegisterFormType = {
@@ -18,8 +17,6 @@ export type RegisterFormType = {
 }
 
 export const RegisterForm = () => {
-    const dispatch = useAppDispatch()
-
     const {register, handleSubmit, watch, formState: {errors}} = useForm<RegisterFormType>({
         defaultValues: {
             email: '',
@@ -31,16 +28,24 @@ export const RegisterForm = () => {
 
     const password = watch('password', '')
 
+    const [errorFindEmail, setErrorFindEmail] = useState<string>('')
     const [redirect, setRedirect] = useState<boolean>(false)
 
     const loginList = useAppSelector(state => state.loginList)
-    console.log(loginList)
+
+    const arr: string[] = []
+    loginList.login.map(el => arr.push(el.email))
 
     const onSubmit: SubmitHandler<RegisterFormType> = (data) => {
-        // const {confirmPassword, ...restData} = data
-        carsApiLogin.addLoginAccount(data)
-            .then()
-        setRedirect(true)
+        const {confirmPassword, ...restData} = data
+        const findEmail = arr.find(i => i === restData.email)
+        if (findEmail) {
+            setErrorFindEmail('this email address is already registered')
+        } else {
+            carsApiLogin.addLoginAccount(data)
+                .then()
+            setRedirect(true)
+        }
     }
 
     const onEnterPress = (key: string) => {
@@ -64,13 +69,14 @@ export const RegisterForm = () => {
                         required: 'Email is required',
                         pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                            message: 'Write correct email'
+                            message: 'Write correct email',
                         }
                     })}
                 />
 
                 <div className="authError">
                     {errors.email && <div>{errors.email.message}</div>}
+                    {errorFindEmail && <div>{errorFindEmail}</div>}
                 </div>
 
                 <PasswordInput
