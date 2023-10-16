@@ -14,7 +14,7 @@ export const Registration = () => {
                 <RegisterForm/>
             </FormControl>
             <p className="login__text">Already have an account ?</p>
-            <NavLink to={PATH.LOGIN_ACCOUNT} className="signUpLink">Sing in</NavLink>
+            <NavLink to={PATH.LOGIN} className="signUpLink">Sing in</NavLink>
         </Paper>
 
     );
