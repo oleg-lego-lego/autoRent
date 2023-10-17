@@ -64,7 +64,7 @@ function App() {
                 <Route path={PATH.NOT_FOUND} element={<NotFound/>}/>
                 <Route path={PATH.LOGIN} element={<Login/>}/>
                 <Route path={PATH.REGISTRATION} element={<RegistrationPage/>}/>
-                <Route path={PATH.GARAGE} element={<Garage/>}/>
+                {false && <Route path={PATH.GARAGE} element={<Garage/>}/>}
             </Routes>
             <Banner/>
             <Footer/>
