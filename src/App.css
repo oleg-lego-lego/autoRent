@@ -258,7 +258,7 @@ li {
     flex-direction: column;
     z-index: 3;
     max-width: 50rem;
-    margin-top: 5rem;
+    margin-top: 15rem;
 }
 
 @media (max-width: 800px) {
@@ -416,6 +416,7 @@ li {
     display: flex;
     flex-direction: column;
     color: #010103;
+    margin-top: 100px;
 }
 
 @media (max-width: 400px) {
