@@ -5,12 +5,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import {Navigate, NavLink} from 'react-router-dom';
 import Button from '@mui/material/Button';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {PasswordInput} from "./PasswordInput";
 import {PATH} from "../../App";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {checkUser} from "../../app/reducer/login/login-reducer";
 import {LoginListType} from "../../app/reducer/login/loginList";
+import {carsApiLogin} from "../../api/cars-api";
+import {addLogin} from "../../app/reducer/login/login-reducer";
 
 
 type LoginFormType = {
@@ -20,6 +21,19 @@ type LoginFormType = {
 }
 
 export const LoginForm = () => {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        carsApiLogin.getLoginAccount()
+            .then(res => {
+                dispatch(addLogin(res.data))
+            })
+    }, [dispatch])
+
+    const loginList = useAppSelector(state => state.loginList)
+
+    const [errorEmail, setErrorEmail] = useState<string>('')
+    const [errorPassword, setErrorPassword] = useState<string>('')
     const [redirectValue, setRedirectValue] = useState<boolean | LoginListType>(false)
 
     const {register, control, handleSubmit, formState: {errors}} = useForm<LoginFormType>({
@@ -31,21 +45,26 @@ export const LoginForm = () => {
         mode: 'onTouched'
     });
 
-    const dispatch = useAppDispatch()
-    const loginList = useAppSelector(state => state.loginList)
+    const onSubmit: SubmitHandler<LoginFormType> = async (data) => {
+        const user = loginList.login.find(i => i.email.toLowerCase() === data.email.toLowerCase());
 
-    const onSubmit: SubmitHandler<LoginFormType> = (data) => {
-        dispatch(checkUser(data.email))
-    }
+        if (!user) {
+            setErrorEmail('Check your email or register');
+        } else {
+            setErrorEmail('');
+        }
 
-
-
-    console.log(loginList)
-
-    const asd = () => {
-        const redirect = loginList.login.find(el => el.email === el.email)
-        console.log(loginList.login)
-        // setRedirectValue(redirect)
+        if (user && user.password === data.password) {
+            setErrorPassword('');
+            try {
+                await carsApiLogin.userInLogged({...user, redirectGarageValue: true});
+                setRedirectValue(true);
+            } catch (error) {
+                console.error('An error occurred:', error);
+            }
+        } else {
+            setErrorPassword('Check your password');
+        }
     }
 
     const onEnterPress = (key: string) => {
@@ -78,6 +97,7 @@ export const LoginForm = () => {
 
                 <div className="form__authError">
                     {errors.email && <div>{errors.email.message}</div>}
+                    {errorEmail && <div>{errorEmail}</div>}
                 </div>
 
                 <PasswordInput
@@ -95,6 +115,7 @@ export const LoginForm = () => {
 
                 <div className="form__authError">
                     {errors.password && <div>{errors.password.message}</div>}
+                    {errorPassword && <div>{errorPassword}</div>}
                 </div>
 
                 <div style={{display: 'flex', justifyContent: 'flex-start'}}>
@@ -109,7 +130,9 @@ export const LoginForm = () => {
                         }
                     />
                 </div>
+
                 <NavLink to={'Path.ForgotPassword'} className="forgotPassword">Forgot password ?</NavLink>
+
                 <div className="button__Login">
                     <Button
                         type={'submit'}
