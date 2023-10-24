@@ -8,6 +8,8 @@ import {Navigate} from "react-router-dom";
 import {PATH} from "../../App";
 import {carsApiLogin} from "../../api/cars-api";
 import {useAppSelector} from "../../hooks/redux";
+import {LoginListType} from "../../app/reducer/login/loginList";
+import {v1} from "uuid";
 
 
 export type RegisterFormType = {
@@ -36,16 +38,26 @@ export const RegisterForm = () => {
     const arr: string[] = []
     loginList.login.map(el => arr.push(el.email))
 
-    const onSubmit: SubmitHandler<RegisterFormType> = (data) => {
+    const onSubmit: SubmitHandler<RegisterFormType> = async (data) => {
         const {confirmPassword, ...restData} = data
         const findEmail = arr.find(i => i.toLowerCase() === restData.email.toLowerCase())
 
+        const newAccount: LoginListType = {
+            ...data,
+            redirectLoginValue: true,
+            redirectGarageValue: false,
+            id: v1()
+        }
+
         if (findEmail) {
-            setErrorFindEmail('this email address is already registered')
+            setErrorFindEmail('this email address is already registered');
         } else {
-            carsApiLogin.addLoginAccount(data)
-                .then()
-            setRedirect(true)
+            try {
+                await carsApiLogin.addLoginAccount(newAccount)
+                setRedirect(true);
+            } catch (error) {
+                console.error('Ошибка при добавлении учетной записи:', error);
+            }
         }
     }
 
