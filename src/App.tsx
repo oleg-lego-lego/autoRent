@@ -14,10 +14,9 @@ import {NotFound} from "./components/notFound/NotFound";
 import {Login} from "./components/login_account/Login";
 import {RegistrationPage} from "./components/passwordInput/RegistrationPage";
 import {Garage} from "./components/garage/Garage";
-import {carsApi, carsApiLogin} from "./api/cars-api";
+import {carsApi} from "./api/cars-api";
 import {getCars} from "./app/reducer/carModels-reducer";
-import {useAppDispatch} from "./hooks/redux";
-import {addLogin} from "./app/reducer/login/login-reducer";
+import {useAppDispatch, useAppSelector} from "./hooks/redux";
 
 export enum PATH {
     HOME = '/',
@@ -35,7 +34,6 @@ export enum PATH {
 
 function App() {
     const dispatch = useAppDispatch()
-
     useEffect(() => {
         carsApi.getCars()
             .then((res) => {
@@ -43,13 +41,8 @@ function App() {
             })
     }, [dispatch])
 
-    useEffect(() => {
-        carsApiLogin.getLoginAccount()
-            .then(res => {
-                    dispatch(addLogin(res.data))
-                }
-            )
-    }, [dispatch])
+    const valueLogin = useAppSelector(state => state.auth.auth)
+    const garageRedirect = valueLogin.map(el => el.redirectGarageValue).join('')
 
     return (
         <>
@@ -64,7 +57,7 @@ function App() {
                 <Route path={PATH.NOT_FOUND} element={<NotFound/>}/>
                 <Route path={PATH.LOGIN} element={<Login/>}/>
                 <Route path={PATH.REGISTRATION} element={<RegistrationPage/>}/>
-                {false && <Route path={PATH.GARAGE} element={<Garage/>}/>}
+                {!!garageRedirect && <Route path={PATH.GARAGE} element={<Garage/>}/>}
             </Routes>
             <Banner/>
             <Footer/>
