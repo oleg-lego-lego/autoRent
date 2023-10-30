@@ -4,6 +4,7 @@ import bookCarReducer from "./reducer/bookCar-reducer";
 import loginReducer from "./reducer/login/login-reducer";
 import bookCarInputValueReducer from "./reducer/bookCarInputValue-reducer";
 import bookCarMoreInfoReducer from "./reducer/bookCarMoreInfo-reducer";
+import authReducer from "./reducer/auth-reducer";
 
 export const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
         bookCarInputValue: bookCarInputValueReducer,
         bookCarMoreInfo: bookCarMoreInfoReducer,
         loginList: loginReducer,
+        auth: authReducer,
     },
 })
 
