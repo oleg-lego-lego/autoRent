@@ -1,6 +1,7 @@
 import axios from "axios";
 import {CarModelsType} from "../app/reducer/carModels";
 import {BookCarType} from "../app/reducer/bookCar";
+import {LoginListType} from "../app/reducer/login/loginList";
 
 const instance = axios.create({
     baseURL: 'https://6512a403b8c6ce52b395f2d4.mockapi.io/api/carRent/',
@@ -31,9 +32,15 @@ const instanceLogin = axios.create({
 
 export const carsApiLogin = {
     getLoginAccount() {
-        return instanceLogin.get('/login/')
+        return instanceLogin.get<LoginListType>('/login/')
     },
-    addLoginAccount(newAccount: any) {
-        return instanceLogin.post('/login/', newAccount)
+    addLoginAccount(newAccount: LoginListType) {
+        return instanceLogin.post<LoginListType>('/login/', newAccount)
     },
+    userInLogged(userInLogged: LoginListType) {
+        return instanceLogin.post<LoginListType>('/userInLogged/', userInLogged)
+    },
+    getUserInLogged() {
+        return instanceLogin.get<LoginListType>('/userInLogged/')
+    }
 }
