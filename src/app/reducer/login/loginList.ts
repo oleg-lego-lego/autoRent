@@ -1,7 +1,10 @@
 export type LoginListType = {
+    id: string
     email: string
     password: string
-    redirectValue: boolean
+    confirmPassword: string
+    redirectLoginValue: boolean
+    redirectGarageValue: boolean
 }
 
 export const loginList: LoginListType[] = []
