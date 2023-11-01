@@ -17,13 +17,9 @@ export const loginSlice = createSlice({
         addLogin: (state, action) => {
             state.login = action.payload
         },
-        checkUser: (state, action) => {
-            state.login.find(el => el.email === action.payload.email
-                ? action.payload.redirectValue = true : action.payload.redirectValue = false)
-        }
     },
 })
 
-export const {addLogin, checkUser} = loginSlice.actions
+export const {addLogin} = loginSlice.actions
 
 export default loginSlice.reducer
