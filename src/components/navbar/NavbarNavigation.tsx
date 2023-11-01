@@ -2,6 +2,8 @@ import React from 'react';
 import {NavbarLink} from "./NavbarLink";
 import {PATH} from "../../App";
 import {useAppSelector} from "../../hooks/redux";
+import {Logout} from "../logout/Logout";
+
 
 type NavbarNavigationPropsType = {
     openNav: (openValue: boolean) => void
@@ -20,9 +22,13 @@ export const NavbarNavigation = (props: NavbarNavigationPropsType) => {
             <NavbarLink title={'Comment'} to={PATH.COMMENT} openNav={props.openNav} openValue={props.openValue}/>
             <NavbarLink title={'Contact'} to={PATH.CONTACT} openNav={props.openNav} openValue={props.openValue}/>
             <NavbarLink title={'Favorites'} to={PATH.FAVORITES} openNav={props.openNav} openValue={props.openValue}/>
-            <NavbarLink title={'Login'} to={PATH.LOGIN} openNav={props.openNav} openValue={props.openValue}/>
-            {!!garageRedirect &&
-                <NavbarLink title={'Garage'} to={PATH.GARAGE} openNav={props.openNav} openValue={props.openValue}/>
+            {!!garageRedirect ?
+                <>
+                    <NavbarLink title={'Garage'} to={PATH.GARAGE} openNav={props.openNav} openValue={props.openValue}/>
+                    <Logout/>
+                </>
+                :
+                <NavbarLink title={'Login'} to={PATH.LOGIN} openNav={props.openNav} openValue={props.openValue}/>
             }
         </>
     );

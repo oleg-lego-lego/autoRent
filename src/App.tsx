@@ -14,9 +14,10 @@ import {NotFound} from "./components/notFound/NotFound";
 import {Login} from "./components/login_account/Login";
 import {RegistrationPage} from "./components/passwordInput/RegistrationPage";
 import {Garage} from "./components/garage/Garage";
-import {carsApi} from "./api/cars-api";
+import {carsApi, carsApiLogin} from "./api/cars-api";
 import {getCars} from "./app/reducer/carModels-reducer";
 import {useAppDispatch, useAppSelector} from "./hooks/redux";
+import {getAuthUser} from "./app/reducer/auth-reducer";
 
 export enum PATH {
     HOME = '/',
@@ -26,18 +27,25 @@ export enum PATH {
     CONTACT = '/contact',
     FAVORITES = '/favorites',
     NOT_FOUND = '*',
-    LOGIN_ACCOUNT = '/account',
     LOGIN = '/login',
     REGISTRATION = '/registration',
-    GARAGE = '/Garage'
+    GARAGE = '/garage'
 }
 
 function App() {
     const dispatch = useAppDispatch()
+
     useEffect(() => {
         carsApi.getCars()
             .then((res) => {
                 dispatch(getCars(res.data))
+            })
+    }, [dispatch])
+
+    useEffect(() => {
+        carsApiLogin.getUserInLogged()
+            .then(res => {
+                dispatch(getAuthUser(res.data))
             })
     }, [dispatch])
 
@@ -55,9 +63,14 @@ function App() {
                 <Route path={PATH.CONTACT} element={<Contact/>}/>
                 <Route path={PATH.FAVORITES} element={<Favorites/>}/>
                 <Route path={PATH.NOT_FOUND} element={<NotFound/>}/>
-                <Route path={PATH.LOGIN} element={<Login/>}/>
-                <Route path={PATH.REGISTRATION} element={<RegistrationPage/>}/>
-                {!!garageRedirect && <Route path={PATH.GARAGE} element={<Garage/>}/>}
+                {!!garageRedirect ?
+                    <Route path={PATH.GARAGE} element={<Garage/>}/>
+                    :
+                    <>
+                        <Route path={PATH.LOGIN} element={<Login/>}/>
+                        <Route path={PATH.REGISTRATION} element={<RegistrationPage/>}/>
+                    </>
+                }
             </Routes>
             <Banner/>
             <Footer/>
