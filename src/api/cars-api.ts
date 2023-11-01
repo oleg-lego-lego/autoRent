@@ -40,6 +40,9 @@ export const carsApiLogin = {
     userInLogged(userInLogged: LoginListType) {
         return instanceLogin.post<LoginListType>('/userInLogged/', userInLogged)
     },
+    userOutLogged(id: string) {
+        return instanceLogin.delete(`/userInLogged/${id}`)
+    },
     getUserInLogged() {
         return instanceLogin.get<LoginListType>('/userInLogged/')
     }
