@@ -1,18 +1,16 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-export const CarCardSkeleton = (props: any) => {
+export const CarCardSkeleton = () => {
     return (
         <div className="models__box">
             <ContentLoader
                 speed={4}
                 width={318}
                 height={500}
-                viewBox="0 0 318 500"
                 backgroundColor="#a39f9f"
                 foregroundColor="#ecebeb"
                 gradientDirection={'top-bottom'}
-                {...props}
             >
                 <rect x="0" y="0" rx="0" ry="0" width="318" height="2"/>
                 <rect x="0" y="0" rx="0" ry="0" width="2" height="500"/>
