@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {ButtonBox} from "./ButtonBox";
 import {CarBox} from "./CarBox";
 import {useAppSelector} from "../../hooks/redux";
+import {SkeletonForHome} from "../skeleton/SkeletonForHome";
 
 export const SelectCar = () => {
     const carModels = useAppSelector(state => state.carModels.items)
@@ -29,25 +30,28 @@ export const SelectCar = () => {
                             next adventure or business trip
                         </p>
                     </div>
-                    <div className="selectCar__content">
-                        <div className="selectCar__box">
-                            {carModels.map(el => {
-                                return (
+
+                    {!carModels.length ?
+                        <SkeletonForHome/>
+                        :
+                        <div className="selectCar__content">
+                            <div className="selectCar__box">
+                                {carModels.map(el => (
                                     <ButtonBox
                                         data={el}
                                         coloringButton={coloringButton}
                                         setActiveButton={setActiveButton}
                                         key={el.id}
                                     />
+                                ))}
+                            </div>
+                            {carList.map(el => {
+                                return (
+                                    <CarBox data={el} key={el.id}/>
                                 )
                             })}
                         </div>
-                        {carList.map(el => {
-                            return (
-                                <CarBox data={el} key={el.id}/>
-                            )
-                        })}
-                    </div>
+                    }
                 </div>
             </div>
         </section>
