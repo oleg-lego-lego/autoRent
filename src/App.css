@@ -400,6 +400,18 @@ li {
     /*margin-bottom: 10rem;*/
 }
 
+/* CSS-файл или встроенные стили в вашем компоненте */
+/*.CarModelHomeSkeleton {*/
+/*    max-width: 100%; !* Ширина компонента не будет превышать ширину родительского контейнера *!*/
+/*}*/
+
+/*!* Пример медиа-запроса для изменения ширины на более узком экране *!*/
+/*@media (max-width: 768px) {*/
+/*    .CarModelHomeSkeleton {*/
+/*        width: 80%; !* Пример: на узком экране ширина компонента составит 80% от ширины родительского контейнера *!*/
+/*    }*/
+/*}*/
+
 .book__content__box {
     background-color: #ffffff;
     width: 100%;
@@ -1083,6 +1095,32 @@ li {
 .selectCar__box button:hover {
     background-color: #ff4d30;
     color: white;
+}
+
+.car__skeleton {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.carCharacter__skeleton {
+    display: flex;
+    flex-direction: column;
+}
+
+.carButton__skeleton {
+   margin-top: 15px;
+}
+
+@media (max-width: 890px) {
+    .car__skeleton {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .carCharacter__skeleton {
+        margin-top: 15px;
+    }
 }
 
 .pick-car {
