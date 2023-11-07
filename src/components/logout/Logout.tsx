@@ -1,9 +1,9 @@
 import React from 'react';
 import {carsApiLogin} from "../../api/cars-api";
 import {Navigate} from "react-router-dom";
-import {PATH} from "../../App";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {logoutUserValue} from "../../app/reducer/auth-reducer";
+import {PATH} from "../../PATH/PATH";
 
 export const Logout = () => {
     const dispatch = useAppDispatch()

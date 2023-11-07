@@ -3,7 +3,8 @@ import logo from "../../images/logo/carLogo.png"
 import menu from "../../images/menu-vector.png"
 import {Link} from "react-router-dom";
 import {NavbarNavigation} from "./NavbarNavigation";
-import {PATH} from "../../App";
+import {PATH} from "../../PATH/PATH";
+
 
 
 export const Navbar = () => {

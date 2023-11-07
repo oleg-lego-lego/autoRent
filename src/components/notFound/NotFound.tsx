@@ -1,8 +1,8 @@
 import React from 'react';
-import {PATH} from "../../App";
 import notFound from "../../images/notFound.png";
 import {TemplatePage} from "../TemplatePage";
 import {HeroPages} from "../HeroPages";
+import {PATH} from "../../PATH/PATH";
 
 export const NotFound = () => {
     const header = 'Web page not found.';

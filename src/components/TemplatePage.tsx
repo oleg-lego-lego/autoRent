@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavbarLink} from "./navbar/NavbarLink";
-import {PATH} from "../App";
+import {PATH} from "../PATH/PATH";
 
 type TemplatePagePropsType = {
     header: string

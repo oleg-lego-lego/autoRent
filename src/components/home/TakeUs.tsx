@@ -3,7 +3,7 @@ import MainImg from "../../images/chooseUs/cars.png";
 import {TakeUsBox} from "./TakeUsBox";
 import {takeBox} from "./takeBoxList";
 import {Link} from "react-router-dom";
-import {PATH} from "../../App";
+import {PATH} from "../../PATH/PATH";
 
 
 export const TakeUs = () => {

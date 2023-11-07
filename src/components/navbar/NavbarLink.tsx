@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {PATH} from "../../App";
+import {PATH} from "../../PATH/PATH";
+
 
 type NavbarLinkProps = {
     to: PATH

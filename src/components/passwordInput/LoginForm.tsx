@@ -7,11 +7,11 @@ import {Navigate, NavLink} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import React, {useEffect, useState} from 'react';
 import {PasswordInput} from "./PasswordInput";
-import {PATH} from "../../App";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {LoginListType} from "../../app/reducer/login/loginList";
 import {carsApiLogin} from "../../api/cars-api";
 import {addLogin} from "../../app/reducer/login/login-reducer";
+import {PATH} from "../../PATH/PATH";
 
 
 type LoginFormType = {

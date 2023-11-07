@@ -5,8 +5,8 @@ import {useAppDispatch} from "../hooks/redux";
 import {CarModelsType} from "../app/reducer/carModels";
 import favoritesTrue from "../images/favoritesTrue.svg"
 import favoritesFalse from "../images/favoritesFalse.svg"
-import {PATH} from "../App";
 import {carsApi} from "../api/cars-api";
+import {PATH} from "../PATH/PATH";
 
 export type ModelPropsType = {
     model: CarModelsType

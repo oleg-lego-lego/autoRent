@@ -5,9 +5,9 @@ import favoritesTrue from "../../images/favoritesTrue.svg";
 import favoritesFalse from "../../images/favoritesFalse.svg";
 import {useAppDispatch} from "../../hooks/redux";
 import {carModelsFavorites} from "../../app/reducer/carModels-reducer";
-import {PATH} from "../../App";
 import {Link} from "react-router-dom";
 import {carsApi} from "../../api/cars-api";
+import {PATH} from "../../PATH/PATH";
 
 type CarBoxPropsType = {
     data: CarModelsType

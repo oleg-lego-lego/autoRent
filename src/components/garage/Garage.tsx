@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import {CollapsibleTable} from "../login_account/TableBookCar";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {TemplatePage} from "../TemplatePage";
-import {PATH} from "../../App";
 import parkingEmpty from "../../images/garage/parkingEmpty.png"
 import {HeroPages} from "../HeroPages";
 import {carsApi} from "../../api/cars-api";
 import {bookCarAdd} from "../../app/reducer/bookCar-reducer";
+import {PATH} from "../../PATH/PATH";
 
 export const Garage = () => {
     const dispatch = useAppDispatch()

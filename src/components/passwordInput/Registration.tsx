@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import FormControl from '@mui/material/FormControl';
 import Paper from '@mui/material/Paper';
 import {RegisterForm} from "./RegisterForm";
-import {PATH} from "../../App";
+import {PATH} from "../../PATH/PATH";
 
 
 export const Registration = () => {
@@ -16,6 +16,5 @@ export const Registration = () => {
             <p className="login__text">Already have an account ?</p>
             <NavLink to={PATH.LOGIN} className="signUpLink">Sing in</NavLink>
         </Paper>
-
     );
 };

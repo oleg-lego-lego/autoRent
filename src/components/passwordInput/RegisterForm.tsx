@@ -5,11 +5,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {PasswordInput} from "./PasswordInput";
 import {Navigate} from "react-router-dom";
-import {PATH} from "../../App";
 import {carsApiLogin} from "../../api/cars-api";
 import {useAppSelector} from "../../hooks/redux";
 import {LoginListType} from "../../app/reducer/login/loginList";
 import {v1} from "uuid";
+import {PATH} from "../../PATH/PATH";
 
 
 export type RegisterFormType = {
