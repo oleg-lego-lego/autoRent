@@ -15,6 +15,7 @@ export const HomeHeader = () => {
 
     const bookBtn = (selector: string) => {
         const booking = document.querySelector(selector) as HTMLDivElement | null
+
         if (booking !== null) {
             booking.scrollIntoView({behavior: "smooth"})
         }
@@ -24,6 +25,7 @@ export const HomeHeader = () => {
         const onPageScroll = () => {
             document.documentElement.scrollTop > 600 ? setGoUp(true) : setGoUp(false)
         }
+
         window.addEventListener("scroll", onPageScroll)
 
         return () => {
@@ -52,6 +54,7 @@ export const HomeHeader = () => {
                             >
                                 Book Ride
                             </Link>
+
                             <Link
                                 onClick={() => bookBtn('#takeUs-section')}
                                 className="home__btn__learn-more" to={PATH.HOME}
@@ -63,6 +66,7 @@ export const HomeHeader = () => {
                     <img src={HeroCar} alt="car-img" className="home__car-img"/>
                 </div>
             </div>
+
             <div onClick={scrollToTop} className={`scroll-up ${goUp ? "show-scroll" : ""}`}>
                 <img src={arrow} alt="стрелка"/>
             </div>

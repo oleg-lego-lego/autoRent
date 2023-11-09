@@ -76,6 +76,7 @@ export const RegisterForm = () => {
         >
             <FormGroup>
                 <TextField
+                    autoComplete="username"
                     label={'Email'}
                     variant={'outlined'}
                     {...register('email', {

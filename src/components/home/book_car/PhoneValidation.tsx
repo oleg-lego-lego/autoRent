@@ -34,10 +34,12 @@ export const PhoneValidation = () => {
         <div className="PhoneValidation">
             <h2>Phone Number <b>*</b></h2>
             <PhoneInput
+                id={'phoneInputField'}
+                name={'phoneNumber'}
                 value={phone}
                 onChange={handlePhoneNumberChange}
                 international
-                placeholder="Enter your phone number"
+                placeholder={'Enter your phone number'}
             />
 
             {phone && !isValid && <p style={{color: 'red', fontSize: '14px'}}>error: wrong phone number</p>}

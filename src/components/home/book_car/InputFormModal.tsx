@@ -21,10 +21,11 @@ export const InputFormModal = (props: InputFormModalPropsType) => {
 
     return (
         <span>
-            <label>
+            <h2>
                 {props.title} <b>*</b>
-            </label>
+            </h2>
             <input
+                id={props.title}
                 value={props.value}
                 onChange={handleChange}
                 type={props.type}

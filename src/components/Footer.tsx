@@ -54,7 +54,8 @@ export const Footer = () => {
                                 value={title}
                                 onChange={onChangeInput}
                                 type="email"
-                                placeholder="Enter Email Address">
+                                placeholder="Enter Email Address"
+                                id="uniqueId">
                             </input>
                         </li>
                         <li>

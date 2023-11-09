@@ -120,10 +120,10 @@ export const BookCar = () => {
 
                         <form className="box__form">
                             <div className="box-form__car-type">
-                                <label>
+                                <span>
                                     Select Your Car Type <b>*</b>
-                                </label>
-                                <select value={carType} onChange={handleCar} style={inputError(carType)}>
+                                </span>
+                                <select value={carType} onChange={handleCar} style={inputError(carType)} id={'car'}>
                                     <option>{selectCarOption}</option>
                                     <option value={MODELS_CAR.AUDI_A1}>{MODELS_CAR.AUDI_A1}</option>
                                     <option value={MODELS_CAR.VOLKSWAGEN_GOLF}>{MODELS_CAR.VOLKSWAGEN_GOLF}</option>
