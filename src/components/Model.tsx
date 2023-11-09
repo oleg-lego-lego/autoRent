@@ -1,11 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {carModelsFavorites} from "../app/reducer/carModels-reducer";
+import {fetchPutFavorites} from "../app/reducer/carModels-reducer";
 import {useAppDispatch} from "../hooks/redux";
 import {CarModelsType} from "../app/reducer/carModels";
 import favoritesTrue from "../images/favoritesTrue.svg"
 import favoritesFalse from "../images/favoritesFalse.svg"
-import {carsApi} from "../api/cars-api";
 import {PATH} from "../PATH/PATH";
 
 export type ModelPropsType = {
@@ -16,10 +15,7 @@ export const Model = (props: ModelPropsType) => {
     const dispatch = useAppDispatch()
 
     const favoritesClick = (id: string, favorites: boolean) => {
-        carsApi.getFavorites(id, favorites)
-            .then(res => {
-                dispatch(carModelsFavorites(res.data))
-            })
+        dispatch(fetchPutFavorites({id, favorites}))
     }
 
     const titleFavorites = props.model.favorites ? 'off favorites' : 'add favorites';

@@ -11,7 +11,7 @@ export const carsApi = {
     getCars() {
         return instance.get<CarModelsType>('/cars/')
     },
-    getFavorites(id: string, favorites: boolean) {
+    putFavorites(id: string, favorites: boolean) {
         return instance.put<CarModelsType>(`/cars/${id}`, {favorites})
     },
     postBookCar(newRentCar: BookCarType) {

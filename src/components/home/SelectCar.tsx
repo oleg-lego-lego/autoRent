@@ -6,7 +6,7 @@ import {SkeletonForHome} from "../skeleton/SkeletonForHome";
 
 export const SelectCar = () => {
     const carModels = useAppSelector(state => state.carModels.items)
-    const [active, setActive] = useState('0'); // fix
+    const [active, setActive] = useState('0');
 
     const coloringButton = (id: string) => {
         return active === id ? "colored-button" : "";

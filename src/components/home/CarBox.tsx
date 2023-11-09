@@ -4,9 +4,8 @@ import {CarModelsType} from "../../app/reducer/carModels";
 import favoritesTrue from "../../images/favoritesTrue.svg";
 import favoritesFalse from "../../images/favoritesFalse.svg";
 import {useAppDispatch} from "../../hooks/redux";
-import {carModelsFavorites} from "../../app/reducer/carModels-reducer";
+import {fetchPutFavorites} from "../../app/reducer/carModels-reducer";
 import {Link} from "react-router-dom";
-import {carsApi} from "../../api/cars-api";
 import {PATH} from "../../PATH/PATH";
 
 type CarBoxPropsType = {
@@ -19,10 +18,7 @@ export const CarBox = (props: CarBoxPropsType) => {
     const dispatch = useAppDispatch()
 
     const favoritesClick = (id: string, favorites: boolean) => {
-        carsApi.getFavorites(id, favorites)
-            .then(res => {
-                dispatch(carModelsFavorites(res.data))
-            })
+        dispatch(fetchPutFavorites({id, favorites}))
     }
 
     const titleFavorites = props.data.favorites ? 'remove favorites' : 'add favorites';
