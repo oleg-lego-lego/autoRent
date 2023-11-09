@@ -9,25 +9,17 @@ import {BookingModalCarInfo} from "./BookingModalCarInfo";
 import {
     setAge,
     setAgeError,
-    setCarType,
-    setDropTime,
     setLastName,
     setLastNameError,
-    setModal,
     setName,
     setNameError,
-    setPhone,
-    setPhoneError,
-    setPickTime,
-    setShowDoneMessage
+    setPhoneError
 } from "../../../app/reducer/bookCarInputValue-reducer";
-import {priceBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
-import {carsApi} from "../../../api/cars-api";
+import {fetchPostBookCar} from "../../../app/reducer/bookCar-reducer";
 
 
 export const BookingModal = () => {
     const dispatch = useAppDispatch()
-    const costCatDay = useAppSelector(state => state.carModels.items)
 
     const modal = useAppSelector(state => state.bookCarInputValue.modal)
 
@@ -46,9 +38,7 @@ export const BookingModal = () => {
     const ageError = useAppSelector(state => state.bookCarInputValue.ageError)
 
     const isValid = useAppSelector(state => state.bookCarInputValue.isValid)
-
-    const matchingCost = costCatDay.find(el => el.name === carType);
-    const priceCar = matchingCost ? matchingCost.price : 0;
+    const priceCar = useAppSelector(state => state.bookCarMoreInfo.priceCar)
 
     const handleChange = (nameInput: string, value: string,) => {
         switch (nameInput) {
@@ -80,7 +70,7 @@ export const BookingModal = () => {
             phone,
             age,
             id: v1(),
-            price: priceCar,
+            price: Number(priceCar),
             bookCarOpen: false
         }
 
@@ -106,22 +96,7 @@ export const BookingModal = () => {
         dispatch(setAgeError(errors.age))
 
         if (Object.values(errors).every(error => error === '')) {
-            carsApi.postBookCar(newRentCar)
-                .then(res => {
-                    // dispatch(bookCarAdd(res.data))
-                    console.log(res.data)
-                    }
-                )
-            dispatch(setModal(!modal))
-            dispatch(priceBookCar(priceCar))
-            dispatch(setShowDoneMessage('The order has been placed correctly and is in your personal account.'))
-            dispatch(setCarType(''))
-            dispatch(setPickTime(''))
-            dispatch(setDropTime(''))
-            dispatch(setName(''))
-            dispatch(setLastName(''))
-            dispatch(setPhone(''))
-            dispatch(setAge(''))
+            dispatch(fetchPostBookCar({newRentCar, modal}));
         }
     }
 

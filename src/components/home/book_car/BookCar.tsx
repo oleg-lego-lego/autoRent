@@ -12,7 +12,7 @@ import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {
     setCarType, setDropTime, setError, setModal, setPickTime, setShowDoneMessage
 } from "../../../app/reducer/bookCarInputValue-reducer";
-import {selectImagesBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
+import {priceBookCar, selectImagesBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
 
 
 export enum MODELS_CAR {
@@ -39,16 +39,23 @@ export const BookCar = () => {
     const error = useAppSelector((state) => state.bookCarInputValue.error);
     const showDoneMessage = useAppSelector((state) => state.bookCarInputValue.showDoneMessage);
 
+    const allCar = useAppSelector(state => state.carModels.items)
+
     const selectCarOption = 'Select your car type';
 
     const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
         const valueCar = e.currentTarget.value;
+
+        const findCar = allCar.find(el => el.name === valueCar ? el.price : 0)
+        const priceCar = findCar? findCar.price : 0
+
         if (valueCar === selectCarOption) {
             dispatch(setCarType(''));
         } else {
             dispatch(setCarType(valueCar));
             dispatch(selectImagesBookCar(carImages[valueCar]));
             dispatch(setError(''));
+            dispatch(priceBookCar(priceCar))
         }
     };
 

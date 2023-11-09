@@ -1,5 +1,51 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import {bookCarList, BookCarType} from "./bookCar";
+import {isLoading} from "./isLoading-reducer";
+import {carsApi} from "../../api/cars-api";
+import {setErrorSnackbar} from "./error-reducer";
+import {
+    setAge,
+    setCarType,
+    setDropTime,
+    setLastName,
+    setModal,
+    setName,
+    setPhone,
+    setPickTime,
+    setShowDoneMessage
+} from "./bookCarInputValue-reducer";
+
+
+export const fetchPostBookCar = createAsyncThunk('bookCar/fetchPostBookCar',
+    async ({newRentCar, modal}: { newRentCar: BookCarType, modal: boolean }, thunkAPI) => {
+
+        thunkAPI.dispatch(isLoading('loading'))
+
+        try {
+            await carsApi.postBookCar(newRentCar)
+
+            thunkAPI.dispatch(setModal(!modal))
+            thunkAPI.dispatch(
+                setShowDoneMessage('The order has been placed correctly and is in your personal account.')
+            )
+            thunkAPI.dispatch(setCarType(''))
+            thunkAPI.dispatch(setPickTime(''))
+            thunkAPI.dispatch(setDropTime(''))
+            thunkAPI.dispatch(setName(''))
+            thunkAPI.dispatch(setLastName(''))
+            thunkAPI.dispatch(setPhone(''))
+            thunkAPI.dispatch(setAge(''))
+        } catch (error) {
+            thunkAPI.dispatch(setModal(!modal));
+            thunkAPI.dispatch(setErrorSnackbar(error))
+            console.error('Error posting book car:', error);
+        } finally {
+            setTimeout(() => {
+                thunkAPI.dispatch(isLoading('idle'))
+            }, 3000)
+        }
+    });
+
 
 export interface BookCarStateType {
     bookCar: BookCarType[]
