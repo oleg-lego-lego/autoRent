@@ -1,5 +1,33 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import {LoginListType} from "./login/loginList";
+import {isLoading} from "./isLoading-reducer";
+import {carsApiLogin} from "../../api/cars-api";
+import {setErrorSnackbar} from "./error-reducer";
+
+
+export const fetchGetUserInLogged = createAsyncThunk('auth/fetchGetAuthUser',
+    async (_, thunkAPI) => {
+
+        thunkAPI.dispatch(isLoading('loading'));
+
+        try {
+            const res = await carsApiLogin.getUserInLogged()
+            thunkAPI.dispatch(getAuthUser(res.data))
+
+            return res.data;
+        } catch (error) {
+            thunkAPI.dispatch(setErrorSnackbar(error))
+            console.error('Произошла ошибка:', error)
+
+            throw error;
+        } finally {
+            setTimeout(() => {
+                thunkAPI.dispatch(isLoading('idle'))
+            }, 3000)
+        }
+    });
+
+
 
 export interface AuthStateType {
     auth: LoginListType[],
