@@ -14,40 +14,26 @@ import {NotFound} from "./components/notFound/NotFound";
 import {Login} from "./components/login_account/Login";
 import {RegistrationPage} from "./components/passwordInput/RegistrationPage";
 import {Garage} from "./components/garage/Garage";
-import {carsApi, carsApiLogin} from "./api/cars-api";
-import {getCars} from "./app/reducer/carModels-reducer";
+import {fetchGetCars} from "./app/reducer/carModels-reducer";
 import {useAppDispatch, useAppSelector} from "./hooks/redux";
-import {getAuthUser} from "./app/reducer/auth-reducer";
+import {fetchGetUserInLogged} from "./app/reducer/auth-reducer";
+import {Loading} from "./components/Loading";
+import {ErrorSnackbar} from "./components/ErrorSnackBar";
+import {PATH} from "./PATH/PATH";
 
-export enum PATH {
-    HOME = '/',
-    ABOUT = '/about',
-    MODELS = '/models',
-    COMMENT = '/comment',
-    CONTACT = '/contact',
-    FAVORITES = '/favorites',
-    NOT_FOUND = '*',
-    LOGIN = '/login',
-    REGISTRATION = '/registration',
-    GARAGE = '/garage'
-}
 
 function App() {
     const dispatch = useAppDispatch()
 
-    useEffect(() => {
-        carsApi.getCars()
-            .then((res) => {
-                dispatch(getCars(res.data))
-            })
-    }, [dispatch])
+    const logoutValue = useAppSelector(state => state.auth.logoutValue)
 
     useEffect(() => {
-        carsApiLogin.getUserInLogged()
-            .then(res => {
-                dispatch(getAuthUser(res.data))
-            })
-    }, [dispatch])
+        dispatch(fetchGetCars())
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchGetUserInLogged())
+    }, [dispatch, logoutValue])
 
     const valueLogin = useAppSelector(state => state.auth.auth)
     const garageRedirect = valueLogin.map(el => el.redirectGarageValue).join('')
@@ -55,6 +41,7 @@ function App() {
     return (
         <>
             <Navbar/>
+            <Loading/>
             <Routes>
                 <Route path={PATH.HOME} element={<Home/>}/>
                 <Route path={PATH.ABOUT} element={<About/>}/>
@@ -74,6 +61,7 @@ function App() {
             </Routes>
             <Banner/>
             <Footer/>
+            <ErrorSnackbar/>
         </>
     );
 }
