@@ -5,6 +5,8 @@ import loginReducer from "./reducer/login/login-reducer";
 import bookCarInputValueReducer from "./reducer/bookCarInputValue-reducer";
 import bookCarMoreInfoReducer from "./reducer/bookCarMoreInfo-reducer";
 import authReducer from "./reducer/auth-reducer";
+import isLoadingReducer from "./reducer/isLoading-reducer";
+import errorReducer from "./reducer/error-reducer";
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +16,8 @@ export const store = configureStore({
         bookCarMoreInfo: bookCarMoreInfoReducer,
         loginList: loginReducer,
         auth: authReducer,
+        isLoading: isLoadingReducer,
+        error: errorReducer,
     },
 })
 
