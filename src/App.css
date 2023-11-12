@@ -471,13 +471,13 @@ li {
     flex-direction: column;
 }
 
-.book__content__box .box-form__car-type label {
+.book__content__box .box-form__car-type span {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
 }
 
-.book__content__box .box-form__car-type label i {
+.book__content__box .box-form__car-type span i {
     color: #ff4d30;
 }
 
@@ -509,13 +509,13 @@ li {
     padding: 1.2rem 1.3rem;
 }
 
-.book__content__box .box-form__car-time label {
+.book__content__box .box-form__car-time span {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
 }
 
-.book__content__box .box-form__car-time label i {
+.book__content__box .box-form__car-time span i {
     color: #ff4d30;
 }
 
@@ -803,14 +803,10 @@ li {
     margin-bottom: 2rem;
 }
 
-.PhoneValidation {
-
-}
-
 .PhoneValidation h2 {
     font-size: 1.6rem;
     font-weight: 500;
-    color: #777777;
+    color: black;
     margin-bottom: 4px;
 }
 
@@ -869,11 +865,7 @@ li {
     height: 1.6rem;
 }
 
-.info-form__1col {
-    grid-template-columns: 1fr !important;
-}
-
-.info-form__2col, .info-form__1col {
+.info-form__2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -881,36 +873,31 @@ li {
 }
 
 @media (max-width: 650px) {
-    .info-form__2col, .info-form__1col {
+    .info-form__2col {
         grid-template-columns: 1fr;
     }
 }
 
-.info-form__2col span, .info-form__1col span {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.info-form__2col span label, .info-form__1col span label {
+.info-form__2col span h2 {
     font-size: 1.6rem;
     font-weight: 500;
-    color: #777777;
+    color: black;
+    margin-bottom: 4px;
 }
 
-.info-form__2col span label b, .info-form__1col span label b {
+.info-form__2col span h2 b {
     color: #ff4d30;
 }
 
-.info-form__2col span input, .info-form__1col span input {
+.info-form__2col span input {
     padding: 14px 15px;
     background-color: #dbdbdb;
     color: #555;
     font-size: 1.5rem;
     font-weight: 500;
     outline: none;
-    /*border: none;*/
     border-color: white;
+    width: 100%;
 }
 
 .reserve-button {
@@ -1458,10 +1445,9 @@ li {
 .comment__title {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 0 auto 5rem;
     text-align: center;
     max-width: 70rem;
-    margin-bottom: 5rem;
 }
 
 .comment__title h4 {
@@ -1488,13 +1474,12 @@ li {
     width: 100%;
     justify-content: center;
     padding: 3rem;
-    /*flex-direction: column;*/
 }
 
 @media (max-width: 1000px) {
     .all__comment {
         padding: 0;
-        /*display: grid;*/
+        display: grid;
         grid-template-rows: auto;
     }
 }
@@ -1505,11 +1490,14 @@ li {
     width: 54rem;
     padding: 5.5rem;
     position: relative;
+
 }
 
 @media (max-width: 1000px) {
     .comment__box {
         padding: 5rem 3rem;
+        flex-direction: column;
+        width: auto;
     }
 }
 
@@ -2089,6 +2077,14 @@ footer {
 
 .banner__text h2 {
     font-size: 3.2rem;
+}
+
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }
 
 /*.text-content span {*/
