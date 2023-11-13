@@ -40,6 +40,9 @@ export const BookingModal = () => {
     const isValid = useAppSelector(state => state.bookCarInputValue.isValid)
     const priceCar = useAppSelector(state => state.bookCarMoreInfo.priceCar)
 
+    const email = useAppSelector(state=> state.auth.auth)
+    const addEmail = email.map(el => el.email).join('')
+
     const handleChange = (nameInput: string, value: string,) => {
         switch (nameInput) {
             case 'First Name':
@@ -71,7 +74,8 @@ export const BookingModal = () => {
             age,
             id: v1(),
             price: Number(priceCar),
-            bookCarOpen: false
+            bookCarOpen: false,
+            email: addEmail,
         }
 
         const errors = {
