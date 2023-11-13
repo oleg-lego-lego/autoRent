@@ -352,11 +352,11 @@ li {
     z-index: 2;
     position: absolute;
     right: 0;
-    width: 65%;
+    width: 55%;
     margin-top: 5rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1015px) {
     .home__car-img {
         display: none;
     }
