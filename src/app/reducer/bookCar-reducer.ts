@@ -19,15 +19,14 @@ import {
 export const fetchPostBookCar = createAsyncThunk('bookCar/fetchPostBookCar',
     async ({newRentCar, modal}: { newRentCar: BookCarType, modal: boolean }, thunkAPI) => {
 
+        const textDoneMessage = 'The order has been placed correctly and is in your personal account.'
+
         thunkAPI.dispatch(isLoading('loading'))
 
         try {
             await carsApi.postBookCar(newRentCar)
 
-            thunkAPI.dispatch(setModal(!modal))
-            thunkAPI.dispatch(
-                setShowDoneMessage('The order has been placed correctly and is in your personal account.')
-            )
+            thunkAPI.dispatch(setShowDoneMessage(textDoneMessage))
             thunkAPI.dispatch(setCarType(''))
             thunkAPI.dispatch(setPickTime(''))
             thunkAPI.dispatch(setDropTime(''))
@@ -36,9 +35,27 @@ export const fetchPostBookCar = createAsyncThunk('bookCar/fetchPostBookCar',
             thunkAPI.dispatch(setPhone(''))
             thunkAPI.dispatch(setAge(''))
         } catch (error) {
-            thunkAPI.dispatch(setModal(!modal));
             thunkAPI.dispatch(setErrorSnackbar(error))
-            console.error('Error posting book car:', error);
+        } finally {
+            thunkAPI.dispatch(setModal(!modal))
+
+            setTimeout(() => {
+                thunkAPI.dispatch(isLoading('idle'))
+            }, 3000)
+        }
+    });
+
+
+export const fetchBookCarAdd = createAsyncThunk('bookCar/fetchBookCarAdd',
+    async (_, thunkAPI) => {
+
+        thunkAPI.dispatch(isLoading('loading'))
+
+        try {
+            const res = await carsApi.getBookCar()
+            thunkAPI.dispatch(bookCarAdd(res.data))
+        } catch (error) {
+            thunkAPI.dispatch(setErrorSnackbar(error))
         } finally {
             setTimeout(() => {
                 thunkAPI.dispatch(isLoading('idle'))
