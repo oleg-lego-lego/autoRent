@@ -8,7 +8,7 @@ import {CarCardSkeleton} from "../components/skeleton/CarCardSreleton";
 export const Models = () => {
     const carModels = useAppSelector(state => state.carModels.items)
 
-    const carCards = [1, 2, 3, 4, 5, 6].map(el => <CarCardSkeleton key={el}/>)
+    const carCards = [1, 2, 3].map(el => <CarCardSkeleton key={el}/>)
     const modelCars = carModels.map(el => <Model model={el} key={el.id}/>)
 
     return (
