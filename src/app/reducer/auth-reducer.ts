@@ -13,20 +13,14 @@ export const fetchGetUserInLogged = createAsyncThunk('auth/fetchGetAuthUser',
         try {
             const res = await carsApiLogin.getUserInLogged()
             thunkAPI.dispatch(getAuthUser(res.data))
-
-            return res.data;
         } catch (error) {
             thunkAPI.dispatch(setErrorSnackbar(error))
-            console.error('Произошла ошибка:', error)
-
-            throw error;
         } finally {
             setTimeout(() => {
                 thunkAPI.dispatch(isLoading('idle'))
             }, 3000)
         }
     });
-
 
 
 export interface AuthStateType {
