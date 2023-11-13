@@ -47,7 +47,7 @@ export const BookCar = () => {
         const valueCar = e.currentTarget.value;
 
         const findCar = allCar.find(el => el.name === valueCar ? el.price : 0)
-        const priceCar = findCar? findCar.price : 0
+        const priceCar = findCar ? findCar.price : 0
 
         if (valueCar === selectCarOption) {
             dispatch(setCarType(''));
@@ -130,7 +130,11 @@ export const BookCar = () => {
                                 <span>
                                     Select Your Car Type <b>*</b>
                                 </span>
-                                <select value={carType} onChange={handleCar} style={inputError(carType)} id={'car'}>
+                                <select
+                                    value={carType} onChange={handleCar}
+                                    style={inputError(carType)} id={'car'}
+                                    disabled={!allCar.length}
+                                >
                                     <option>{selectCarOption}</option>
                                     <option value={MODELS_CAR.AUDI_A1}>{MODELS_CAR.AUDI_A1}</option>
                                     <option value={MODELS_CAR.VOLKSWAGEN_GOLF}>{MODELS_CAR.VOLKSWAGEN_GOLF}</option>
