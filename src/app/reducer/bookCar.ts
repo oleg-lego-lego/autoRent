@@ -10,6 +10,7 @@ export type BookCarType = {
     age: string
     price: number
     bookCarOpen: boolean
+    email: string
 }
 
 export const bookCarList: BookCarType[] = []
