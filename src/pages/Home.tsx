@@ -7,8 +7,7 @@ import {Promo} from "../components/home/Promo";
 import {BookCar} from "../components/home/book_car/BookCar";
 import {HomeHeader} from "../components/home/homeHeader/HomeHeader";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {carsApiLogin} from "../api/cars-api";
-import {getAuthUser} from "../app/reducer/auth-reducer";
+import {fetchGetUserInLogged} from "../app/reducer/auth-reducer";
 
 export const Home = () => {
     const dispatch = useAppDispatch()
@@ -16,10 +15,7 @@ export const Home = () => {
     const logoutValue = useAppSelector(state => state.auth.logoutValue)
 
     useEffect(() => {
-        carsApiLogin.getUserInLogged()
-            .then(res => {
-                dispatch(getAuthUser(res.data))
-            })
+        dispatch(fetchGetUserInLogged())
     }, [dispatch, logoutValue])
 
     return (
