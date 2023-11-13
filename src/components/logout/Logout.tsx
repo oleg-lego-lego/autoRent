@@ -1,6 +1,6 @@
 import React from 'react';
 import {carsApiLogin} from "../../api/cars-api";
-import {Navigate} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {logoutUserValue} from "../../app/reducer/auth-reducer";
 import {PATH} from "../../PATH/PATH";
@@ -21,7 +21,7 @@ export const Logout = () => {
 
     return (
         <li onClick={logoutHandler}>
-            <a>Logout</a>
+            <NavLink to={PATH.HOME}>Logout</NavLink>
         </li>
     );
 };
