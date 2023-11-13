@@ -6,13 +6,15 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {useAppSelector} from "../../hooks/redux";
 import {TableDescriptionBookCar} from "./TableDescriptionBookCar";
+import {BookCarType} from "../../app/reducer/bookCar";
+
+type CollapsibleTablePropsType = {
+    checkBookUser: BookCarType[]
+}
 
 
-export function CollapsibleTable() {
-    const bookCarList = useAppSelector(state => state.bookCar.bookCar)
-
+export const TableBookCar = (props: CollapsibleTablePropsType) => {
     return (
         <div className="garage__table-section">
             <h1 className='table__title'>Your car orders.</h1>
@@ -28,7 +30,7 @@ export function CollapsibleTable() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {bookCarList.map((el, index) => {
+                        {props.checkBookUser.map((el, index) => {
                             return (
                                 <TableDescriptionBookCar
                                     key={el.id}

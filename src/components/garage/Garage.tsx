@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
-import {CollapsibleTable} from "../login_account/TableBookCar";
+import {TableBookCar} from "../login_account/TableBookCar";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {TemplatePage} from "../TemplatePage";
 import parkingEmpty from "../../images/garage/parkingEmpty.png"
 import {HeroPages} from "../HeroPages";
-import {carsApi} from "../../api/cars-api";
-import {bookCarAdd} from "../../app/reducer/bookCar-reducer";
+import {fetchBookCarAdd} from "../../app/reducer/bookCar-reducer";
 import {PATH} from "../../PATH/PATH";
 
 export const Garage = () => {
@@ -15,20 +14,21 @@ export const Garage = () => {
     const description = 'Please choose the car you like!';
 
     const bookCarList = useAppSelector(state => state.bookCar.bookCar)
+    const email = useAppSelector(state => state.auth.auth)
+
+    const checkEmail = email.map(el => el.email).join('')
+    const checkBookUser = bookCarList.filter(el => el.email === checkEmail)
 
     useEffect(() => {
-        carsApi.getBookCar()
-            .then(res => {
-                dispatch(bookCarAdd(res.data))
-            })
+        dispatch(fetchBookCarAdd())
     }, [dispatch])
 
     return (
         <>
             <HeroPages name={'Garage'}/>
             <div className="container">
-                {bookCarList.length
-                    ? <CollapsibleTable/>
+                {checkBookUser.length
+                    ? <TableBookCar checkBookUser={checkBookUser}/>
                     : <TemplatePage
                         header={header}
                         description={description}
