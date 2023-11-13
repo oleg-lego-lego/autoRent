@@ -6,10 +6,12 @@ import Button from '@mui/material/Button';
 import {PasswordInput} from "./PasswordInput";
 import {Navigate} from "react-router-dom";
 import {carsApiLogin} from "../../api/cars-api";
-import {useAppSelector} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {LoginListType} from "../../app/reducer/login/loginList";
 import {v1} from "uuid";
 import {PATH} from "../../PATH/PATH";
+import {setErrorSnackbar} from "../../app/reducer/error-reducer";
+import {isLoading} from "../../app/reducer/isLoading-reducer";
 
 
 export type RegisterFormType = {
@@ -19,6 +21,7 @@ export type RegisterFormType = {
 }
 
 export const RegisterForm = () => {
+    const dispatch = useAppDispatch()
     const {register, handleSubmit, watch, formState: {errors}} = useForm<RegisterFormType>({
         defaultValues: {
             email: '',
@@ -44,6 +47,7 @@ export const RegisterForm = () => {
 
         const newAccount: LoginListType = {
             ...data,
+            rememberMe: false,
             redirectLoginValue: true,
             redirectGarageValue: false,
             id: v1()
@@ -53,10 +57,15 @@ export const RegisterForm = () => {
             setErrorFindEmail('this email address is already registered');
         } else {
             try {
+                dispatch(isLoading('loading'));
                 await carsApiLogin.addLoginAccount(newAccount)
-                setRedirect(true);
+                setRedirect(true)
             } catch (error) {
-                console.error('Ошибка при добавлении учетной записи:', error);
+                dispatch(setErrorSnackbar(error))
+            } finally {
+                setTimeout(() => {
+                    dispatch(isLoading('idle'))
+                }, 3000)
             }
         }
     }

@@ -12,7 +12,6 @@ export const Logout = () => {
 
     const logoutHandler = async () => {
         await carsApiLogin.userOutLogged('1')
-        await new Promise(resolve => setTimeout(resolve, 2000))
         dispatch(logoutUserValue(!outValue));
     }
 
