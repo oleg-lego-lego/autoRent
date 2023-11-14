@@ -39,9 +39,14 @@ export const BookCar = () => {
     const error = useAppSelector((state) => state.bookCarInputValue.error);
     const showDoneMessage = useAppSelector((state) => state.bookCarInputValue.showDoneMessage);
 
+    const checkUser = useAppSelector(state => state.auth.auth)
+
     const allCar = useAppSelector(state => state.carModels.items)
 
     const selectCarOption = 'Select your car type';
+
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate() - 1}`
 
     const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
         const valueCar = e.currentTarget.value;
@@ -61,18 +66,26 @@ export const BookCar = () => {
 
     const handlePickTime = (e: ChangeEvent<HTMLInputElement>) => {
         const valuePickTime = e.currentTarget.value;
-        if (!dropTime || dropTime >= valuePickTime || dropTime === valuePickTime) {
-            dispatch(setPickTime(valuePickTime));
-            dispatch(setError(''));
+
+        if (formattedDate >= valuePickTime) {
+            dispatch(setPickTime(''))
+            dispatch(setError("error: don't live in the past, choose the right date"))
+        } else if (!dropTime || dropTime >= valuePickTime || dropTime === valuePickTime) {
+            dispatch(setPickTime(valuePickTime))
+            dispatch(setError(''))
         } else {
-            dispatch(setPickTime(''));
-            dispatch(setError('error: wrong rental date'));
+            dispatch(setPickTime(''))
+            dispatch(setError('error: wrong rental date'))
         }
     };
 
     const handleDropTime = (e: ChangeEvent<HTMLInputElement>) => {
         const valueDropTime = e.currentTarget.value;
-        if (pickTime <= valueDropTime || pickTime === valueDropTime) {
+
+        if (formattedDate >= valueDropTime) {
+            dispatch(setDropTime(''))
+            dispatch(setError("error: don't live in the past, choose the right date"))
+        } else if (pickTime <= valueDropTime || pickTime === valueDropTime) {
             dispatch(setDropTime(valueDropTime));
             dispatch(setError(''));
         } else {
@@ -102,7 +115,11 @@ export const BookCar = () => {
 
     const openModal = (e: React.MouseEvent) => {
         e.preventDefault();
-        if (!pickTime || !dropTime || !carType) {
+
+        if (!checkUser.length) {
+            dispatch(setError("error: you are not registered, please register on the login page"));
+            setTimeout(() => dispatch(setError("")), 8000)
+        } else if (!pickTime || !dropTime || !carType) {
             dispatch(setError('error: Not all fields are filled!'));
         } else {
             dispatch(setModal(!modal));
@@ -130,10 +147,14 @@ export const BookCar = () => {
                                 <span>
                                     Select Your Car Type <b>*</b>
                                 </span>
+
                                 <select
-                                    value={carType} onChange={handleCar}
-                                    style={inputError(carType)} id={'car'}
+                                    id={'car'}
+                                    value={carType}
+                                    onChange={handleCar}
+                                    style={inputError(carType)}
                                     disabled={!allCar.length}
+                                    title={!allCar.length ? 'disabled select' : ''}
                                 >
                                     <option>{selectCarOption}</option>
                                     <option value={MODELS_CAR.AUDI_A1}>{MODELS_CAR.AUDI_A1}</option>
