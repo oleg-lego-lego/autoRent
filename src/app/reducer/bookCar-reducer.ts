@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import {bookCarList, BookCarType} from "./bookCar";
-import {isLoading} from "./isLoading-reducer";
+import {isDisabledButton, isLoading} from "./isLoading-reducer";
 import {carsApi} from "../../api/cars-api";
 import {setErrorSnackbar} from "./error-reducer";
 import {
@@ -19,9 +19,10 @@ import {
 export const fetchPostBookCar = createAsyncThunk('bookCar/fetchPostBookCar',
     async ({newRentCar, modal}: { newRentCar: BookCarType, modal: boolean }, thunkAPI) => {
 
-        const textDoneMessage = 'The order has been placed correctly and is in your personal account.'
+        const textDoneMessage = 'Order placed correctly! Check your account, go to page Garage'
 
         thunkAPI.dispatch(isLoading('loading'))
+        thunkAPI.dispatch(isDisabledButton(true))
 
         try {
             await carsApi.postBookCar(newRentCar)
@@ -40,6 +41,7 @@ export const fetchPostBookCar = createAsyncThunk('bookCar/fetchPostBookCar',
             thunkAPI.dispatch(setModal(!modal))
 
             setTimeout(() => {
+                thunkAPI.dispatch(isDisabledButton(false))
                 thunkAPI.dispatch(isLoading('idle'))
             }, 3000)
         }

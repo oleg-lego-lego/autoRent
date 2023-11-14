@@ -3,7 +3,7 @@ import {TableCar} from "./TableCar";
 import {CarModelsType} from "../../app/reducer/carModels";
 import favoritesTrue from "../../images/favoritesTrue.svg";
 import favoritesFalse from "../../images/favoritesFalse.svg";
-import {useAppDispatch} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {fetchPutFavorites} from "../../app/reducer/carModels-reducer";
 import {Link} from "react-router-dom";
 import {PATH} from "../../PATH/PATH";
@@ -14,6 +14,8 @@ type CarBoxPropsType = {
 
 export const CarBox = (props: CarBoxPropsType) => {
     const [carLoad, setCarLoad] = useState(true);
+
+    const isDisabled = useAppSelector(state => state.isLoading.disabled)
 
     const dispatch = useAppDispatch()
 
@@ -27,9 +29,10 @@ export const CarBox = (props: CarBoxPropsType) => {
         <div className="box-cars">
             <div className="pick-car">
                 {carLoad && <span className="loader"></span>}
-                <div
+                <button
                     onClick={() => favoritesClick(props.data.id, !props.data.favorites)}
-                    className={"buttonFavorites buttonCarBox"}
+                    className="buttonFavorites"
+                    disabled={isDisabled}
                 >
                     {props.data.favorites
                         ? <img
@@ -41,7 +44,7 @@ export const CarBox = (props: CarBoxPropsType) => {
                             title={titleFavorites}
                             alt="favoritesFalse"/>
                     }
-                </div>
+                </button>
                 <img
                     style={{display: carLoad ? "none" : "block"}}
                     src={props.data.img}

@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import {CarModelsType} from "./carModels";
-import {isLoading} from "./isLoading-reducer";
+import {isDisabledButton, isLoading} from "./isLoading-reducer";
 import {carsApi} from "../../api/cars-api";
 import {setErrorSnackbar} from "./error-reducer";
 
@@ -33,6 +33,7 @@ export const fetchPutFavorites = createAsyncThunk('cars/fetchPutFavorites',
     async ({ id, favorites }: { id: string, favorites: boolean }, thunkAPI) => {
 
         thunkAPI.dispatch(isLoading('loading'));
+        thunkAPI.dispatch(isDisabledButton(true))
 
         try {
             const res = await carsApi.putFavorites(id, favorites)
@@ -42,6 +43,7 @@ export const fetchPutFavorites = createAsyncThunk('cars/fetchPutFavorites',
             console.error('Произошла ошибка:', error)
         } finally {
             setTimeout(() => {
+                thunkAPI.dispatch(isDisabledButton(false))
                 thunkAPI.dispatch(isLoading('idle'))
             }, 3000)
         }

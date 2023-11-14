@@ -43,6 +43,8 @@ export const BookingModal = () => {
     const email = useAppSelector(state=> state.auth.auth)
     const addEmail = email.map(el => el.email).join('')
 
+    const isDisabled = useAppSelector(state => state.isLoading.disabled)
+
     const handleChange = (nameInput: string, value: string,) => {
         switch (nameInput) {
             case 'First Name':
@@ -150,7 +152,12 @@ export const BookingModal = () => {
                     </div>
                 </form>
                 <div className="reserve-button">
-                    <button onClick={orderCar}>Reserve Now</button>
+                    <button
+                        onClick={orderCar}
+                        disabled={isDisabled}
+                    >
+                        Reserve Now
+                    </button>
                 </div>
             </div>
         </div>

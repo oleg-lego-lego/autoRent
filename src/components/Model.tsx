@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {fetchPutFavorites} from "../app/reducer/carModels-reducer";
-import {useAppDispatch} from "../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {CarModelsType} from "../app/reducer/carModels";
 import favoritesTrue from "../images/favoritesTrue.svg"
 import favoritesFalse from "../images/favoritesFalse.svg"
@@ -13,6 +13,8 @@ export type ModelPropsType = {
 
 export const Model = (props: ModelPropsType) => {
     const dispatch = useAppDispatch()
+
+    const isDisabled = useAppSelector(state => state.isLoading.disabled)
 
     const favoritesClick = (id: string, favorites: boolean) => {
         dispatch(fetchPutFavorites({id, favorites}))
@@ -29,15 +31,16 @@ export const Model = (props: ModelPropsType) => {
                         <div className="models__name">
                             <p>{props.model.name}</p>
                         </div>
-                        <div
-                            className={"buttonFavorites"}
+                        <button
+                            className="buttonFavorites__model"
+                            disabled={isDisabled}
                             onClick={() => favoritesClick(props.model.id, !props.model.favorites)}
                         >
                             {props.model.favorites
                                 ? <img src={favoritesTrue} title={titleFavorites} alt="favoritesTrue"/>
                                 : <img src={favoritesFalse} title={titleFavorites} alt="favoritesFalse"/>
                             }
-                        </div>
+                        </button>
                         <div className="models__price">
                             <h4>${props.model.price}</h4>
                             <p>per day</p>
