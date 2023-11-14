@@ -23,20 +23,20 @@ export const Contact = () => {
                     </div>
                     <div className="contact__form">
                         <form>
-                            <label>
+                            <label htmlFor="inputName">
                                 Full Name <b>*</b>
                             </label>
-                            <input type="text" placeholder='E.g: "Joe Smith"'/>
+                            <input type="text" placeholder='E.g: "Joe Smith"' id='inputName'/>
 
-                            <label>
+                            <label htmlFor="inputEmail">
                                 Email <b>*</b>
                             </label>
-                            <input type="email" placeholder="youremail@example.com"/>
+                            <input type="email" placeholder="youremail@example.com" id="inputEmail"/>
 
-                            <label>
+                            <label htmlFor="inputAbout">
                                 Tell us about it <b>*</b>
                             </label>
-                            <textarea placeholder="Write Here..."/>
+                            <textarea placeholder="Write Here..." id='inputAbout'/>
                             <button type="submit">
                                 Send Message
                             </button>
