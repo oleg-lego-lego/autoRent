@@ -14,7 +14,7 @@ export const fetchAddLogin = createAsyncThunk('login/fetchAddLogin',
         try {
             const res = await carsApiLogin.getLoginAccount()
             thunkAPI.dispatch(addLogin(res.data))
-            thunkAPI.dispatch(logoutUserValue(false));
+            thunkAPI.dispatch(logoutUserValue(false))
         } catch (error) {
             thunkAPI.dispatch(setErrorSnackbar(error))
         } finally {
@@ -42,15 +42,36 @@ export const fetchAddRegisterAccount = createAsyncThunk('login/fetchAddRegisterA
         }
     });
 
+export const fetchUserInLogged = createAsyncThunk('login/fetchUserInLogged',
+    async (userInLogged: LoginListType, thunkAPI) => {
+
+        thunkAPI.dispatch(isLoading('loading'))
+        thunkAPI.dispatch(isDisabledButton(true))
+
+        try {
+            await carsApiLogin.userInLogged(userInLogged)
+            thunkAPI.dispatch(setRedirectForLoginPage(true));
+        } catch (error) {
+            thunkAPI.dispatch(setErrorSnackbar(error))
+        } finally {
+            setTimeout(() => {
+                thunkAPI.dispatch(isDisabledButton(false))
+                thunkAPI.dispatch(isLoading('idle'))
+            }, 3000)
+        }
+    });
+
 
 export interface LoginStateType {
     login: LoginListType[]
     setRedirectRegister: boolean
+    setRedirectLogin: boolean
 }
 
 const initialState: LoginStateType = {
     login: loginList,
-    setRedirectRegister: false
+    setRedirectRegister: false,
+    setRedirectLogin: false,
 }
 
 export const loginSlice = createSlice({
@@ -63,9 +84,12 @@ export const loginSlice = createSlice({
         setRedirectForRegisterPage: (state, action) => {
             state.setRedirectRegister = action.payload
         },
+        setRedirectForLoginPage: (state, action) => {
+            state.setRedirectLogin = action.payload
+        },
     },
 })
 
-export const {addLogin, setRedirectForRegisterPage} = loginSlice.actions
+export const {addLogin, setRedirectForRegisterPage, setRedirectForLoginPage} = loginSlice.actions
 
 export default loginSlice.reducer

@@ -8,12 +8,8 @@ import Button from '@mui/material/Button';
 import React, {useEffect, useState} from 'react';
 import {PasswordInput} from "./PasswordInput";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {LoginListType} from "../../app/reducer/login/loginList";
-import {carsApiLogin} from "../../api/cars-api";
-import {fetchAddLogin} from "../../app/reducer/login/login-reducer";
+import {fetchAddLogin, fetchUserInLogged} from "../../app/reducer/login/login-reducer";
 import {PATH} from "../../PATH/PATH";
-import {setErrorSnackbar} from "../../app/reducer/error-reducer";
-import {isLoading} from "../../app/reducer/isLoading-reducer";
 
 
 type LoginFormType = {
@@ -30,10 +26,11 @@ export const LoginForm = () => {
     }, [dispatch])
 
     const loginList = useAppSelector(state => state.loginList)
+    const redirectValue = useAppSelector(state => state.loginList.setRedirectLogin)
+    const isDisabled = useAppSelector(state => state.isLoading.disabled)
 
     const [errorEmail, setErrorEmail] = useState<string>('')
     const [errorPassword, setErrorPassword] = useState<string>('')
-    const [redirectValue, setRedirectValue] = useState<boolean | LoginListType>(false)
 
     const {register, control, handleSubmit, formState: {errors}} = useForm<LoginFormType>({
         defaultValues: {
@@ -55,20 +52,7 @@ export const LoginForm = () => {
 
         if (user && user.password === data.password) {
             setErrorPassword('');
-            dispatch(isLoading('loading'))
-
-            try {
-                await carsApiLogin.userInLogged(
-                    {...user, rememberMe: data.rememberMe, redirectGarageValue: true}
-                )
-                setRedirectValue(true);
-            } catch (error) {
-                dispatch(setErrorSnackbar(error))
-            } finally {
-                setTimeout(() => {
-                    dispatch(isLoading('idle'))
-                }, 3000)
-            }
+            dispatch(fetchUserInLogged({...user, rememberMe: data.rememberMe, redirectGarageValue: true}))
         } else {
             setErrorPassword('Check your password');
         }
@@ -146,7 +130,7 @@ export const LoginForm = () => {
                         type={'submit'}
                         variant={'contained'}
                         color={'primary'}
-                        disabled={!'loading'} //fix
+                        disabled={isDisabled}
                         fullWidth
                     >
                         Sign up
