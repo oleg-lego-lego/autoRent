@@ -1,27 +1,34 @@
 import React from 'react';
-import {carsApiLogin} from "../../api/cars-api";
 import {Navigate, NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {logoutUserValue} from "../../app/reducer/auth-reducer";
 import {PATH} from "../../PATH/PATH";
+import {fetchEserLogout} from "../../app/reducer/login/login-reducer";
 
 export const Logout = () => {
     const dispatch = useAppDispatch()
 
     const outValue = useAppSelector(state => state.auth.logoutValue)
+    const isDisabled = useAppSelector(state => state.isLoading.disabled)
 
-    const logoutHandler = async () => {
-        await carsApiLogin.userOutLogged('1')
-        dispatch(logoutUserValue(!outValue));
+    const logoutHandler = () => {
+        dispatch(fetchEserLogout({id: '1', logoutValue: !outValue}))
     }
 
     if (outValue) {
         return <Navigate to={PATH.HOME}/>
     }
 
+    const styleIsDisabled = isDisabled ? {pointerEvents: "none" as const} : {}
+
     return (
-        <li onClick={logoutHandler}>
-            <NavLink to={PATH.HOME}>Logout</NavLink>
+        <li>
+            <NavLink
+                onClick={logoutHandler}
+                to={PATH.HOME}
+                style={styleIsDisabled}
+            >
+                Logout
+            </NavLink>
         </li>
     );
 };

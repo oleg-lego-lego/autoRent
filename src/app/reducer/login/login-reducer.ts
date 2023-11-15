@@ -43,6 +43,25 @@ export const fetchAddRegisterAccount = createAsyncThunk('login/fetchAddRegisterA
         }
     });
 
+export const fetchEserLogout = createAsyncThunk('login/fetchEserLogout',
+    async ({id, logoutValue}: {id: string, logoutValue: boolean}, thunkAPI) => {
+
+        thunkAPI.dispatch(isLoading('loading'))
+        thunkAPI.dispatch(isDisabledButton(true))
+
+        try {
+            await carsApiLogin.userOutLogged(id)
+            thunkAPI.dispatch(logoutUserValue(logoutValue));
+        } catch (error) {
+            thunkAPI.dispatch(setErrorSnackbar(error))
+        } finally {
+            setTimeout(() => {
+                thunkAPI.dispatch(isDisabledButton(false))
+                thunkAPI.dispatch(isLoading('idle'))
+            }, 3000)
+        }
+    });
+
 export const fetchUserInLogged = createAsyncThunk('login/fetchUserInLogged',
     async (userInLogged: LoginListType, thunkAPI) => {
 
