@@ -37,6 +37,7 @@ export const fetchAddRegisterAccount = createAsyncThunk('login/fetchAddRegisterA
         } finally {
             setTimeout(() => {
                 thunkAPI.dispatch(isDisabledButton(false))
+                thunkAPI.dispatch(setRedirectForRegisterPage(false))
                 thunkAPI.dispatch(isLoading('idle'))
             }, 3000)
         }
@@ -55,6 +56,7 @@ export const fetchUserInLogged = createAsyncThunk('login/fetchUserInLogged',
             thunkAPI.dispatch(setErrorSnackbar(error))
         } finally {
             setTimeout(() => {
+                thunkAPI.dispatch(setRedirectForLoginPage(false));
                 thunkAPI.dispatch(isDisabledButton(false))
                 thunkAPI.dispatch(isLoading('idle'))
             }, 3000)
