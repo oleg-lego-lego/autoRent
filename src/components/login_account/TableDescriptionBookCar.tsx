@@ -13,7 +13,7 @@ import TableBody from "@material-ui/core/TableBody";
 import {makeStyles} from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {BookCarType} from "../../app/reducer/bookCar";
-import {useAppDispatch} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {bookCarDelete, bookCarOpenDescription} from "../../app/reducer/bookCar-reducer";
 import {QRCodeCanvas} from "qrcode.react";
 import {carsApi} from "../../api/cars-api";
@@ -37,10 +37,13 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
 
     const dispatch = useAppDispatch()
 
+    const isDisabled = useAppSelector(state => state.isLoading.disabled)
+
     const bookCarDeleteId = (id: string) => {
         carsApi.deleteBookCar(id)
             .then(res => {
                 dispatch(bookCarDelete(id))
+                //disabled fix
             })
     }
 
@@ -55,7 +58,7 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
     const totalDay = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24)) + 1;
     const totalCost = totalDay * Number(props.row.price)
 
-    const QR_CodeValue = props.row.id
+    const QR_CodeValue = props.row.QrCode
 
     return (
         <>
@@ -69,7 +72,11 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                                 ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>
                         }
                     </IconButton>
-                    <IconButton aria-label="delete" onClick={() => bookCarDeleteId(props.row.id)}>
+                    <IconButton
+                        aria-label="delete"
+                        onClick={() => bookCarDeleteId(props.row.id)}
+                        disabled={isDisabled}
+                    >
                         <DeleteIcon aria-label="delete" className="button__delete"/>
                     </IconButton>
                 </TableCell>

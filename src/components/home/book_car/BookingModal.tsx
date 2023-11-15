@@ -45,6 +45,8 @@ export const BookingModal = () => {
 
     const isDisabled = useAppSelector(state => state.isLoading.disabled)
 
+    const numbersQRCode = Array.from({ length: 6 }, () => Math.floor(Math.random() * 10)).join('');
+
     const handleChange = (nameInput: string, value: string,) => {
         switch (nameInput) {
             case 'First Name':
@@ -78,6 +80,7 @@ export const BookingModal = () => {
             price: Number(priceCar),
             bookCarOpen: false,
             email: addEmail,
+            QrCode: numbersQRCode,
         }
 
         const errors = {

@@ -11,6 +11,7 @@ export type BookCarType = {
     price: number
     bookCarOpen: boolean
     email: string
+    QrCode: string
 }
 
 export const bookCarList: BookCarType[] = []
