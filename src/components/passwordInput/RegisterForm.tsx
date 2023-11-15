@@ -5,13 +5,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {PasswordInput} from "./PasswordInput";
 import {Navigate} from "react-router-dom";
-import {carsApiLogin} from "../../api/cars-api";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {LoginListType} from "../../app/reducer/login/loginList";
 import {v1} from "uuid";
 import {PATH} from "../../PATH/PATH";
-import {setErrorSnackbar} from "../../app/reducer/error-reducer";
-import {isLoading} from "../../app/reducer/isLoading-reducer";
+import {fetchAddRegisterAccount} from "../../app/reducer/login/login-reducer";
 
 
 export type RegisterFormType = {
@@ -22,6 +20,9 @@ export type RegisterFormType = {
 
 export const RegisterForm = () => {
     const dispatch = useAppDispatch()
+
+    const isDisabled = useAppSelector(state => state.isLoading.disabled)
+
     const {register, handleSubmit, watch, formState: {errors}} = useForm<RegisterFormType>({
         defaultValues: {
             email: '',
@@ -34,7 +35,8 @@ export const RegisterForm = () => {
     const password = watch('password', '')
 
     const [errorFindEmail, setErrorFindEmail] = useState<string>('')
-    const [redirect, setRedirect] = useState<boolean>(false)
+
+    const redirect = useAppSelector(state => state.loginList.setRedirectRegister)
 
     const loginList = useAppSelector(state => state.loginList)
 
@@ -56,17 +58,7 @@ export const RegisterForm = () => {
         if (findEmail) {
             setErrorFindEmail('this email address is already registered');
         } else {
-            try {
-                dispatch(isLoading('loading'));
-                await carsApiLogin.addLoginAccount(newAccount)
-                setRedirect(true)
-            } catch (error) {
-                dispatch(setErrorSnackbar(error))
-            } finally {
-                setTimeout(() => {
-                    dispatch(isLoading('idle'))
-                }, 3000)
-            }
+            dispatch(fetchAddRegisterAccount(newAccount))
         }
     }
 
@@ -143,6 +135,7 @@ export const RegisterForm = () => {
                         variant={'contained'}
                         color={'primary'}
                         fullWidth
+                        disabled={isDisabled}
                     >
                         Sign up
                     </Button>
