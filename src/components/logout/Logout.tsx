@@ -2,7 +2,7 @@ import React from 'react';
 import {Navigate, NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {PATH} from "../../PATH/PATH";
-import {fetchEserLogout} from "../../app/reducer/login/login-reducer";
+import {fetchUserLogout} from "../../app/reducer/login/login-reducer";
 
 export const Logout = () => {
     const dispatch = useAppDispatch()
@@ -11,7 +11,7 @@ export const Logout = () => {
     const isDisabled = useAppSelector(state => state.isLoading.disabled)
 
     const logoutHandler = () => {
-        dispatch(fetchEserLogout({id: '1', logoutValue: !outValue}))
+        dispatch(fetchUserLogout({id: '1', logoutValue: !outValue}))
     }
 
     if (outValue) {

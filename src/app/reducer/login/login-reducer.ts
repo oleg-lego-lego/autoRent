@@ -43,7 +43,7 @@ export const fetchAddRegisterAccount = createAsyncThunk('login/fetchAddRegisterA
         }
     });
 
-export const fetchEserLogout = createAsyncThunk('login/fetchEserLogout',
+export const fetchUserLogout = createAsyncThunk('login/fetchUserLogout',
     async ({id, logoutValue}: {id: string, logoutValue: boolean}, thunkAPI) => {
 
         thunkAPI.dispatch(isLoading('loading'))
