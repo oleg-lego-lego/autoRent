@@ -14,9 +14,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {BookCarType} from "../../app/reducer/bookCar";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {bookCarDelete, bookCarOpenDescription} from "../../app/reducer/bookCar-reducer";
+import {bookCarOpenDescription, fetchBookCarDelete} from "../../app/reducer/bookCar-reducer";
 import {QRCodeCanvas} from "qrcode.react";
-import {carsApi} from "../../api/cars-api";
 
 
 const useRowStyles = makeStyles({
@@ -40,11 +39,7 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
     const isDisabled = useAppSelector(state => state.isLoading.disabled)
 
     const bookCarDeleteId = (id: string) => {
-        carsApi.deleteBookCar(id)
-            .then(res => {
-                dispatch(bookCarDelete(id))
-                //disabled fix
-            })
+        dispatch(fetchBookCarDelete(id))
     }
 
     const bookCarOpen = (id: string, open: boolean) => {

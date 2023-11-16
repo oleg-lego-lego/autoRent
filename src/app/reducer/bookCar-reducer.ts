@@ -65,6 +65,25 @@ export const fetchBookCarAdd = createAsyncThunk('bookCar/fetchBookCarAdd',
         }
     });
 
+export const fetchBookCarDelete = createAsyncThunk('bookCar/fetchBookCarDelete',
+    async (id: string, thunkAPI) => {
+
+        thunkAPI.dispatch(isLoading('loading'))
+        thunkAPI.dispatch(isDisabledButton(true))
+
+        try {
+            const res = await  carsApi.deleteBookCar(id)
+            thunkAPI.dispatch(bookCarDelete(res.data))
+        } catch (error) {
+            thunkAPI.dispatch(setErrorSnackbar(error))
+        } finally {
+            setTimeout(() => {
+                thunkAPI.dispatch(isDisabledButton(false))
+                thunkAPI.dispatch(isLoading('idle'))
+            }, 3000)
+        }
+    });
+
 
 export interface BookCarStateType {
     bookCar: BookCarType[]
@@ -82,7 +101,7 @@ export const BookCarSlice = createSlice({
             state.bookCar = action.payload
         },
         bookCarDelete: (state, action) => {
-            state.bookCar = state.bookCar.filter(el => el.id !== action.payload)
+            state.bookCar = state.bookCar.filter(el => el.id !== action.payload.id)
         },
         bookCarOpenDescription: (state, action) => {
             const {id, open} = action.payload
