@@ -10,9 +10,16 @@ import {BoxFormTimeInput} from "./BoxFormTimeInput";
 import {BookShowMessage} from "./BookShowMessage";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {
-    setCarType, setDropTime, setError, setModal, setPickTime, setShowDoneMessage
+    setCarType,
+    setDropTime,
+    setError,
+    setModal,
+    setPickTime,
+    setShowDoneMessage
 } from "../../../app/reducer/bookCarInputValue-reducer";
 import {priceBookCar, selectImagesBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
+import {PATH} from "../../../PATH/PATH";
+import {RedirectToPage} from "./RedirectToPage";
 
 
 export enum MODELS_CAR {
@@ -113,11 +120,13 @@ export const BookCar = () => {
         }, 8000);
     }, [dispatch, showDoneMessage]);
 
+    const errorLoginMassage = "error: you are not registered, please register on the login page"
+
     const openModal = (e: React.MouseEvent) => {
         e.preventDefault();
 
         if (!checkUser.length) {
-            dispatch(setError("error: you are not registered, please register on the login page"));
+            dispatch(setError(errorLoginMassage));
             setTimeout(() => dispatch(setError("")), 8000)
         } else if (!pickTime || !dropTime || !carType) {
             dispatch(setError('error: Not all fields are filled!'));
@@ -139,8 +148,30 @@ export const BookCar = () => {
                 <div className="book__content">
                     <div className="book__content__box">
                         <h2>Book a car</h2>
-                        <BookShowMessage message={error} className={'error__message'}/>
-                        <BookShowMessage message={showDoneMessage} className={'done__message'}/>
+                        {error === errorLoginMassage
+                            ?
+                            <>
+                                <BookShowMessage message={error} className={'error__message'}/>
+                                <RedirectToPage
+                                    to={PATH.LOGIN}
+                                    text={'click to go to the login page'}
+                                    className={'login__redirect'}
+                                />
+                            </>
+                            :
+                            <BookShowMessage message={error} className={'error__message'}/>
+
+                        }
+                        {showDoneMessage &&
+                            <>
+                                <BookShowMessage message={showDoneMessage} className={'done__message'}/>
+                                <RedirectToPage
+                                    to={PATH.GARAGE}
+                                    text={'click to go to the garage page'}
+                                    className={'garage__redirect'}
+                                />
+                            </>
+                        }
 
                         <form className="box__form">
                             <div className="box-form__car-type">
