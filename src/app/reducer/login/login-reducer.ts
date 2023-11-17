@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {loginList, LoginListType} from "./loginList";
 import {isDisabledButton, isLoading} from "../isLoading-reducer";
 import {carsApiLogin} from "../../../api/cars-api";
@@ -99,13 +99,13 @@ export const loginSlice = createSlice({
     name: 'loginList',
     initialState,
     reducers: {
-        addLogin: (state, action) => {
+        addLogin: (state, action:PayloadAction<LoginListType[]>) => {
             state.login = action.payload
         },
-        setRedirectForRegisterPage: (state, action) => {
+        setRedirectForRegisterPage: (state, action: PayloadAction<boolean>) => {
             state.setRedirectRegister = action.payload
         },
-        setRedirectForLoginPage: (state, action) => {
+        setRedirectForLoginPage: (state, action: PayloadAction<boolean>) => {
             state.setRedirectLogin = action.payload
         },
     },

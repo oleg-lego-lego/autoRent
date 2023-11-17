@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {bookCarList, BookCarType} from "./bookCar";
 import {isDisabledButton, isLoading} from "./isLoading-reducer";
 import {carsApi} from "../../api/cars-api";
@@ -72,7 +72,7 @@ export const fetchBookCarDelete = createAsyncThunk('bookCar/fetchBookCarDelete',
         thunkAPI.dispatch(isDisabledButton(true))
 
         try {
-            const res = await  carsApi.deleteBookCar(id)
+            const res = await carsApi.deleteBookCar(id)
             thunkAPI.dispatch(bookCarDelete(res.data))
         } catch (error) {
             thunkAPI.dispatch(setErrorSnackbar(error))
@@ -97,13 +97,13 @@ export const BookCarSlice = createSlice({
     name: 'bookCar',
     initialState,
     reducers: {
-        bookCarAdd: (state, action) => {
+        bookCarAdd: (state, action: PayloadAction<BookCarType[]>) => {
             state.bookCar = action.payload
         },
-        bookCarDelete: (state, action) => {
+        bookCarDelete: (state, action: PayloadAction<BookCarType>) => {
             state.bookCar = state.bookCar.filter(el => el.id !== action.payload.id)
         },
-        bookCarOpenDescription: (state, action) => {
+        bookCarOpenDescription: (state, action: PayloadAction<{ id: string, open: boolean }>) => {
             const {id, open} = action.payload
             state.bookCar.map(el => el.id === id ? el.bookCarOpen = open : el)
         }

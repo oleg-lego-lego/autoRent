@@ -77,7 +77,7 @@ export const BookingModal = () => {
             phone,
             age,
             id: v1(),
-            price: Number(priceCar),
+            price: priceCar,
             bookCarOpen: false,
             email: addEmail,
             QrCode: numbersQRCode,

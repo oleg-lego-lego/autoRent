@@ -1,23 +1,23 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 export interface BookCarMoreInfoStateType {
     carImages: string
-    priceCar: string
+    priceCar: number
 }
 
 const initialState: BookCarMoreInfoStateType = {
     carImages: '',
-    priceCar: '',
+    priceCar: 0,
 }
 
 export const BookCarMoreInfoSlice = createSlice({
     name: 'bookCarImages',
     initialState,
     reducers: {
-        selectImagesBookCar: (state, action) => {
+        selectImagesBookCar: (state, action: PayloadAction<string>) => {
             state.carImages = action.payload
         },
-        priceBookCar: (state, action) => {
+        priceBookCar: (state, action: PayloadAction<number>) => {
             state.priceCar = action.payload
         }
     },

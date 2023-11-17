@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {LoginListType} from "./login/loginList";
 import {isLoading} from "./isLoading-reducer";
 import {carsApiLogin} from "../../api/cars-api";
@@ -38,10 +38,10 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        getAuthUser: (state, action) => {
+        getAuthUser: (state, action: PayloadAction<LoginListType[]>) => {
             state.auth = action.payload
         },
-        logoutUserValue: (state, action) => {
+        logoutUserValue: (state, action: PayloadAction<boolean>) => {
             state.logoutValue = action.payload
         }
     },

@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
@@ -16,10 +16,10 @@ export const IsLoadingSlice = createSlice({
     name: 'Loading',
     initialState,
     reducers: {
-        isLoading: (state, action) => {
+        isLoading: (state, action: PayloadAction<RequestStatusType>) => {
             state.status = action.payload
         },
-        isDisabledButton: (state, action) => {
+        isDisabledButton: (state, action: PayloadAction<boolean>) => {
             state.disabled = action.payload
         },
     },

@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 export interface BookCarInputValueStateType {
     carType: string
@@ -42,49 +42,49 @@ export const BookCarInputValueSlice = createSlice({
     name: 'bookCarInputValue',
     initialState,
     reducers: {
-        setCarType: (state, action) => {
+        setCarType: (state, action: PayloadAction<string>) => {
             state.carType = action.payload;
         },
-        setPickTime: (state, action) => {
+        setPickTime: (state, action: PayloadAction<string>) => {
             state.pickTime = action.payload;
         },
-        setDropTime: (state, action) => {
+        setDropTime: (state, action: PayloadAction<string>) => {
             state.dropTime = action.payload;
         },
-        setError: (state, action) => {
+        setError: (state, action: PayloadAction<string>) => {
             state.error = action.payload;
         },
-        setShowDoneMessage: (state, action) => {
+        setShowDoneMessage: (state, action: PayloadAction<string>) => {
             state.showDoneMessage = action.payload;
         },
-        setModal: (state, action) => {
+        setModal: (state, action: PayloadAction<boolean>) => {
             state.modal = action.payload;
         },
-        setName: (state, action) => {
+        setName: (state, action: PayloadAction<string>) => {
             state.name = action.payload;
         },
-        setLastName: (state, action) => {
+        setLastName: (state, action: PayloadAction<string>) => {
             state.lastName = action.payload;
         },
-        setPhone: (state, action) => {
+        setPhone: (state, action: PayloadAction<string>) => {
             state.phone = action.payload;
         },
-        setAge: (state, action) => {
+        setAge: (state, action: PayloadAction<string>) => {
             state.age = action.payload;
         },
-        setNameError: (state, action) => {
+        setNameError: (state, action: PayloadAction<string>) => {
             state.nameError = action.payload;
         },
-        setLastNameError: (state, action) => {
+        setLastNameError: (state, action: PayloadAction<string>) => {
             state.lastNameError = action.payload;
         },
-        setPhoneError: (state, action) => {
+        setPhoneError: (state, action: PayloadAction<string>) => {
             state.phoneError = action.payload;
         },
-        setAgeError: (state, action) => {
+        setAgeError: (state, action: PayloadAction<string>) => {
             state.ageError = action.payload;
         },
-        setIsValid: (state, action) => {
+        setIsValid: (state, action: PayloadAction<boolean>) => {
             state.isValid = action.payload;
         },
     },
