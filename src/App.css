@@ -122,34 +122,6 @@ li {
     }
 }
 
-.navbar__buttons__sign-in {
-    color: #010103;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.navbar__buttons__sign-in:hover {
-    color: #ff4d30;
-}
-
-.navbar__buttons__register {
-    background-color: #ff4d30;
-    color: white;
-    padding: 1.5rem 3rem;
-    border-radius: 3px;
-    box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
-    transition: all 0.3s;
-}
-
-.navbar__buttons__register:hover {
-    box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.5);
-    background-color: #fa4226;
-}
-
-.navbar__buttons a {
-    text-decoration: none;
-}
-
 .mobile__menu {
     font-size: 2.8rem;
     display: none;
@@ -204,8 +176,8 @@ li {
     display: flex;
     flex-direction: column;
     list-style: none;
-    font-size: 2.3rem;
-    gap: 3rem;
+    font-size: 2rem;
+    gap: 2.5rem;
     text-align: center;
 }
 
@@ -397,20 +369,7 @@ li {
 
 .book__content {
     margin: 0 auto;
-    /*margin-bottom: 10rem;*/
 }
-
-/* CSS-файл или встроенные стили в вашем компоненте */
-/*.CarModelHomeSkeleton {*/
-/*    max-width: 100%; !* Ширина компонента не будет превышать ширину родительского контейнера *!*/
-/*}*/
-
-/*!* Пример медиа-запроса для изменения ширины на более узком экране *!*/
-/*@media (max-width: 768px) {*/
-/*    .CarModelHomeSkeleton {*/
-/*        width: 80%; !* Пример: на узком экране ширина компонента составит 80% от ширины родительского контейнера *!*/
-/*    }*/
-/*}*/
 
 .book__content__box {
     background-color: #ffffff;
@@ -519,9 +478,6 @@ li {
     color: #ff4d30;
 }
 
-/*.book-book__content__box .box-form__car-time ::-webkit-datetime-edit {*/
-/*    padding: 1.3rem 1.3rem;*/
-/*}*/
 .book__content__box .box-form__car-time ::-webkit-calendar-picker-indicator {
     cursor: pointer;
     font-size: 1.6rem;
@@ -529,7 +485,6 @@ li {
 
 .book__content__box button {
     padding: 1.3rem 1.3rem;
-    /*height: -moz-fit-content;*/
     height: fit-content;
     align-self: self-end;
     border: none;
@@ -545,6 +500,39 @@ li {
 
 .book__content__box button:hover {
     box-shadow: 0 10px 15px rgba(255, 83, 48, 0.55);
+}
+
+.garage__redirect {
+    font-size: 18px;
+    text-decoration: none;
+    padding: 7px;
+    animation: blink 2s infinite;
+    border: solid 2px #4baf4b;
+    width: fit-content;
+    border-radius: 0.8rem;
+    margin: 10px 0;
+    color: #de0c1f;
+}
+
+.login__redirect {
+    font-size: 18px;
+    text-decoration: none;
+    padding: 7px;
+    animation: blink 2s infinite;
+    border: solid 2px #4baf4b;
+    width: fit-content;
+    border-radius: 0.8rem;
+    margin: 10px 0;
+    color: #de0c1f;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
 }
 
 .error__message {
@@ -570,25 +558,6 @@ li {
     margin-top: -1rem;
     padding: 1rem 1.4rem;
     width: fit-content;
-}
-
-.booking-done {
-    color: #2a6817;
-    background-color: #c3fabe;
-    padding: 1rem 1.4rem;
-    margin-bottom: 1.8rem;
-    margin-top: -1rem;
-    border: 1px solid #f5c6cb;
-    border-radius: 0.8rem;
-    font-size: 1.6rem;
-    font-weight: 500;
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.booking-done i {
-    cursor: pointer;
 }
 
 .active__modal {
@@ -820,10 +789,6 @@ li {
     border-color: white;
 }
 
-/*.error1 {*/
-/*    border: 2px solid red;*/
-/*}*/
-
 .PhoneValidation h2 b {
     color: #ff4d30;
 }
@@ -1022,11 +987,10 @@ li {
 }
 
 .selectCar__title {
-    margin: 0 auto;
+    margin: 0 auto 5rem;
     text-align: center;
     color: #010103;
     max-width: 50rem;
-    margin-bottom: 5rem;
 }
 
 .selectCar__title p {
@@ -1096,7 +1060,7 @@ li {
 }
 
 .carButton__skeleton {
-   margin-top: 15px;
+    margin-top: 15px;
 }
 
 @media (max-width: 890px) {
@@ -1123,7 +1087,6 @@ li {
 
 .pick-car img {
     width: 100%;
-    margin-top: 6rem;
 }
 
 .pick-description {
@@ -1194,6 +1157,7 @@ li {
     gap: 11rem;
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
 }
 
 @media (max-width: 1200px) {
@@ -1293,7 +1257,6 @@ li {
 
 .takeUs__section {
     padding: 2rem 0 10rem 0;
-    /*background-image: url("/src/images/chooseUs/bg.png");*/
     background-position: -225px 255px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1534,7 +1497,6 @@ li {
 }
 
 .faq-section {
-    /*background-image: url("/src/images/faq/car.png");*/
     padding: 10rem 0;
     background-size: auto;
     background-repeat: no-repeat;
@@ -2087,15 +2049,6 @@ footer {
     z-index: 999;
 }
 
-/*.text-content span {*/
-/*    display: flex;*/
-/*    !*font-size: 2.7rem;*!*/
-/*    gap: 1rem;*/
-/*    align-items: center;*/
-/*    color: #ff4d30;*/
-/*    white-space: nowrap;*/
-/*}*/
-
 .banner__text li a {
     color: #ff4d30;
     font-size: 3.2rem;
@@ -2144,7 +2097,6 @@ footer {
 @media (max-width: 400px) {
     .models__box {
         grid-template-columns: 1fr;
-        /*width: 100%;*/
     }
 }
 
@@ -2288,21 +2240,6 @@ footer {
     width: 100%;
 }
 
-.team-container__box__descr {
-    color: #010103;
-    padding: 3rem;
-}
-
-.team-container__box__descr h3 {
-    font-size: 2.2rem;
-}
-
-.team-container__box__descr p {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: #777777;
-}
-
 .contact__information {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2333,7 +2270,6 @@ footer {
 @media (max-width: 950px) {
     .contact__text {
         margin: 0 auto;
-        /*margin-bottom: 2rem;*/
     }
 }
 
@@ -2433,12 +2369,6 @@ footer {
     text-align: center;
 }
 
-.favorites--empty {
-    /*background-color: #f8f8f8;*/
-    /*padding: 10rem 0;*/
-    /*color: #010103;*/
-}
-
 .favorites--empty h2 {
     font-size: 4.2rem;
     margin-bottom: 1.4rem;
@@ -2451,19 +2381,6 @@ footer {
     font-family: "Rubik", sans-serif;
     font-weight: 500;
     margin-bottom: 2.2rem;
-}
-
-.favorites--empty-link {
-    text-decoration: none;
-    transition: all 0.2s;
-    font-size: 2.3rem;
-    font-family: "Rubik", sans-serif;
-    font-weight: 800;
-    color: #010103;
-}
-
-.favorites--empty-link:hover {
-    color: #ff4d30;
 }
 
 .FavEmpty_img {
@@ -2526,18 +2443,32 @@ footer {
     }
 }
 
+.buttonFavorites {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    top: 7%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+}
+
 .buttonFavorites img {
     width: 40px;
     height: 40px;
+}
+
+.buttonFavorites__model {
+    padding: 0;
+    border: none;
+    background: none;
     cursor: pointer;
 }
 
-.buttonCarBox {
-    position: absolute;
-    top: 10%;
-    left: 95%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
+.buttonFavorites__model img {
+    width: 40px;
+    height: 40px;
 }
 
 .button__delete {
@@ -2602,7 +2533,6 @@ footer {
 }
 
 .login__container {
-    /*padding: 60px;*/
     text-align: center;
 }
 
@@ -2615,10 +2545,6 @@ footer {
     .formControl {
         width: auto;
     }
-}
-
-.qqqq {
-    font-size: 46px;
 }
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
@@ -2649,8 +2575,8 @@ footer {
     margin: 20px 0 5px !important;
 }
 
-.button__Login{
-    text-align:  center;
+.button__Login {
+    text-align: center;
 }
 
 .login__title {
@@ -2692,7 +2618,6 @@ footer {
 }
 
 .form__wrapper {
-    /*width: inherit;*/
     margin-bottom: 20px;
 }
 
@@ -2717,10 +2642,6 @@ footer {
 .forgotPassword:active {
     color: #366EFF;
     opacity: 0.7;
-}
-
-.asd {
-    font-size: larger !important;
 }
 
 

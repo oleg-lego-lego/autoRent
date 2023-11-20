@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from "../../images/logo/carLogo.png"
 import menu from "../../images/menu-vector.png"
 import {Link} from "react-router-dom";
@@ -11,6 +11,16 @@ export const Navbar = () => {
     const [nav, setNav] = useState(false);
 
     const openNav = (openValue: boolean) => setNav(openValue);
+
+    useEffect(() => {
+        if (nav) {
+            document.body.style.overflow = 'hidden'
+        }
+
+        return () => {
+            document.body.style.overflow = 'visible'
+        };
+    }, [nav]);
 
     return (
         <nav>
