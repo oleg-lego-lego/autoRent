@@ -9,7 +9,7 @@ const instance = axios.create({
 
 export const carsApi = {
     getCars() {
-        return instance.get<CarModelsType>('/cars/')
+        return instance.get<CarModelsType[]>('/cars/')
     },
     putFavorites(id: string, favorites: boolean) {
         return instance.put<CarModelsType>(`/cars/${id}`, {favorites})
@@ -18,7 +18,7 @@ export const carsApi = {
         return instance.post<BookCarType>('/bookCar/', newRentCar)
     },
     getBookCar() {
-        return instance.get<BookCarType>('/bookCar/')
+        return instance.get<BookCarType[]>('/bookCar/')
     },
     deleteBookCar(id: string) {
         return instance.delete<BookCarType>(`/bookCar/${id}`)
@@ -32,7 +32,7 @@ const instanceLogin = axios.create({
 
 export const carsApiLogin = {
     getLoginAccount() {
-        return instanceLogin.get<LoginListType>('/login/')
+        return instanceLogin.get<LoginListType[]>('/login/')
     },
     addLoginAccount(newAccount: LoginListType) {
         return instanceLogin.post<LoginListType>('/login/', newAccount)
@@ -41,9 +41,9 @@ export const carsApiLogin = {
         return instanceLogin.post<LoginListType>('/userInLogged/', userInLogged)
     },
     userOutLogged(id: string) {
-        return instanceLogin.delete(`/userInLogged/${id}`)
+        return instanceLogin.delete<LoginListType>(`/userInLogged/${id}`)
     },
     getUserInLogged() {
-        return instanceLogin.get<LoginListType>('/userInLogged/')
+        return instanceLogin.get<LoginListType[]>('/userInLogged/')
     }
 }
