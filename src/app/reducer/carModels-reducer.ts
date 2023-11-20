@@ -15,13 +15,8 @@ export const fetchGetCars = createAsyncThunk('cars/fetchGetCars',
             setTimeout(() => {
                 thunkAPI.dispatch(getCars(res.data))
             }, 3000)
-
-            return res.data;
         } catch (error) {
             thunkAPI.dispatch(setErrorSnackbar(error))
-            console.error('Произошла ошибка:', error)
-
-            throw error;
         } finally {
             setTimeout(() => {
                 thunkAPI.dispatch(isLoading('idle'))
@@ -40,7 +35,6 @@ export const fetchPutFavorites = createAsyncThunk('cars/fetchPutFavorites',
             thunkAPI.dispatch(carModelsFavorites(res.data))
         } catch (error) {
             thunkAPI.dispatch(setErrorSnackbar(error))
-            console.error('Произошла ошибка:', error)
         } finally {
             setTimeout(() => {
                 thunkAPI.dispatch(isDisabledButton(false))
