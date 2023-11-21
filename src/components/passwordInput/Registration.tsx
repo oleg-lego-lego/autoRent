@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import FormControl from '@mui/material/FormControl';
 import Paper from '@mui/material/Paper';
 import {RegisterForm} from "./RegisterForm";
-import {PATH} from "../../PATH/PATH";
+import {PATH} from "../../app/PATH/PATH";
 
 
 export const Registration = () => {

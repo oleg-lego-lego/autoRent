@@ -1,7 +1,7 @@
 import React from 'react';
-import FavEmpty from "../../images/emptyFavotites.png"
-import {TemplatePage} from "../TemplatePage";
-import {PATH} from "../../PATH/PATH";
+import FavEmpty from "../../images/empty/emptyFavotites.png"
+import {TemplatePage} from "../notFound/TemplatePage";
+import {PATH} from "../../app/PATH/PATH";
 
 export const FavoritesEmpty = () => {
     const header = 'Cart of favorite cars is empty.';

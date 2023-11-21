@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Model} from "../components/Model";
-import {HeroPages} from "../components/HeroPages";
-import {useAppSelector} from "../hooks/redux";
+import {Model} from "../components/model/Model";
+import {HeroPages} from "../components/heroPages/HeroPages";
+import {useAppSelector} from "../app/hooks/redux";
 import {FavoritesEmpty} from "../components/favorites/FavoritesEmpty";
 import {CarCardSkeleton} from "../components/skeleton/CarCardSreleton";
 

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import logo from "../../images/logo/carLogo.png"
-import menu from "../../images/menu-vector.png"
+import menu from "../../images/logo/menu-vector.png"
 import {Link} from "react-router-dom";
 import {NavbarNavigation} from "./NavbarNavigation";
-import {PATH} from "../../PATH/PATH";
+import {PATH} from "../../app/PATH/PATH";
 
 
 

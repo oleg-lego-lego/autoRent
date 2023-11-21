@@ -7,9 +7,9 @@ import {Navigate, NavLink} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import React, {useEffect, useState} from 'react';
 import {PasswordInput} from "./PasswordInput";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../app/hooks/redux";
 import {fetchAddLogin, fetchUserInLogged} from "../../app/reducer/login/login-reducer";
-import {PATH} from "../../PATH/PATH";
+import {PATH} from "../../app/PATH/PATH";
 
 
 type LoginFormType = {

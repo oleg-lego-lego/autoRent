@@ -1,5 +1,5 @@
 import React from 'react';
-import {CarModelsType} from "../../app/reducer/carModels";
+import {CarModelsType} from "../../app/reducer/carModels/carModels";
 
 type ButtonBoxPropsType = {
     data: CarModelsType

@@ -1,5 +1,5 @@
 import React from 'react';
-import {HeroPages} from "../components/HeroPages";
+import {HeroPages} from "../components/heroPages/HeroPages";
 import AboutMain from "../images/about/about-main.png"
 import car_types from "../images/about/car-types.png"
 import rental_outlets from "../images/about/rental-outlets.png"

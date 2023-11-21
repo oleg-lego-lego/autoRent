@@ -1,7 +1,7 @@
 import React from 'react';
-import {HeroPages} from "../components/HeroPages";
-import {Model} from "../components/Model";
-import {useAppSelector} from "../hooks/redux";
+import {HeroPages} from "../components/heroPages/HeroPages";
+import {Model} from "../components/model/Model";
+import {useAppSelector} from "../app/hooks/redux";
 import {CarCardSkeleton} from "../components/skeleton/CarCardSreleton";
 
 

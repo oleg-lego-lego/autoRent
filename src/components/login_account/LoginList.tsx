@@ -1,5 +1,5 @@
 import React from 'react';
-import {BookCarType} from "../../app/reducer/bookCar";
+import {BookCarType} from "../../app/reducer/bookCar/bookCar";
 
 type LoginListPropsType = {
     bookCar: BookCarType

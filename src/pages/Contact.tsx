@@ -1,7 +1,7 @@
 import React from 'react';
-import {HeroPages} from "../components/HeroPages";
+import {HeroPages} from "../components/heroPages/HeroPages";
 import {ToContactUs} from "../ data/toContactUs";
-import {ContactUs} from "../components/ContactUs";
+import {ContactUs} from "../components/home/ContactUs";
 
 export const Contact = () => {
     return (

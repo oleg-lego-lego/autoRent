@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {TableCar} from "./TableCar";
-import {CarModelsType} from "../../app/reducer/carModels";
-import favoritesTrue from "../../images/favoritesTrue.svg";
-import favoritesFalse from "../../images/favoritesFalse.svg";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {fetchPutFavorites} from "../../app/reducer/carModels-reducer";
+import {TableCar} from "../garage/TableCar";
+import {CarModelsType} from "../../app/reducer/carModels/carModels";
+import favoritesTrue from "../../images/favorites/favoritesTrue.svg";
+import favoritesFalse from "../../images/favorites/favoritesFalse.svg";
+import {useAppDispatch, useAppSelector} from "../../app/hooks/redux";
+import {fetchPutFavorites} from "../../app/reducer/carModels/carModels-reducer";
 import {Link} from "react-router-dom";
-import {PATH} from "../../PATH/PATH";
+import {PATH} from "../../app/PATH/PATH";
 
 type CarBoxPropsType = {
     data: CarModelsType

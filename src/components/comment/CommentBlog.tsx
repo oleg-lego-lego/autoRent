@@ -1,6 +1,6 @@
 import React from 'react';
 import {Comment} from "./Comment";
-import {comment} from "../../app/reducer/comentBlog/comentBLog";
+import {comment} from "../../ data/comentBLog";
 
 
 export const CommentsBlog = () => {
@@ -9,13 +9,12 @@ export const CommentsBlog = () => {
             <div className="container">
                 <div className="comment__content">
                     <div className="comment__title">
-                        <h4>Reviewed by People</h4>
-                        <h2>Client's Testimonials</h2>
+                        <h4>Feedback from people</h4>
+                        <h2>Customer Reviews</h2>
                         <p>
-                            Discover the positive impact we've made on the our clients by
-                            reading through their testimonials. Our clients have experienced
-                            our service and results, and they're eager to share their
-                            positive experiences with you.
+                            Explore the positive influence we've had on our clients by reviewing their testimonials.
+                            Our clients have encountered our services and outcomes,
+                            and they are enthusiastic about sharing their favorable experiences with you.
                         </p>
                     </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navigate, NavLink} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-import {PATH} from "../../PATH/PATH";
+import {useAppDispatch, useAppSelector} from "../../app/hooks/redux";
+import {PATH} from "../../app/PATH/PATH";
 import {fetchUserLogout} from "../../app/reducer/login/login-reducer";
 
 export const Logout = () => {

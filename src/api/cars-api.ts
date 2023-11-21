@@ -1,6 +1,6 @@
 import axios from "axios";
-import {CarModelsType} from "../app/reducer/carModels";
-import {BookCarType} from "../app/reducer/bookCar";
+import {CarModelsType} from "../app/reducer/carModels/carModels";
+import {BookCarType} from "../app/reducer/bookCar/bookCar";
 import {LoginListType} from "../app/reducer/login/loginList";
 
 const instance = axios.create({

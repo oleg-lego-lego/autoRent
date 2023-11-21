@@ -3,7 +3,7 @@ import BgShape from "../../../images/hero/hero-bg.png";
 import HeroCar from "../../../images/hero/Pngtree—big red hand drawn vintage_4477760.png";
 import {Link} from "react-router-dom";
 import arrow from "../../../images/faq/angle-arrow-down_icon-icons.com_73683.png";
-import {PATH} from "../../../PATH/PATH";
+import {PATH} from "../../../app/PATH/PATH";
 
 
 export const HomeHeader = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavbarLink} from "./NavbarLink";
-import {useAppSelector} from "../../hooks/redux";
+import {useAppSelector} from "../../app/hooks/redux";
 import {Logout} from "../logout/Logout";
-import {PATH} from "../../PATH/PATH";
+import {PATH} from "../../app/PATH/PATH";
 
 
 type NavbarNavigationPropsType = {

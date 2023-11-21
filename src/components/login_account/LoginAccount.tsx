@@ -3,7 +3,7 @@ import FormControl from "@mui/material/FormControl";
 import {LoginForm} from "../passwordInput/LoginForm";
 import {NavLink} from "react-router-dom";
 import Paper from "@mui/material/Paper";
-import {PATH} from "../../PATH/PATH";
+import {PATH} from "../../app/PATH/PATH";
 
 
 export const LoginAccount = () => {

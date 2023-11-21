@@ -1,5 +1,5 @@
 import React from 'react';
-import {CommentType} from "../../app/reducer/comentBlog/comentBLog";
+import {CommentType} from "../../ data/comentBLog";
 
 
 type CommentPropsType = {

@@ -8,7 +8,7 @@ import CarPassat from "../../../images/cars-big/passatcc.jpg";
 import {BookingModal} from "./BookingModal";
 import {BoxFormTimeInput} from "./BoxFormTimeInput";
 import {BookShowMessage} from "./BookShowMessage";
-import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks/redux";
 import {
     setCarType,
     setDropTime,
@@ -16,9 +16,9 @@ import {
     setModal,
     setPickTime,
     setShowDoneMessage
-} from "../../../app/reducer/bookCarInputValue-reducer";
-import {priceBookCar, selectImagesBookCar} from "../../../app/reducer/bookCarMoreInfo-reducer";
-import {PATH} from "../../../PATH/PATH";
+} from "../../../app/reducer/bookCar/bookCarInputValue-reducer";
+import {priceBookCar, selectImagesBookCar} from "../../../app/reducer/bookCar/bookCarMoreInfo-reducer";
+import {PATH} from "../../../app/PATH/PATH";
 import {RedirectToPage} from "./RedirectToPage";
 
 

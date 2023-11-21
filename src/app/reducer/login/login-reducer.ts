@@ -1,9 +1,9 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {loginList, LoginListType} from "./loginList";
-import {isDisabledButton, isLoading} from "../isLoading-reducer";
+import {isDisabledButton, isLoading} from "../isLoading/isLoading-reducer";
 import {carsApiLogin} from "../../../api/cars-api";
-import {setErrorSnackbar} from "../error-reducer";
-import {logoutUserValue} from "../auth-reducer";
+import {setErrorSnackbar} from "../error/error-reducer";
+import {logoutUserValue} from "../auth/auth-reducer";
 
 
 export const fetchAddLogin = createAsyncThunk('login/fetchAddLogin',

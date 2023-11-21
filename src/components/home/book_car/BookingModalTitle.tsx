@@ -1,6 +1,6 @@
 import React from 'react';
-import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {setModal} from "../../../app/reducer/bookCarInputValue-reducer";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks/redux";
+import {setModal} from "../../../app/reducer/bookCar/bookCarInputValue-reducer";
 
 
 export const BookingModalTitle = () => {

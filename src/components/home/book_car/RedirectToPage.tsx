@@ -1,5 +1,5 @@
 import React from 'react';
-import {PATH} from "../../../PATH/PATH";
+import {PATH} from "../../../app/PATH/PATH";
 import {NavLink} from "react-router-dom";
 
 type RedirectToPagePropsType = {

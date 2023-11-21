@@ -2,8 +2,8 @@ import React from 'react';
 import PhoneInput from 'react-phone-number-input';
 import {parsePhoneNumberFromString, PhoneNumber} from 'libphonenumber-js';
 import 'react-phone-number-input/style.css';
-import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {setIsValid, setPhone} from "../../../app/reducer/bookCarInputValue-reducer";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks/redux";
+import {setIsValid, setPhone} from "../../../app/reducer/bookCar/bookCarInputValue-reducer";
 
 
 export const PhoneValidation = () => {

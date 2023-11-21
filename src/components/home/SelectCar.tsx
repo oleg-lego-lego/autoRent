@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {ButtonBox} from "./ButtonBox";
 import {CarBox} from "./CarBox";
-import {useAppSelector} from "../../hooks/redux";
+import {useAppSelector} from "../../app/hooks/redux";
 import {SkeletonForHome} from "../skeleton/SkeletonForHome";
 
 export const SelectCar = () => {

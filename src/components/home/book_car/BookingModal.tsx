@@ -1,6 +1,6 @@
 import React from 'react';
-import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {BookCarType} from "../../../app/reducer/bookCar";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks/redux";
+import {BookCarType} from "../../../app/reducer/bookCar/bookCar";
 import {v1} from "uuid";
 import {PhoneValidation} from "./PhoneValidation";
 import {InputFormModal} from "./InputFormModal";
@@ -14,8 +14,8 @@ import {
     setName,
     setNameError,
     setPhoneError
-} from "../../../app/reducer/bookCarInputValue-reducer";
-import {fetchPostBookCar} from "../../../app/reducer/bookCar-reducer";
+} from "../../../app/reducer/bookCar/bookCarInputValue-reducer";
+import {fetchPostBookCar} from "../../../app/reducer/bookCar/bookCar-reducer";
 
 
 export const BookingModal = () => {
