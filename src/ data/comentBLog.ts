@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 import Img1 from "../images/testimonials/img_1.png";
-import Img2 from "../images/testimonials/img_2.png";
+import Img2 from "../images/testimonials/img.png";
 
 export type CommentType = {
     id: string
