@@ -66,6 +66,12 @@ export const RegisterForm = () => {
         key === 'Enter' && handleSubmit(onSubmit)
     }
 
+    const styles = {
+        input: {
+            fontSize: '20px'
+        },
+    };
+
     if (redirect) {
         return <Navigate to={PATH.LOGIN}/>
     }
@@ -80,6 +86,8 @@ export const RegisterForm = () => {
                     autoComplete="username"
                     label={'Email'}
                     variant={'outlined'}
+                    size={'small'}
+                    InputProps={{style: styles.input}}
                     {...register('email', {
                         required: 'Email is required',
                         pattern: {
@@ -136,6 +144,11 @@ export const RegisterForm = () => {
                         color={'primary'}
                         fullWidth
                         disabled={isDisabled}
+                        style={{
+                            width: '120px',
+                            fontSize: '17px',
+                            margin: '20px 0 5px'
+                        }}
                     >
                         Sign up
                     </Button>

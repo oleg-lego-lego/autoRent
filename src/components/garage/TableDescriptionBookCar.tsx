@@ -72,7 +72,7 @@ export const TableDescriptionBookCar = (props: TableDescriptionBookCarPropsType)
                         onClick={() => bookCarDeleteId(props.row.id)}
                         disabled={isDisabled}
                     >
-                        <DeleteIcon aria-label="delete" className="button__delete"/>
+                        <DeleteIcon aria-label="delete" fontSize={'large'}/>
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row" className="table__head__description table__none">

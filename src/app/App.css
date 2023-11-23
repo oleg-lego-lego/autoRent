@@ -2471,10 +2471,6 @@ footer {
     height: 40px;
 }
 
-.button__delete {
-    font-size: 2rem !important;
-}
-
 .table__title {
     margin: 35px;
     font-size: 50px;
@@ -2547,33 +2543,18 @@ footer {
     }
 }
 
-.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-    font-size: 22px !important;
-    padding: 6px 10px !important;
-}
-
-.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
-    font-size: 22px !important;
-    padding: 6px 10px !important;
-}
-
 .css-1rv3ei8-MuiFormControl-root-MuiTextField-root {
     margin-bottom: 0 !important;
 }
 
 .authError {
-    font-size: 12px;
+    font-size: 13px;
     color: red;
     height: 1px;
-    margin-top: 2px !important;
-    margin-bottom: 10px !important;
+    margin-top: 3px;
+    margin-bottom: 15px;
 }
 
-.css-1fu7jd5-MuiButtonBase-root-MuiButton-root {
-    width: 120px !important;
-    font-size: 17px !important;
-    margin: 20px 0 5px !important;
-}
 
 .button__Login {
     text-align: center;
@@ -2596,7 +2577,7 @@ footer {
     line-height: 24px;
     color: #000000;
     opacity: 0.5;
-    margin-bottom: 1.2rem !important;
+    margin-bottom: 1.2rem;
 }
 
 .signUpLink {
@@ -2622,8 +2603,11 @@ footer {
 }
 
 .form__authError {
+    margin-top: 3px;
     color: red;
     height: 1px;
+    margin-bottom: 15px;
+    font-size: 13px;
 }
 
 .forgotPassword {

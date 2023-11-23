@@ -12,7 +12,7 @@ import {fetchAddLogin, fetchUserInLogged} from "../../app/reducer/login/login-re
 import {PATH} from "../../app/PATH/PATH";
 
 
-type LoginFormType = {
+export type LoginFormType = {
     email: string
     password: string
     rememberMe: boolean
@@ -66,6 +66,12 @@ export const LoginForm = () => {
         return <Navigate to={PATH.HOME}/>
     }
 
+    const styles = {
+        input: {
+            fontSize: '20px',
+        },
+    };
+
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
@@ -78,6 +84,8 @@ export const LoginForm = () => {
                     id={'outlined-basic'}
                     variant={'outlined'}
                     label={'Email'}
+                    size={'small'}
+                    InputProps={{style: styles.input}}
                     {...register('email', {
                         required: 'Email is required',
                         pattern: {
@@ -132,6 +140,11 @@ export const LoginForm = () => {
                         color={'primary'}
                         disabled={isDisabled}
                         fullWidth
+                        style={{
+                            width: '120px',
+                            fontSize: '17px',
+                            margin: '20px 0 5px'
+                        }}
                     >
                         Sign up
                     </Button>
