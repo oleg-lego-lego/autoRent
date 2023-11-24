@@ -52,11 +52,12 @@ export const Model = (props: ModelPropsType) => {
                         <span>{props.model.transmission}</span>
                         <span style={{textAlign: "right"}}>{props.model.year}</span>
                     </div>
-                    <div className="models__btn">
-                        <Link onClick={() => window.scrollTo(0, 600)} to={PATH.HOME}>
+
+                    <Link to={PATH.HOME} onClick={() => window.scrollTo(0, 600)}>
+                        <button className="models__btn" style={{ width: '100%' }}>
                             Book Ride
-                        </Link>
-                    </div>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
