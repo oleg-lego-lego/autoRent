@@ -29,6 +29,7 @@ export const fetchPostBookCar = createAsyncThunk('bookCar/fetchPostBookCar',
 
             thunkAPI.dispatch(setShowDoneMessage(textDoneMessage))
             thunkAPI.dispatch(setCarType(''))
+            thunkAPI.dispatch(bookCarValue(''))
             thunkAPI.dispatch(setPickTime(''))
             thunkAPI.dispatch(setDropTime(''))
             thunkAPI.dispatch(setName(''))
