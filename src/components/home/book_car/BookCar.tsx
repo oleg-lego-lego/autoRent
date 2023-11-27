@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect} from 'react';
+import React, {ChangeEvent, useCallback, useEffect, useMemo} from 'react';
 import CarAudi from "../../../images/cars-big/audia1.jpg";
 import CarGolf from "../../../images/cars-big/golf6.jpg";
 import CarToyota from "../../../images/cars-big/toyota-corolla.jpg";
@@ -50,25 +50,45 @@ export const BookCar = () => {
 
     const allCar = useAppSelector(state => state.carModels.items)
 
+    const bookCarValue = useAppSelector(state => state.bookCar.bookModalValue)
+
     const selectCarOption = 'Select your car type';
 
     const currentDate = new Date();
     const formattedDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate() - 1}`
 
-    const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
-        const valueCar = e.currentTarget.value;
+    const carImages: CarImagesType = useMemo(() => {
+        return {
+            [MODELS_CAR.AUDI_A1]: CarAudi,
+            [MODELS_CAR.VOLKSWAGEN_GOLF]: CarGolf,
+            [MODELS_CAR.TOYOTA_COROLLA]: CarToyota,
+            [MODELS_CAR.BMW_320]: CarBmw,
+            [MODELS_CAR.MERCEDES_GLK]: CarMercedes,
+            [MODELS_CAR.VOLKSWAGEN_PASSAT_CC]: CarPassat,
+        };
+    }, []);
 
-        const findCar = allCar.find(el => el.name === valueCar ? el.price : 0)
+    const bookCarModel = useCallback((carBook: string) => {
+        const findCar = allCar.find(el => el.name === carBook ? el.price : 0)
         const priceCar = findCar ? findCar.price : 0
 
-        if (valueCar === selectCarOption) {
+        if (carBook === selectCarOption) {
             dispatch(setCarType(''));
         } else {
-            dispatch(setCarType(valueCar));
-            dispatch(selectImagesBookCar(carImages[valueCar]));
+            dispatch(setCarType(carBook));
+            dispatch(selectImagesBookCar(carImages[carBook]));
             dispatch(setError(''));
             dispatch(priceBookCar(priceCar))
         }
+    }, [allCar, carImages, dispatch])
+
+    useEffect(() => {
+        bookCarModel(bookCarValue)
+    }, [bookCarValue, bookCarModel])
+
+    const handleCar = (e: ChangeEvent<HTMLSelectElement>) => {
+        const valueCar = e.currentTarget.value
+        bookCarModel(valueCar)
     };
 
     const handlePickTime = (e: ChangeEvent<HTMLInputElement>) => {
@@ -99,15 +119,6 @@ export const BookCar = () => {
             dispatch(setDropTime(''));
             dispatch(setError('error: wrong rental date'));
         }
-    };
-
-    const carImages: CarImagesType = {
-        [MODELS_CAR.AUDI_A1]: CarAudi,
-        [MODELS_CAR.VOLKSWAGEN_GOLF]: CarGolf,
-        [MODELS_CAR.TOYOTA_COROLLA]: CarToyota,
-        [MODELS_CAR.BMW_320]: CarBmw,
-        [MODELS_CAR.MERCEDES_GLK]: CarMercedes,
-        [MODELS_CAR.VOLKSWAGEN_PASSAT_CC]: CarPassat,
     };
 
     const inputError = (inputError: string) => {
@@ -178,10 +189,9 @@ export const BookCar = () => {
                                 <span>
                                     Select Your Car Type <b>*</b>
                                 </span>
-
                                 <select
                                     id={'car'}
-                                    value={carType}
+                                    value={carType ? carType : bookCarValue}
                                     onChange={handleCar}
                                     style={inputError(carType)}
                                     disabled={!allCar.length}

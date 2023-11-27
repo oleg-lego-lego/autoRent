@@ -7,6 +7,7 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks/redux";
 import {fetchPutFavorites} from "../../app/reducer/carModels/carModels-reducer";
 import {Link} from "react-router-dom";
 import {PATH} from "../../app/PATH/PATH";
+import {bookCarValue} from "../../app/reducer/bookCar/bookCar-reducer";
 
 type CarBoxPropsType = {
     data: CarModelsType
@@ -24,6 +25,11 @@ export const CarBox = (props: CarBoxPropsType) => {
     }
 
     const titleFavorites = props.data.favorites ? 'remove favorites' : 'add favorites';
+
+    const reserveNowHandler = (modelCar: string) => {
+        window.scrollTo(0, 600)
+        dispatch(bookCarValue(modelCar))
+    }
 
     return (
         <div className="box-cars">
@@ -64,7 +70,7 @@ export const CarBox = (props: CarBoxPropsType) => {
                     <TableCar description={'Transmission'} title={props.data.transmission}/>
                     <TableCar description={'Fuel'} title={props.data.fuel}/>
                 </div>
-                <Link className="cta-btn" onClick={() => window.scrollTo(0, 600)} to={PATH.HOME}>
+                <Link className="cta-btn" onClick={() => reserveNowHandler(props.data.name)} to={PATH.HOME}>
                     Reserve Now
                 </Link>
             </div>

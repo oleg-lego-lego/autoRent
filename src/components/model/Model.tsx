@@ -6,6 +6,7 @@ import {CarModelsType} from "../../app/reducer/carModels/carModels";
 import favoritesTrue from "../../images/favorites/favoritesTrue.svg"
 import favoritesFalse from "../../images/favorites/favoritesFalse.svg"
 import {PATH} from "../../app/PATH/PATH";
+import {bookCarValue} from "../../app/reducer/bookCar/bookCar-reducer";
 
 export type ModelPropsType = {
     model: CarModelsType
@@ -18,6 +19,11 @@ export const Model = (props: ModelPropsType) => {
 
     const favoritesClick = (id: string, favorites: boolean) => {
         dispatch(fetchPutFavorites({id, favorites}))
+    }
+
+    const bookRideButton = (modelCar: string) => {
+        window.scrollTo(0, 600)
+        dispatch(bookCarValue(modelCar))
     }
 
     const titleFavorites = props.model.favorites ? 'off favorites' : 'add favorites';
@@ -53,7 +59,7 @@ export const Model = (props: ModelPropsType) => {
                         <span style={{textAlign: "right"}}>{props.model.year}</span>
                     </div>
 
-                    <Link to={PATH.HOME} onClick={() => window.scrollTo(0, 600)}>
+                    <Link to={PATH.HOME} onClick={() => bookRideButton(props.model.name)}>
                         <button className="models__btn" style={{ width: '100%' }}>
                             Book Ride
                         </button>

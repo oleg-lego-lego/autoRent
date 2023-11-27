@@ -86,11 +86,13 @@ export const fetchBookCarDelete = createAsyncThunk('bookCar/fetchBookCarDelete',
 
 
 export interface BookCarStateType {
-    bookCar: BookCarType[]
+    bookCar: BookCarType[],
+    bookModalValue: string
 }
 
 const initialState: BookCarStateType = {
     bookCar: bookCarList,
+    bookModalValue: ''
 }
 
 export const BookCarSlice = createSlice({
@@ -106,6 +108,9 @@ export const BookCarSlice = createSlice({
         bookCarOpenDescription: (state, action: PayloadAction<{ id: string, open: boolean }>) => {
             const {id, open} = action.payload
             state.bookCar.map(el => el.id === id ? el.bookCarOpen = open : el)
+        },
+        bookCarValue: (state, action:PayloadAction<string>) => {
+            state.bookModalValue = action.payload
         }
     },
 })
@@ -114,6 +119,7 @@ export const {
     bookCarAdd,
     bookCarDelete,
     bookCarOpenDescription,
+    bookCarValue,
 } = BookCarSlice.actions
 
 export default BookCarSlice.reducer
